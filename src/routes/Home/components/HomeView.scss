@@ -1,5 +1,37 @@
-.duck {
-  display: block;
-  width: 120px;
-  margin: 1.5rem auto;
+$gray: #b2b2b2;
+$blue: #7396B4;
+
+.home {
+	.center {
+		margin: 0 auto;
+		text-align: center;
+	}
+	.splashImage {
+		width: 100%;
+	}
+	hr {
+		border-color: $gray;
+	}
+	h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		font-family: Roboto;
+		font-weight: 400;
+		color: $blue;
+	}
+
+	.signup {
+		.inner {
+			overflow: hidden;
+			border-bottom: 1px solid $gray;
+			padding-bottom: 20px;
+		}
+		input {
+			width: 100%;
+			border: 1px solid $gray;
+		}
+		button {
+			width: 100%;
+		}
+	}
 }
