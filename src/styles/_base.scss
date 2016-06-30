@@ -10,3 +10,18 @@ For example:
 @import './variables/components';
 @import './themes/default';
 */
+
+$light-gray: #EDEDED;
+$gray: #b2b2b2;
+$blue: #7396B4;
+
+
+.raines-button {
+  background-color: $blue;
+  color: white;
+  border-style: none;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: lighten($blue, 10%);
+  }
+}

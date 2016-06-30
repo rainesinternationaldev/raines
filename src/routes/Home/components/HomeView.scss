@@ -1,40 +1,29 @@
-$gray: #b2b2b2;
-$blue: #7396B4;
+@import '../../../styles/base';
 
 .home {
 	.inner {
 		background: white;
+		padding: 0px;
 	}
 	.center {
 		margin: 0 auto;
 		text-align: center;
 	}
 	.splashImage {
+		padding: 0px 15px;
 		width: 100%;
 	}
-	hr {
-		border-color: $gray;
-	}
-	h3 {
-		margin-top: 0px;
-		margin-bottom: 0px;
-		font-family: Roboto;
-		font-weight: 400;
-		color: $blue;
-	}
-
-	.signup {
-		.inner {
-			overflow: hidden;
-			border-bottom: 1px solid $gray;
-			padding-bottom: 20px;
+	.banner {
+		padding: 0px 30px;
+		hr {
+			margin-bottom: 0px;
 		}
-		input {
-			width: 100%;
-			border: 1px solid $gray;
-		}
-		button {
-			width: 100%;
+		h3 {
+			margin-top: 15px;
+			margin-bottom: 15px;
+			font-family: 'Trebuchet MS';
+			font-weight: 400;
+			color: $blue;
 		}
 	}
 
