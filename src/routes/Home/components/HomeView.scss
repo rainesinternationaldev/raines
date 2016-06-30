@@ -2,6 +2,9 @@ $gray: #b2b2b2;
 $blue: #7396B4;
 
 .home {
+	.inner {
+		background: white;
+	}
 	.center {
 		margin: 0 auto;
 		text-align: center;
@@ -33,5 +36,9 @@ $blue: #7396B4;
 		button {
 			width: 100%;
 		}
+	}
+
+	.featuredImage {
+		width: 100%;
 	}
 }

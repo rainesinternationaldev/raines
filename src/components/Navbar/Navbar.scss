@@ -1,52 +1,33 @@
 .globalNavbar {
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-	font-color: #343434;
-
+	color: #343434;
+	background: white;
 	height: 92px;
 	border-bottom: 11px solid #343434;
-	display: flex;
-	justify-content: center;
 
 	.companyLogo {
 		height: 55px;
 		margin-top: 13px;
+		float: left;
+	}
+
+	.navListContainer {		
+		.navList {
+			display: flex;
+			align-items: flex-end;
+			height: 68px;
+			.navLink {
+				display: inline;
+				list-style-type: none;
+				padding-right: 20px;
+			}
+		}
 	}
 }
 
-
-
-// .globalNavbar {
-// 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-// 	font-color: #343434;
-
-// 	height: 92px;
-// 	border-bottom: 11px solid #343434;
-
-// 	.companyLogo {
-// 		height: 55px;
-// 		margin-top: 13px;
-// 		float: left;
-// 	}
-
-// 	.navListContainer {
-// 		display: flex;
-// 		align-items: flex-end;
-// 		height: 100%;
-// 		font-weight: 400;
-		
-// 		.navList {
-// 			.navLink {
-// 				display: inline;
-// 				list-style-type: none;
-// 				padding-right: 20px;
-// 			}
-// 		}
-// 	}
-// }
-
-// .activeRoute {
-//   font-color: #567187;
-//   font-size: 14px;
-//   line-height: 17px;
-// }
+.activeRoute {
+  color: #567187;
+  font-size: 14px;
+  line-height: 17px;
+}
 

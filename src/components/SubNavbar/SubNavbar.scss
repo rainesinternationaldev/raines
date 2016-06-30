@@ -1,0 +1,29 @@
+$blue: #7396B4;
+
+.subNavbar {
+  text-align: center;
+  h1 {
+    font-family: Georgia;
+  }
+  .inner {
+    background: white;
+  }
+  .middleHr {
+    border-color: #333333;
+    width: 100px;
+  }
+  .subnavList {
+    margin-top: 20px;
+    li {
+      &:hover {
+        color: $blue;
+      }
+      font-family: 'Trebuchet MS';
+      text-transform: uppercase;
+      display: inline;
+      list-style-type: none;
+      padding: 20px;
+      transition: color 0.3s ease;
+    }
+  }
+}
