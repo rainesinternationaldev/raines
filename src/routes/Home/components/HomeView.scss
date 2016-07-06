@@ -1,6 +1,9 @@
 @import '../../../styles/base';
 
 .home {
+	h3 {
+		font-family: "Whitney";
+	}
 	.inner {
 		background: white;
 		padding: 0px;
@@ -26,8 +29,59 @@
 			color: $blue;
 		}
 	}
-
+	.featured {
+		margin-bottom: 30px;
+	}
+	.featuredArticles {
+		margin-top: 20px;
+		hr {
+			margin-top: 0px;
+		}
+		h5 {
+			text-transform: uppercase;
+		}
+		.imageContainer {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+	}
+	.mostRecent {
+		margin-top: 20px;
+		hr {
+			margin-top: 0px;
+		}
+		h5 {
+			text-transform: uppercase;
+		}
+		.article {
+			.topicPreview {
+				margin-bottom: 0px;
+			}
+			h4 {
+				margin-top: 5px;
+			}
+		}
+	}
+	.perspectives {
+		background: #EFF2F7;
+		padding: 0px 30px;
+		padding-top: 20px;
+		hr {
+			border-color: #DCDFE4;
+		}
+		h5 {
+			text-transform: uppercase;
+		}
+		.article {
+			h6 {
+				font-family: Georgia;
+			}
+		}
+	}
 	.featuredImage {
+		width: 100%;
+	}
+	.perspectiveImage {
 		width: 100%;
 	}
 }

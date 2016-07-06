@@ -1,5 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
 
+@font-face {
+  font-family: 'Whitney';
+  font-style: normal;
+  src: local('Whitney'), local('Whitney'), url('../static/fonts/WhitneyLightItalic.ttf') format('ttf');
+}
+
 :global {
   @import 'base';
   @import '~normalize.css/normalize';
