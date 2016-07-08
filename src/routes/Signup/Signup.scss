@@ -21,16 +21,22 @@
     .subtitle {
       text-transform: uppercase;
       font-family: Trebuchet MS;
-      margin: 0px;
+      margin-bottom: 0px;
+      margin-top: 20px;
     }
     input {
       width: 100%;
       border: 1px solid $gray;
       height: 30px;
       margin-top: 5px;
-      margin-bottom: 25px;
+      margin-bottom: 0px;
       padding-left: 10px;
       font-size: 10px;
+    }
+    .error {
+      color: lighten(red, 20%);
+      font-style: italic;
+      margin-bottom: 0px;
     }
   }
   .subscribe {
