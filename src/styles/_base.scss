@@ -15,7 +15,7 @@ $light-gray: #EDEDED;
 $gray: #b2b2b2;
 $blue: #7396B4;
 
-h4 {
+h3, h4 {
   font-family: Georgia;
 }
 
@@ -39,4 +39,8 @@ p {
   &:hover {
     background-color: lighten($blue, 10%);
   }
+}
+
+.center {
+  text-align: center;
 }

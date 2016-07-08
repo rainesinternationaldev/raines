@@ -14,7 +14,9 @@ $blue: #7396B4;
   }
   .subnavList {
     margin-top: 20px;
-    padding-left: 0px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 150px;
     li {
       &:hover {
         color: $blue;
@@ -23,7 +25,7 @@ $blue: #7396B4;
       text-transform: uppercase;
       display: inline;
       list-style-type: none;
-      padding: 20px;
+      width: 170px;
       transition: color 0.3s ease;
     }
   }

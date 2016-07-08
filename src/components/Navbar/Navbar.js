@@ -12,10 +12,9 @@ export const Navbar = () => (
       <div className={classes.navListContainer}>
         <ul className={classes.navList}>
           <li className={classes.navLink}>Advantage</li>
-          <li className={classes.navLink}>Industries</li>
-          <li className={classes.navLink}>Functions</li>
-          <li className={classes.navLink}>Leadership</li>
+          <li className={classes.navLink}>Expertise</li>
           <li className={classes.navLink}>About Us</li>
+          <li className={classes.navLink}>Diversity</li>
           <li className={classes.navLink}>ConsultantTrack</li>
           <li className={classes.navLink}>Contact</li>
         </ul>

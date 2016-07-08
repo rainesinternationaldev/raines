@@ -10,7 +10,7 @@ export const SubNavbar = () => (
         <ul className={classes.subnavList}>
           <li>Who We Are</li>
           <li>Ideas & Insights</li>
-          <li>Profiles & Intreviews</li>
+          <li>Profiles & Interviews</li>
         </ul>
         <hr/>
       </div>

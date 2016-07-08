@@ -1,0 +1,20 @@
+.globalFooter {
+  height: 160px;
+  clear: both;
+  background: #EDEDED;
+  .desc {
+    font-size: 12px;
+  }
+  hr {
+    border-color: #DCDFE4;
+  }
+  .footerFooter {
+    i {
+      padding: 5px 10px;
+    }
+    span {
+      font-family: Georgia;
+      margin-left: 25px;
+    }
+  }
+}
