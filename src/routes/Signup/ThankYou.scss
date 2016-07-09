@@ -1,0 +1,13 @@
+.thankYou {
+  min-height: calc(100vh - 402px);
+  background: white;
+  .inner {
+    text-align: center;
+    h1, h4 {
+      font-family: Georgia;
+    }
+    h4 {
+      padding: 0px 120px;
+    }
+  }
+}

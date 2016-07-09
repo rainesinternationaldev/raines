@@ -2,6 +2,7 @@
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import Home from './Home';
 import Signup from './Signup';
+import {ThankYou} from './Signup/ThankYou';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -12,8 +13,12 @@ export const createRoutes = (store) => ({
   indexRoute: Home,
   childRoutes: [
     {
-      path: 'Signup',
+      path: 'signup',
       component: Signup
+    },
+    {
+      path: 'thank-you',
+      component: ThankYou
     }
   ]
 })
