@@ -42,18 +42,35 @@
   }
   .primaryArticles, .nextArticles {
     padding: 0px;
-    .latestArticle {
-      padding: 0px;
+    .latestArticle, .nextArticle {
       img {
         width: 100%;
       }
     }
   }
   .nextArticle {
-    padding-left: 15px;
-    padding-right: 0px;
     img {
       width: 100%;
     } 
+  }
+}
+
+.viewMore {
+  margin-bottom: 20px;
+  .border {
+    width: calc((100% - 82px)/2);
+    height: 5px;
+    display: inline-block;
+    margin: 0px;
+    border-top: 1px solid black;
+  }
+  .buttonDiv {
+    display: inline-block;
+    width: 82px;
+    .viewMoreButton {
+      width: 100%;
+      // position: absolute;
+      // bottom: 9px;
+    }
   }
 }
