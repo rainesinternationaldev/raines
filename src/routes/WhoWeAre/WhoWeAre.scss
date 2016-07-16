@@ -1,0 +1,52 @@
+@import '../../styles/base';
+.whoWeAre {
+  min-height: calc(100vh - 402px);
+  background: white;
+  .inner {
+    text-align: center;
+    h1, h4, h5 {
+      font-family: Georgia;
+    }
+    h4 {
+      padding: 0px 120px;
+    }
+    .hr {
+      margin: 20px 15px;
+    }
+  }
+  .center {
+		margin: 0 auto;
+		text-align: center;
+	}
+  .splashImage {
+		padding: 0px 15px;
+		width: 100%;
+	}
+  .banner {
+		hr {
+			margin-bottom: 0px;
+		}
+		h3 {
+			margin-top: 15px;
+			margin-bottom: 15px;
+			font-family: 'Trebuchet MS';
+			font-weight: 400;
+			color: $blue;
+		}
+	}
+  .ourPeople {
+    margin-bottom: 40px;
+    h3 {
+      text-align: left;
+    }
+    hr {
+      margin-top: 0px;
+    }
+    img {
+      width: 100%;
+    }
+    .name {
+      font-weight: bold;
+    }
+  }
+}

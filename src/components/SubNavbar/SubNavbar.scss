@@ -4,6 +4,12 @@ $blue: #7396B4;
   text-align: center;
   h1 {
     font-family: Georgia;
+    a {
+      color: #333;
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
   }
   .inner {
     background: white;
@@ -17,6 +23,14 @@ $blue: #7396B4;
     display: flex;
     justify-content: space-around;
     padding: 0px 150px;
+    a {
+      color: #333;
+      transition: color 0.3s ease;
+      &:hover, &:focus {
+        color: $blue;
+        text-decoration: none;
+      }
+    }
     li {
       &:hover {
         color: $blue;

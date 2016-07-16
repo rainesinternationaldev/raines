@@ -1,0 +1,59 @@
+@import '../../styles/base';
+.ideasAndInsights {
+  background: white;
+  .inner{
+    background: white;
+  }
+  .subtitle {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .date {
+    font-style: italic;
+  }
+  .latestResearch {
+    padding: 0px;
+    margin-bottom: 40px;
+    .imageDiv {
+      padding: 0px;
+      img {
+        width: 100%;
+      }
+    }
+    .articleTitle {
+      margin-top: 0px;
+    }
+    
+  }
+  .insights {
+    padding: 0px;
+    .topicList {
+      overflow: hidden;
+      .topic {
+        padding: 0px;
+        color: $blue;
+        i {
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+  .articleSummary {
+    font-size: 12px;
+  }
+  .primaryArticles, .nextArticles {
+    padding: 0px;
+    .latestArticle {
+      padding: 0px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .nextArticle {
+    padding-left: 15px;
+    padding-right: 0px;
+    img {
+      width: 100%;
+    } 
+  }
+}
