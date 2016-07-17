@@ -6,6 +6,7 @@
   }
   .subtitle {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
   }
   .date {
     font-style: italic;
@@ -63,14 +64,20 @@
     display: inline-block;
     margin: 0px;
     border-top: 1px solid black;
+    border-color: #EDEDED;
   }
   .buttonDiv {
     display: inline-block;
     width: 82px;
     .viewMoreButton {
       width: 100%;
-      // position: absolute;
-      // bottom: 9px;
+      background-color: $blue;
+      color: white;
+      border-style: none;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: lighten($blue, 10%);
+      }
     }
   }
 }
