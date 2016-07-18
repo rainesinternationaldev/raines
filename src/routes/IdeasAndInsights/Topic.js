@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import {ViewMore} from './ViewMore';
 import classes from './IdeasAndInsights.scss';
 
@@ -33,6 +34,7 @@ export default class Topic extends React.Component {
       <div className={`${classes.ideasAndInsights} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
         <div className={`${classes.inner} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
           <div className={`${classes.latestResearch} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+            <Link to="/ideas-and-insights"><p>Back to Ideas & Insights</p></Link>
             <h4 className={classes.subtitle}>{topic}</h4>
             <hr/>
             <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>

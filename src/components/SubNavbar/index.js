@@ -11,7 +11,7 @@ export const SubNavbar = () => (
         <ul className={classes.subnavList}>
           <li><Link to="/who-we-are">Who We Are</Link></li>
           <li><Link to="/ideas-and-insights">Ideas & Insights</Link></li>
-          <li>Profiles & Interviews</li>
+          <li><Link to="/profiles-and-interviews">Profiles & Interviews</Link></li>
         </ul>
       </div>
     </div>

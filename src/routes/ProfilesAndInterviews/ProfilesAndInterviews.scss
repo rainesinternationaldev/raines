@@ -1,0 +1,84 @@
+@import '../../styles/base';
+
+.profilesAndInterviews {
+  .inner {
+		background: white;
+    padding: 0;
+		.hr {
+      margin: 20px 15px;
+    }
+    .subtitle {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-transform: uppercase;
+    }
+    .featuredProfile {
+      padding: 0px 30px;
+      .featuredImageDiv {
+        padding: 0;
+        .featuredImage {
+          width: 100%;
+        }
+      }
+      .featuredContent {
+        .name {
+          margin: 0;
+        }
+        .company {
+          font-weight: 600;
+        }
+        .position {
+          font-style: italic;
+        }
+        .date {
+          font-style: italic;
+        }
+      }
+      .hrDiv {
+        padding: 0px;
+      }
+    }
+    .filterBar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #7496B3;
+      color: white;
+      height: 40px;
+    }
+    .profiles {
+      padding-top: 20px;
+      .profile {
+        img {
+          width: 100%;
+        }
+      }
+    }
+	}
+}
+
+.viewMore {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .border {
+    width: calc((100% - 82px)/2);
+    height: 5px;
+    display: inline-block;
+    margin: 0px;
+    border-top: 1px solid black;
+    border-color: #EDEDED;
+  }
+  .buttonDiv {
+    display: inline-block;
+    width: 82px;
+    .viewMoreButton {
+      width: 100%;
+      background-color: $blue;
+      color: white;
+      border-style: none;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: lighten($blue, 10%);
+      }
+    }
+  }
+}

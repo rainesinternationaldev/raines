@@ -6,6 +6,8 @@ import {ThankYou} from './Signup/ThankYou';
 import {WhoWeAre} from './WhoWeAre';
 import IdeasAndInsights from './IdeasAndInsights';
 import Topic  from './IdeasAndInsights/Topic';
+import Article from './Article';
+import ProfilesAndInterviews from './ProfilesAndInterviews';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -34,6 +36,14 @@ export const createRoutes = (store) => ({
     {
       path: 'ideas-and-insights/:topic',
       components: Topic
+    },
+    {
+      path: 'article/:title',
+      components: Article
+    },
+    {
+      path: 'profiles-and-interviews',
+      component: ProfilesAndInterviews
     }
   ]
 })

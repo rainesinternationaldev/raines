@@ -1,0 +1,42 @@
+@import '../../styles/base';
+
+.article {
+	h3 {
+		font-family: "Whitney";
+	}
+	.inner {
+		padding-top: 30px;
+		background: white;
+		.hr {
+      margin: 20px 15px;
+    }
+	}
+	.center {
+		margin: 0 auto;
+		text-align: center;
+	}
+	.splashArticle {
+		padding: 0px;
+	}
+	.mostRecent {
+		hr {
+			margin-top: 0px;
+		}
+		h5 {
+			margin-top: 0px;
+			font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+			text-transform: uppercase;
+		}
+		.article {
+			.topicPreview {
+				margin-bottom: 0px;
+			}
+			h4 {
+				margin-top: 5px;
+			}
+		}
+	}
+	.featuredImage {
+		width: 100%;
+	}
+}
