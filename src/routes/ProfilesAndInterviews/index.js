@@ -2,7 +2,7 @@ import React from 'react'
 import Dropdown from 'react-dropdown';
 import {ViewMore} from './ViewMore';
 import classes from './ProfilesAndInterviews.scss'
-
+import SignupBar from '../../components/SignupBar';
 
 export default class ProfilesAndInterviews extends React.Component {
   constructor(props) {
@@ -179,6 +179,7 @@ export default class ProfilesAndInterviews extends React.Component {
               <h5 className={classes.company}>Digitalsbi</h5>
             </div>
           </div>
+          <SignupBar/>
         </div>
       </div>
     );
