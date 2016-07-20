@@ -44,6 +44,10 @@
       background-color: #7496B3;
       color: white;
       height: 40px;
+
+      .filter, .reset, .dropdown {
+        padding: 15px;
+      }
     }
     .profiles {
       padding-top: 20px;
@@ -82,3 +86,4 @@
     }
   }
 }
+

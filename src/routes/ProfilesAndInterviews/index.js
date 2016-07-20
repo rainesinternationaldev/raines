@@ -1,12 +1,48 @@
 import React from 'react'
+import Dropdown from 'react-dropdown';
 import {ViewMore} from './ViewMore';
 import classes from './ProfilesAndInterviews.scss'
+
 
 export default class ProfilesAndInterviews extends React.Component {
   constructor(props) {
     super(props);
     this.displayMoreProfiles = () => {
       console.log('fetching more profiles')
+    }
+
+    this.selectIndustry = (industry) => {
+      this.setState({
+        selectedIndustry: industry.value
+      })
+    }
+
+    this.selectTrack = (track) => {
+      this.setState({
+        selectedTrack: track.value
+      })
+    }
+
+    this.resetFields = () => {
+      this.setState({
+        selectedIndustry: null,
+        selectedTrack: null
+      })
+    }
+
+    this.state = {
+      industries: [
+        'industry a',
+        'industry b',
+        'industry c'        
+      ],
+      tracks: [
+        'track a',
+        'track b',
+        'track c'        
+      ],
+      selectedIndustry: null,
+      selectedTrack: null
     }
   }
 
@@ -33,7 +69,16 @@ export default class ProfilesAndInterviews extends React.Component {
             </div>
           </div>
           <div className={`${classes.filterBar} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            FILTER DROPDOWN DROPDOWN RESET
+            <span className={classes.filter}>FILTER</span>
+            <span className={classes.dropdown}>
+              <Dropdown options={this.state.industries} onChange={this.selectIndustry} value={this.state.selectedIndustry} placeholder="Industry" />
+            </span>
+            <span className={classes.dropdown}>
+              <Dropdown options={this.state.tracks} onChange={this.selectTrack} value={this.state.selectedTrack} placeholder="Track" />
+            </span>
+            <span
+              className={classes.reset}
+              onClick={this.resetFields}>RESET</span>
           </div>
           <div className={`${classes.profiles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
