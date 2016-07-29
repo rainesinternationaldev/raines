@@ -1,0 +1,1 @@
+export const request = require('superagent-promise')(require('superagent'), require('bluebird'));

@@ -5,8 +5,6 @@ import alison from './assets/alison.png';
 import daniel from './assets/daniel.png';
 import classes from './WhoWeAre.scss';
 
-console.log(daniel)
-
 export const WhoWeAre = () => (
   <div className={`${classes.whoWeAre} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
     <div className={`${classes.inner}`}>
