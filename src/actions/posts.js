@@ -1,7 +1,10 @@
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
-  FETCH_POSTS_FAILURE
+  FETCH_POSTS_FAILURE,
+  FETCH_POST_REQUEST,
+  FETCH_POST_SUCCESS,
+  FETCH_POST_FAILURE
 } from '../constants';
 import { request } from './utils';
 const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
@@ -28,7 +31,7 @@ export const fetchPostsFailure = () => {
 };
 
 export const fetchPosts = () => {
-  const url = `${baseurl}/posts`;
+  const url = `${baseurl}/posts/`;
 	
 	return (dispatch) => {
 		dispatch(fetchPostsRequest());
@@ -40,6 +43,45 @@ export const fetchPosts = () => {
 			})
 			.catch((error) => {
 				dispatch(fetchPostsFailure());
+			});
+	};
+}
+
+export const fetchPostRequest = () => {
+  return {
+    type: FETCH_POST_REQUEST
+  }
+};
+
+export const fetchPostSuccess = (post) => {
+  return {
+    type: FETCH_POST_SUCCESS,
+    payload: {
+      post
+    }
+  }
+}
+
+export const fetchPostFailure = () => {
+  return {
+    type: FETCH_POST_FAILURE
+  }
+};
+
+export const fetchPost = (id) => {
+  if (!id) id = "";
+  const url = `${baseurl}/posts/${id}`;
+	
+	return (dispatch) => {
+		dispatch(fetchPostRequest());
+		return request
+			.get(url)
+			.end()
+			.then((response) => {
+				return dispatch(fetchPostSuccess(response.body));
+			})
+			.catch((error) => {
+				dispatch(fetchPostFailure());
 			});
 	};
 }

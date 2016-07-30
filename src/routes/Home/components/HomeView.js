@@ -7,6 +7,8 @@ import {Link} from 'react-router';
 import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../../actions/posts';
 import {connect} 							from 'react-redux';
+import utils from '../../utils';
+
 
 class HomeView extends React.Component {
   constructor(props) {
@@ -27,31 +29,29 @@ class HomeView extends React.Component {
 	}
 
   componentWillMount() {
-    this.props.actions.fetchPosts()
-    console.log(this.props.wordpress.posts)
+    if (!this.props.wordpress.posts.length) {
+      this.props.actions.fetchPosts();
+    }
   }
 
   render() {
     const posts = this.props.wordpress.posts;
     let featuredPost;
-    let secondPost;
-    let thirdPost;
-    let fourthPost;
     let imgSrc;
+    let mostRecentPosts;
     if (posts.length) {
       const mainPost = posts[0];
       const contentStr = mainPost.content.rendered;
       const el = $('<div></div>');
       el.html(contentStr);
-      imgSrc = $('img', el)[0].src;
+      const featuredImg = $('img', el)[0];
+      imgSrc = featuredImg
+        ? $('img', el)[0].src
+        : "https://images.unsplash.com/photo-1430609098125-581618d0482f?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1274&amp;h=849&amp;q=80";
 
       featuredPost = posts[0]; // this may change
-      secondPost = posts[1];
-      thirdPost = posts[2];
-      fourthPost = posts[3];
+      mostRecentPosts = posts.slice(0, 3);
     }
-
-    let mostRecentPosts = posts.slice(0, 3);
 
     return (
       <div className={classes.home}>
@@ -74,17 +74,17 @@ class HomeView extends React.Component {
               <h5>Featured Insights</h5>
               <hr />
               {
-                posts.length && imgSrc ?
+                posts.length ?
                 <div>
                   <div className={`${classes.imageContainer} col-lg-8 col-md-8 col-sm-8 col-xs-12`}>
                     <img className={classes.featuredImage} src={imgSrc}/>
                   </div>
                   <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <Link to={`/article/${featuredPost.id}-${formatTitle(featuredPost.title.rendered)}`}>
-                      <h4>{decodeEntities(featuredPost.title.rendered)}</h4>
+                    <Link to={`/article/${featuredPost.id}-${utils.formatTitle(featuredPost.title.rendered)}`}>
+                      <h4>{utils.decodeEntities(featuredPost.title.rendered)}</h4>
                     </Link>
                     <p className="date-preview">{moment(featuredPost.date).format('MMMM YYYY')}</p>
-                    <p>{decodeEntities(featuredPost.excerpt.rendered)}</p>
+                    <p>{utils.decodeEntities(featuredPost.excerpt.rendered)}</p>
                   </div>
                 </div>
                 : ""
@@ -95,12 +95,12 @@ class HomeView extends React.Component {
               <hr/>
               {
                 posts.length ?
-                mostRecentPosts.map((post) => {
+                mostRecentPosts.map((post, i) => {
                   return (
-                    <div className={classes.article}>
+                    <div className={classes.article} key={i}>
                       <p className={classes.topicPreview}>{this.state.categories[post.categories[0]]}</p>
-                      <Link to={`/article/${post.id}-${formatTitle(post.title.rendered)}`}>
-                        <h4>{decodeEntities(post.title.rendered)}</h4>
+                      <Link to={`/article/${post.id}-${utils.formatTitle(post.title.rendered)}`}>
+                        <h4>{utils.decodeEntities(post.title.rendered)}</h4>
                       </Link>
                     </div>
                   )
@@ -133,19 +133,6 @@ class HomeView extends React.Component {
       </div>
     );
   }
-}
-
-function decodeEntities(s){
-    var str, temp = document.createElement('p');
-    temp.innerHTML = s;
-    str = temp.textContent || temp.innerText;
-    temp = null;
-    str = str.replace(/\[|\]/g, '');
-    return str;
-}
-
-function formatTitle(s) {
-  return decodeEntities(s).split(' ').join('-');
 }
 
 const mapStateToProps = (state) => ({
