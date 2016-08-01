@@ -30,8 +30,9 @@ export const fetchPostsFailure = () => {
   }
 };
 
-export const fetchPosts = () => {
-  const url = `${baseurl}/posts/`;
+export const fetchPosts = (numPosts) => {
+  const params = numPosts ? `?per_page=${numPosts}` : ``;
+  const url = `${baseurl}/posts/${params}`;
 	
 	return (dispatch) => {
 		dispatch(fetchPostsRequest());
