@@ -31,7 +31,6 @@ class IdeasAndInsights extends React.Component {
       for (let i = 0; i < 4; i++) {
         parsedArticles.push(parseArticleData(posts[i]));
       }
-      console.log('the parsed articles', parsedArticles)
     }
 
     /**
@@ -112,24 +111,28 @@ class IdeasAndInsights extends React.Component {
             <hr/>
           </div>
           <div className={`${classes.primaryArticles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <div className={`${classes.latestArticle} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
-
-              <img src={parsedArticles[1].imgSrc}/>
-              <h5 className={classes.articleTitle}>{parsedArticles[1].title}</h5>
-              <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[1].date}</span> - {parsedArticles[1].excerpt}</p>
-            </div>
-            <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
-              <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
-                <img src={parsedArticles[2].imgSrc}/>
-                <h5 className={classes.articleTitle}>{parsedArticles[2].title}</h5>
-                <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[2].date}</span> - {parsedArticles[2].excerpt}</p>
-              </div>
-              <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
-                <img src={parsedArticles[3].imgSrc}/>
-                <h5 className={classes.articleTitle}>{parsedArticles[3].title}</h5>
-                <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[3].date}</span> - {parsedArticles[3].excerpt}</p>
-              </div>
-            </div>
+            {
+              parsedArticles.length ?
+                <div>
+                  <div className={`${classes.latestArticle} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+                    <img src={parsedArticles[1].imgSrc}/>
+                    <h5 className={classes.articleTitle}>{parsedArticles[1].title}</h5>
+                    <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[1].date}</span> - {parsedArticles[1].excerpt}</p>
+                  </div>
+                  <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+                    <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
+                      <img src={parsedArticles[2].imgSrc}/>
+                      <h5 className={classes.articleTitle}>{parsedArticles[2].title}</h5>
+                      <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[2].date}</span> - {parsedArticles[2].excerpt}</p>
+                    </div>
+                    <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
+                      <img src={parsedArticles[3].imgSrc}/>
+                      <h5 className={classes.articleTitle}>{parsedArticles[3].title}</h5>
+                      <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[3].date}</span> - {parsedArticles[3].excerpt}</p>
+                    </div>
+                  </div>
+                </div> : ""
+            }
           </div>
           <ViewMore viewMore={this.displayMoreArticles}/>
           <div className={`${classes.nextArticles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>

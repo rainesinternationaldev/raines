@@ -30,9 +30,17 @@ export const fetchPostsFailure = () => {
   }
 };
 
-export const fetchPosts = (numPosts) => {
-  const params = numPosts ? `?per_page=${numPosts}` : ``;
-  const url = `${baseurl}/posts/${params}`;
+export const fetchPosts = (numPosts, offset, pageNum) => {
+  let params = [];
+  let appendage;
+  if (numPosts) params.push(`per_page=${numPosts}`);
+  if (offset)   params.push(`offset=${offset}`);
+  if (pageNum)  params.push(`page=${pageNum}`);
+  if (params.length) appendage = '?' + params.join('&');
+
+  const query = appendage ? appendage : ``;
+
+  const url = `${baseurl}/posts/${query}`;
 	
 	return (dispatch) => {
 		dispatch(fetchPostsRequest());

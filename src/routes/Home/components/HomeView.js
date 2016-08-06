@@ -30,7 +30,7 @@ class HomeView extends React.Component {
 
   componentWillMount() {
     if (!this.props.wordpress.posts.length) {
-      this.props.actions.fetchPosts();
+      this.props.actions.fetchPosts(4, 0, 1);
     }
   }
 
