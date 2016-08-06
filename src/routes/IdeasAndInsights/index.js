@@ -12,13 +12,21 @@ class IdeasAndInsights extends React.Component {
   constructor(props) {
     super(props);
     this.displayMoreArticles = () => {
-      console.log('fetching more articles')
+      console.log('fetching more articles');
+      this.setState({ numShown: this.state.numShown += 8 });
+      if (this.state.numShown >= this.props.wordpress.posts.length) {
+        this.props.actions.fetchNextEightPosts(this.props.wordpress.offset);
+      }
+    }
+
+    this.state = {
+      numShown: 4
     }
   }
 
   componentWillMount() {
     if (!this.props.wordpress.posts.length) {
-      this.props.actions.fetchPosts();
+      this.props.actions.fetchPosts(4, 0, 1);
     }
   }
 
@@ -28,10 +36,12 @@ class IdeasAndInsights extends React.Component {
 
     let parsedArticles = [];
     if (posts.length) {
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < posts.length; i++) {
         parsedArticles.push(parseArticleData(posts[i]));
       }
     }
+    let nextArticles = parsedArticles.slice(4);
+    console.log('nextarticles', nextArticles)
 
     /**
      * Convert raw data from WP API to readable form
@@ -136,38 +146,17 @@ class IdeasAndInsights extends React.Component {
           </div>
           <ViewMore viewMore={this.displayMoreArticles}/>
           <div className={`${classes.nextArticles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="https://images.unsplash.com/photo-1414496213569-23220f1033cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4799ea6a2039b3422d8cb83ea40eed73"/>
-              <h5 className={classes.articleTitle}>Exploding digital flows in a deeply connected world</h5>
-            </div>
-            <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="https://images.unsplash.com/photo-1414496213569-23220f1033cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4799ea6a2039b3422d8cb83ea40eed73"/>
-              <h5 className={classes.articleTitle}>Exploding digital flows in a deeply connected world</h5>
-            </div>
-            <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="https://images.unsplash.com/photo-1414496213569-23220f1033cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4799ea6a2039b3422d8cb83ea40eed73"/>
-              <h5 className={classes.articleTitle}>Exploding digital flows in a deeply connected world</h5>
-            </div>
-            <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="https://images.unsplash.com/photo-1414496213569-23220f1033cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4799ea6a2039b3422d8cb83ea40eed73"/>
-              <h5 className={classes.articleTitle}>Exploding digital flows in a deeply connected world</h5>
-            </div>
-            <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="https://images.unsplash.com/photo-1414496213569-23220f1033cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4799ea6a2039b3422d8cb83ea40eed73"/>
-              <h5 className={classes.articleTitle}>Exploding digital flows in a deeply connected world</h5>
-            </div>
-            <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="https://images.unsplash.com/photo-1414496213569-23220f1033cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4799ea6a2039b3422d8cb83ea40eed73"/>
-              <h5 className={classes.articleTitle}>Exploding digital flows in a deeply connected world</h5>
-            </div>
-            <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="https://images.unsplash.com/photo-1414496213569-23220f1033cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4799ea6a2039b3422d8cb83ea40eed73"/>
-              <h5 className={classes.articleTitle}>Exploding digital flows in a deeply connected world</h5>
-            </div>
-            <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="https://images.unsplash.com/photo-1414496213569-23220f1033cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4799ea6a2039b3422d8cb83ea40eed73"/>
-              <h5 className={classes.articleTitle}>Exploding digital flows in a deeply connected world</h5>
-            </div>
+            {
+              nextArticles.length ? 
+                nextArticles.map((article, i) => {
+                  return (
+                    <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
+                      <img src={nextArticles[i].imgSrc}/>
+                      <h5 className={classes.articleTitle}>{nextArticles[i].title}</h5>
+                    </div>
+                  )
+                }) : ""
+            }
           </div>
         </div>
       </div>

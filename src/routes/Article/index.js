@@ -34,16 +34,13 @@ export class Article extends React.Component {
 
     // Prevent re-fetching already fetched articles
     if (!cachedArticle) this.props.actions.fetchPost(articleId);
-    console.log('the article ID to fetch', articleId)
     if (this.props.wordpress && !this.props.wordpress.posts.length) {
       this.props.actions.fetchPosts();
     }
   }
 
   componentDidUpdate() {
-    console.log('component updated', this.state.location, this.props.location.pathname)
     if (this.state.location !== this.props.location.pathname) {
-      console.log('force an update')
       this.setState({ location: this.props.location.pathname });
 
       const articleId     = this.props.location.pathname.slice(9).split('-')[0];
@@ -53,31 +50,6 @@ export class Article extends React.Component {
 
       this.forceUpdate();
     }
-  }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log('NEXT PROPS', nextProps.location.pathname)
-  //   console.log('SHOULD COMPONENT UPDATE', this.state.location !== nextProps.location.pathname)
-  //   return this.state.location !== nextProps.location.pathname;
-  // }
-
-  componentWillReceiveProps(nextProps) {
-    // const articleId     = this.props.location.pathname.slice(9).split('-')[0];
-    // const currentPost   = this.props.wordpress.currentPost;
-    // const cachedArticle = currentPost && currentPost.id == articleId;
-    // this.setState({ location: this.props.location.pathname });
-
-    // // Prevent re-fetching already fetched articles
-    // this.props.actions.fetchPost(articleId);
-    // console.log('the article ID to fetch', articleId)
-    // if (this.props.wordpress && !this.props.wordpress.posts.length) {
-    //   this.props.actions.fetchPosts();
-    // }
-
-    // if (nextProps.location.pathname !== this.state.location ) {
-    //   console.log('FORCE UPDATE')
-    //   this.forceUpdate();
-    // }
   }
 
   render() {
