@@ -3,12 +3,18 @@ import Dropdown from 'react-dropdown';
 import {ViewMore} from './ViewMore';
 import classes from './ProfilesAndInterviews.scss'
 import SignupBar from '../../components/SignupBar';
+import {bindActionCreators} 	from 'redux';
+import * as actionCreators  	from '../../actions/profiles';
+import {connect} 							from 'react-redux';
+import utils from '../utils';
+import * as data from './data';
+import { request } from '../../actions/utils';
 
-export default class ProfilesAndInterviews extends React.Component {
+class ProfilesAndInterviews extends React.Component {
   constructor(props) {
     super(props);
     this.displayMoreProfiles = () => {
-      console.log('fetching more profiles')
+      this.setState({ displayedProfiles: this.state.displayedProfiles += 8 });
     }
 
     this.selectIndustry = (industry) => {
@@ -42,11 +48,24 @@ export default class ProfilesAndInterviews extends React.Component {
         'track c'        
       ],
       selectedIndustry: null,
-      selectedTrack: null
+      selectedTrack: null,
+      displayedProfiles: 8
+    }
+  }
+
+  componentWillMount() {
+    if (!this.props.wordpress.profiles.length) {
+      this.props.actions.fetchProfiles()
+      .then(() => {
+        this.props.actions.fetchRemainingProfileImagesAsync();
+      });
     }
   }
 
   render() {
+    const profiles = this.props.wordpress.profiles;
+    const displayedProfiles = profiles.slice(0, this.state.displayedProfiles);
+
     return (
       <div className={classes.profilesAndInterviews}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
@@ -81,107 +100,34 @@ export default class ProfilesAndInterviews extends React.Component {
               onClick={this.resetFields}>RESET</span>
           </div>
           <div className={`${classes.profiles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <ViewMore viewMore={this.displayMoreProfiles}/>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
-            <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`}>
-              <img src="http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png"/>
-              <h5 className={classes.name}>Jorge</h5>
-              <h5 className={classes.position}>SVP, Head of Operations, North America</h5>
-              <h5 className={classes.company}>Digitalsbi</h5>
-            </div>
+            {
+              displayedProfiles ?
+              displayedProfiles.map((profile, i) => {
+                return (
+                  <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
+                    <img src={profile.imageURL || "http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png" }/>
+                    <h5 className={classes.name}>{profile.title.rendered}</h5>
+                    <h5 className={classes.position}>{data.titles[profile.titles[0]]}</h5>
+                    <h5 className={classes.company}>{data.firms[profile.firms[0]]}</h5>
+                  </div>
+                )
+              }) : ""
+            }
           </div>
+          <ViewMore viewMore={this.displayMoreProfiles}/>
           <SignupBar/>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  wordpress: state.wordpress
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(actionCreators, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilesAndInterviews);

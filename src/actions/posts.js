@@ -96,7 +96,6 @@ export const fetchPost = (id) => {
 }
 
 export const fetchNextEightPosts = (offset) => {
-  console.log('fetching next eight with offset', offset)
   const url = `${baseurl}/posts/?per_page=8&offset=${offset}&pageNum=1`;
 	
 	return (dispatch) => {

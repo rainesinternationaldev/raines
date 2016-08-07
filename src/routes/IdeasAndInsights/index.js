@@ -41,7 +41,6 @@ class IdeasAndInsights extends React.Component {
       }
     }
     let nextArticles = parsedArticles.slice(4);
-    console.log('nextarticles', nextArticles)
 
     /**
      * Convert raw data from WP API to readable form
@@ -144,8 +143,7 @@ class IdeasAndInsights extends React.Component {
                 </div> : ""
             }
           </div>
-          <ViewMore viewMore={this.displayMoreArticles}/>
-          <div className={`${classes.nextArticles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+          <div className={`${classes.moreArticles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             {
               nextArticles.length ? 
                 nextArticles.map((article, i) => {
@@ -158,6 +156,7 @@ class IdeasAndInsights extends React.Component {
                 }) : ""
             }
           </div>
+          <ViewMore viewMore={this.displayMoreArticles}/>
         </div>
       </div>
     )

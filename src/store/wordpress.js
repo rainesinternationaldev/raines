@@ -1,12 +1,15 @@
 import {
 	FETCH_POST_SUCCESS,
-  FETCH_POSTS_SUCCESS
+  FETCH_POSTS_SUCCESS,
+	FETCH_PROFILE_SUCCESS,
+	FETCH_PROFILES_SUCCESS
 } from '../constants';
 import {createReducer} from './util';
 
 const initialState = {
 	posts: [],
-	offset: 0
+	offset: 0,
+	profiles: []
 };
 
 export default createReducer(initialState, {
@@ -37,5 +40,10 @@ export default createReducer(initialState, {
 		return Object.assign({}, state, {
 			currentPost: payload.post
 		});
+	},
+	[FETCH_PROFILES_SUCCESS]: (state, payload) => {
+		return Object.assign({}, state, {
+			profiles: payload.profiles
+		})
 	}
 });

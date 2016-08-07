@@ -49,10 +49,16 @@
       }
     }
   }
-  .nextArticle {
-    img {
-      width: 100%;
-    } 
+  .moreArticles {
+    padding: 0px;
+    .nextArticle {
+      min-height: 195px;
+      margin-top: 20px;
+      img {
+        width: 100%;
+        height: 113px;
+      } 
+    }
   }
 }
 
