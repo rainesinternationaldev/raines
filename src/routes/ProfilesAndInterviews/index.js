@@ -19,13 +19,13 @@ class ProfilesAndInterviews extends React.Component {
 
     this.selectIndustry = (industry) => {
       this.setState({
-        selectedIndustry: industry.value
+        selectedIndustry: industry
       })
     }
 
     this.selectTrack = (track) => {
       this.setState({
-        selectedTrack: track.value
+        selectedTrack: track
       })
     }
 
@@ -37,16 +37,8 @@ class ProfilesAndInterviews extends React.Component {
     }
 
     this.state = {
-      industries: [
-        'industry a',
-        'industry b',
-        'industry c'        
-      ],
-      tracks: [
-        'track a',
-        'track b',
-        'track c'        
-      ],
+      industries: data.industries,
+      tracks: data.trackTypes,
       selectedIndustry: null,
       selectedTrack: null,
       displayedProfiles: 8
@@ -63,8 +55,32 @@ class ProfilesAndInterviews extends React.Component {
   }
 
   render() {
-    const profiles = this.props.wordpress.profiles;
-    const displayedProfiles = profiles.slice(0, this.state.displayedProfiles);
+    let profiles = this.props.wordpress.profiles;
+    // let displayedProfiles = profiles.slice(0, this.state.displayedProfiles);
+    
+    // if (this.state.selectedIndustry) {
+    //   let industryId = this.state.selectedIndustry.value;
+    //   displayedProfiles = profiles.filter((profile) => {
+    //     return profile['industry-types'][0] == industryId;
+    //   }).slice(0, this.state.displayedProfiles);
+    // }
+
+    let displayedProfiles = profiles.filter(filterByIndustryAndType.bind(this)).slice(0, this.state.displayedProfiles);
+
+    function filterByIndustryAndType(profile) {
+      let industryId = this.state.selectedIndustry && Number(this.state.selectedIndustry.value);
+      let trackId    = this.state.selectedTrack && Number(this.state.selectedTrack.value);
+      if (industryId && trackId) {
+        return profile['industry-types'].indexOf(industryId) > -1 && profile['track-types'].indexOf(trackId) > -1;
+      } else if (industryId) {
+        console.log(profile['industry-types'].indexOf(industryId))
+        return profile['industry-types'].indexOf(industryId) > -1;
+      } else if (trackId) {
+        return profile['track-types'].indexOf(trackId) > -1;
+      } else {
+        return true;
+      }
+    }
 
     return (
       <div className={classes.profilesAndInterviews}>
@@ -90,10 +106,18 @@ class ProfilesAndInterviews extends React.Component {
           <div className={`${classes.filterBar} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <span className={classes.filter}>FILTER</span>
             <span className={classes.dropdown}>
-              <Dropdown options={this.state.industries} onChange={this.selectIndustry} value={this.state.selectedIndustry} placeholder="Industry" />
+              <Dropdown
+                options={this.state.industries}
+                onChange={this.selectIndustry}
+                value={this.state.selectedIndustry}
+                placeholder="Industry" />
             </span>
             <span className={classes.dropdown}>
-              <Dropdown options={this.state.tracks} onChange={this.selectTrack} value={this.state.selectedTrack} placeholder="Track" />
+              <Dropdown
+                options={this.state.tracks}
+                onChange={this.selectTrack}
+                value={this.state.selectedTrack}
+                placeholder="Track" />
             </span>
             <span
               className={classes.reset}

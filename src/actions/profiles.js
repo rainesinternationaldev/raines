@@ -34,7 +34,7 @@ export const fetchProfilesFailure = () => {
 };
 
 export const fetchProfiles = () => {
-  const url = `${baseurl}/profiles/?per_page=100`;
+  const url = `${baseurl}/profiles/?per_page=100&orderby=menu_order&order=asc`;
 	
 	return (dispatch) => {
 		dispatch(fetchProfilesRequest());

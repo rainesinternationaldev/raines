@@ -171,21 +171,21 @@ export const firms = { '38': 'Fortune 500 Service Company',
   '856': 'Hickory Farms, Inc.',
   '865': 'High-growth Consumer Goods Company' };
 
-export const industries = { '25': 'Manufacturing',
-  '26': 'Services',
-  '42': 'Investment Management',
-  '45': 'Technology',
-  '50': 'Private Equity',
-  '67': 'Nonprofit',
-  '162': 'Consumer Goods',
-  '170': 'Automotive',
-  '225': 'Entertainment',
-  '231': 'Retail',
-  '234': 'Financial Services',
-  '242': 'Healthcare',
-  '651': 'Real Estate',
-  '653': 'Startup',
-  '846': 'Advertising' };
+export const industries = [ { value: '25', label: 'Manufacturing' },
+  { value: '26', label: 'Services' },
+  { value: '42', label: 'Investment Management' },
+  { value: '45', label: 'Technology' },
+  { value: '50', label: 'Private Equity' },
+  { value: '67', label: 'Nonprofit' },
+  { value: '162', label: 'Consumer Goods' },
+  { value: '170', label: 'Automotive' },
+  { value: '225', label: 'Entertainment' },
+  { value: '231', label: 'Retail' },
+  { value: '234', label: 'Financial Services' },
+  { value: '242', label: 'Healthcare' },
+  { value: '651', label: 'Real Estate' },
+  { value: '653', label: 'Startup' },
+  { value: '846', label: 'Advertising' } ];
 
 export const titles = { '6': 'Associate',
   '7': 'Director',
@@ -413,13 +413,14 @@ export const titles = { '6': 'Associate',
   '863': 'Head of Product Marketing',
   '864': 'Head of Retail Operations' };
 
-export const trackTypes = { '21': 'General Management',
-  '237': 'Marketing',
-  '293': 'Human Resources',
-  '760': 'Strategy',
-  '761': 'Finance',
-  '762': 'Operations',
-  '764': 'Technology' }
+export const trackTypes = [ { value: '21', label: 'General Management' },
+  { value: '237', label: 'Marketing' },
+  { value: '293', label: 'Human Resources' },
+  { value: '760', label: 'Strategy' },
+  { value: '761', label: 'Finance' },
+  { value: '762', label: 'Operations' },
+  { value: '764', label: 'Technology' } ];
+
 
 // http://www.consultanttrack.com/wp-json/wp/v2/track-types/?per_page=100
 // var firms = {};

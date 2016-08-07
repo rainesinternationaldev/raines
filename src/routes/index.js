@@ -44,7 +44,11 @@ export const createRoutes = (store) => ({
     {
       path: 'profiles-and-interviews',
       component: ProfilesAndInterviews
-    }
+    },
+    // {
+    //   path: 'profile/:title',
+    //   component: Profile
+    // }
   ]
 })
 
