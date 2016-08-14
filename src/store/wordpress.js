@@ -9,7 +9,8 @@ import {createReducer} from './util';
 const initialState = {
 	posts: [],
 	offset: 0,
-	profiles: []
+	profiles: [],
+	currentProfile: null
 };
 
 export default createReducer(initialState, {
@@ -44,6 +45,11 @@ export default createReducer(initialState, {
 	[FETCH_PROFILES_SUCCESS]: (state, payload) => {
 		return Object.assign({}, state, {
 			profiles: payload.profiles
+		})
+	},
+	[FETCH_PROFILE_SUCCESS]: (state, payload) => {
+		return Object.assign({}, state, {
+			currentProfile: payload.profile
 		})
 	}
 });

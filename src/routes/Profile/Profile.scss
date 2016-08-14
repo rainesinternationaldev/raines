@@ -1,0 +1,18 @@
+@import '../../styles/base';
+
+.profile {
+  .inner {
+    background: white;
+    padding: 0;
+  }
+  .header {
+    text-align: center;
+  }
+  .content {
+    .image {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

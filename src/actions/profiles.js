@@ -64,6 +64,49 @@ export const fetchProfiles = () => {
 	};
 }
 
+export const fetchProfileRequest = () => {
+  return {
+    type: FETCH_PROFILE_REQUEST
+  }
+};
+
+export const fetchProfileSuccess = (profile) => {
+  return {
+    type: FETCH_PROFILE_SUCCESS,
+    payload: {
+      profile
+    }
+  }
+}
+
+export const fetchProfileFailure = () => {
+  return {
+    type: FETCH_PROFILE_FAILURE
+  }
+};
+
+export const fetchProfile = (id) => {
+  const url = `${baseurl}/profiles/${id}`;
+	
+	return (dispatch) => {
+		dispatch(fetchProfileRequest());
+		return request
+			.get(url)
+			.end()
+			.then((response) => {
+        let profile = response.body;
+        return fetchProfileImage(profile.featured_media)
+          .then((imageURL) => {
+            profile.imageURL = imageURL;
+            return dispatch(fetchProfileSuccess(profile));
+          })
+			})
+			.catch((error) => {
+				dispatch(fetchProfileFailure());
+			});
+	};
+}
+
 export const fetchRemainingProfileImagesAsyncRequest = () => {
   return {
     type: FETCH_REMAINING_PROFILE_IMAGES_ASYNC_REQUEST

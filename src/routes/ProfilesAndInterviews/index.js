@@ -6,9 +6,7 @@ import SignupBar from '../../components/SignupBar';
 import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/profiles';
 import {connect} 							from 'react-redux';
-import utils from '../utils';
 import * as data from './data';
-import { request } from '../../actions/utils';
 
 class ProfilesAndInterviews extends React.Component {
   constructor(props) {

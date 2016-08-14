@@ -53,7 +53,6 @@ export class Article extends React.Component {
   }
 
   render() {
-    console.log('re-render!')
     const post = this.props.wordpress.currentPost;
     let contentStr;
     let imgSrc;
