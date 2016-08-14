@@ -54,13 +54,13 @@ class Profile extends React.Component {
             <hr/>
           </div>
           <div className={`${classes.content} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <div className={`${classes.image} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+            <div className={`${classes.image} col-lg-4 col-lg-offset-4 col-md-6 col-sm-12 col-xs-12`}>
               {
                 profile ?
                 <img src={profile.imageURL}/> : ""
               }
             </div>
-            <div className={`${classes.interview} col-lg-8 col-md-6 col-sm-12 col-xs-12`}>
+            <div className={`${classes.interview} col-lg-10 col-lg-offset-1  col-md-6 col-sm-12 col-xs-12`}>
               {
                 questions ?
                 questions.map((question, i) => {

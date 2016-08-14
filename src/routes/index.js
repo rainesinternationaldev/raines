@@ -9,6 +9,7 @@ import Topic  from './IdeasAndInsights/Topic';
 import Article from './Article';
 import ProfilesAndInterviews from './ProfilesAndInterviews';
 import Profile from './Profile';
+import Placements from './Placements';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -49,6 +50,10 @@ export const createRoutes = (store) => ({
     {
       path: 'profile/:title',
       component: Profile
+    },
+    {
+      path: 'placements',
+      component: Placements
     }
   ]
 })
