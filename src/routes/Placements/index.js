@@ -20,17 +20,26 @@ class Placements extends React.Component {
     if (!this.props.placements.length) {
       this.props.actions.fetchPlacements()
         .then(() => {
-          this.props.placements.forEach((placement, i) => {
-            $(`.date-${i}`).click(() => {
-              console.log('toggling')
+          return this.props.placements.forEach((placement, i) => {
+            $(`.placement-${i}`).click(() => {
               $(`.description-${i}`).slideToggle('fast');
             })
           })
-        });
+        })
+        .then(() => {
+          return this.props.actions.fetchPlacements(100, 10);
+        })
+        .then(() => {
+          this.props.placements.forEach((placement, i) => {
+            $(`.placement-${i+10}`).click(() => {
+              $(`.description-${i+10}`).slideToggle('fast');
+            })
+          })
+        })
+        ;
     } else {
       this.props.placements.forEach((placement, i) => {
-        $(`.date-${i}`).click(() => {
-          console.log('toggling')
+        $(`.placement-${i}`).click(() => {
           $(`.description-${i}`).slideToggle('fast');
         })
       })
@@ -38,7 +47,7 @@ class Placements extends React.Component {
   }
   render() {
     const placements = this.props.placements;
-    
+
     return (
       <div className={classes.placements}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
@@ -47,7 +56,7 @@ class Placements extends React.Component {
             placements.length ?
             placements.map((placement, i) => {
               return (
-                <div className={`${classes.placement} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`} key={i}>
+                <div className={`${classes.placement} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12 placement-${i}`} key={i}>
                   <p className={`${classes.date} date-${i}`}>{moment(placement.date).format('MMMM YYYY')}</p>
                   <h1>{utils.decodeEntities(placement.title.rendered)}</h1>
                   <div className={`${classes.description} description-${i}`}>
@@ -57,7 +66,9 @@ class Placements extends React.Component {
               )
             }) : ""
           }
-          <ViewMore viewMore={this.displayMorePlacements}/>
+          {
+          // <ViewMore viewMore={this.displayMorePlacements}/>
+          }
         </div>
       </div>
     );

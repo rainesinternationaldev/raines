@@ -15,22 +15,55 @@ For example:
 
 $light-gray: #EDEDED;
 $gray: #b2b2b2;
+$dark-gray: #545454;
 $blue: #7396B4;
+$dark-blue: #567187;
 
-h3, h4, h5 {
-  font-family: Georgia;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans';
 }
 
 p {
   font-family: Georgia;
 }
 
+a {
+  color: black;
+  &:hover {
+    color: $dark-blue;
+    text-decoration: none;
+  }
+}
+
+hr {
+  border-color: #D8D8D8;
+}
+
+.subtitle {
+  text-transform: uppercase;
+}
+
 .topicPreview {
+  // font-style: italic;
+  // font-family: Georgia;
+  font-family: 'Open Sans';
+  font-weight: 100;
+}
+
+.date {
   font-style: italic;
 }
 
-.date-preview {
-  font-style: italic;
+.articleTitle {
+  font-family: Georgia;
+  font-family: 'Open Sans';
+}
+
+.excerpt {
+  font-family: Georgia;
+  // font-style: italic;
+  font-family: 'Open Sans';
+  color: $dark-gray;
 }
 
 .raines-button {

@@ -55,8 +55,14 @@ export default createReducer(initialState, {
 		})
 	},
 	[FETCH_PLACEMENTS_SUCCESS]: (state, payload) => {
+		let placements;
+		if (!state.placements.length) {
+			placements = payload.placements
+		} else {
+			placements = state.placements.slice().concat(payload.placements);
+		}
 		return Object.assign({}, state, {
-			placements: payload.placements
+			placements
 		})
 	}
 });

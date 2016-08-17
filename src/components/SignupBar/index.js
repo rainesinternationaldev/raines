@@ -67,7 +67,7 @@ export default class SignupBar extends React.Component {
         </div>
         <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <button
-            onClick={this.continueToRegistration}>Sign Up</button>
+            onClick={this.continueToRegistration}>Register</button>
         </div>
       </div>
     )

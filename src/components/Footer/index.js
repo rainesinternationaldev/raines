@@ -12,7 +12,7 @@ export default class Footer extends React.Component {
           <div className={classes.footerFooter}>
             <i className="fa fa-twitter" aria-hidden="true"></i>
             <i className="fa fa-facebook-square" aria-hidden="true"></i>
-            <span>2016 Raines International Inc. | 212-997-1100 | Home | Privacy Policy | Terms of Use | Contact Us</span>
+            <span>2016 Raines International Inc. | 212-997-1100 | Home | Privacy Policy | Terms of Use | Contact Us | <a href="http://rainesinternational.com/site-map.html">Site Map</a></span>
           </div>
         </div>
       </div>
