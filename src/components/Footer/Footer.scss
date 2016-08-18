@@ -1,9 +1,14 @@
+@import '../../styles/base';
+
 .globalFooter {
   height: 160px;
   clear: both;
   background: #EDEDED;
   .desc {
     font-size: 12px;
+  }
+  .email {
+    color: $blue;
   }
   hr {
     border-color: #DCDFE4;

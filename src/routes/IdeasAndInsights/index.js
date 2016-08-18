@@ -87,9 +87,8 @@ class IdeasAndInsights extends React.Component {
             }
           </div>
           <div className={`${classes.insights} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <h4 className={classes.subtitle}>INSIGHTS</h4>
+            <h4 className={classes.subtitle}>TOPICS</h4>
             <hr/>
-            <p>Topics</p>
             <div className={classes.topicList}>
               <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
                 <Link to={`${baseurl}/financial-markets`}>
@@ -117,6 +116,7 @@ class IdeasAndInsights extends React.Component {
                 </Link>
               </p>
             </div>
+            <h4 className={classes.subtitle}>INSIGHTS</h4>
             <hr/>
           </div>
           <div className={`${classes.primaryArticles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>

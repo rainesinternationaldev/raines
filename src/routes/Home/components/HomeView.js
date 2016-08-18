@@ -116,8 +116,10 @@ class HomeView extends React.Component {
             }
           </div>
           <div className={`${classes.perspectives} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <h4 className={classes.subtitle}>New Perspectives</h4>
-            <hr/>
+            <div className={`${classes.perspectivesHeader} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+              <h4 className={classes.subtitle}>New Perspectives</h4>
+              <hr/>
+            </div>
             <div className={`${classes.article} col-lg-4 col-md-4 col-sm-4 col-xs-12`}>
               <img className={classes.perspectiveImage} src="https://images.unsplash.com/photo-1430609098125-581618d0482f?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1274&amp;h=849&amp;q=80"/>
               <h6>Responding to the global refuge crisis</h6>

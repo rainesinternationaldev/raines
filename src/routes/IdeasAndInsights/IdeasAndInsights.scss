@@ -3,16 +3,19 @@
   background: white;
   .inner{
     background: white;
+    padding: 0px;
   }
   .subtitle {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-transform: uppercase;
+		margin-bottom: 5px;
+	}
+  hr {
+    margin-top: 0px;
   }
   .date {
     font-style: italic;
   }
   .latestResearch {
-    padding: 0px;
+    // padding: 0px;
     margin-bottom: 40px;
     .imageDiv {
       padding: 0px;
@@ -26,12 +29,17 @@
     
   }
   .insights {
-    padding: 0px;
+    // padding: 0px;
     .topicList {
       overflow: hidden;
       .topic {
         padding: 0px;
-        color: $blue;
+        a {
+          color: $blue;
+          &:hover {
+            color: $dark-blue;
+          }
+        }
         i {
           margin-right: 3px;
         }
@@ -65,17 +73,23 @@
 .viewMore {
   margin-bottom: 20px;
   .border {
-    width: calc((100% - 82px)/2);
+    width: calc((100% - 100px)/2);
     height: 5px;
     display: inline-block;
     margin: 0px;
     border-top: 1px solid black;
-    border-color: #EDEDED;
+
+    border-color:  #D8D8D8;
   }
   .buttonDiv {
     display: inline-block;
-    width: 82px;
+    width: 100px;
     .viewMoreButton {
+      font-family: 'Open Sans';
+      font-weight: 100;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
       width: 100%;
       background-color: $blue;
       color: white;

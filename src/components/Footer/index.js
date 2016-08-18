@@ -7,7 +7,7 @@ export default class Footer extends React.Component {
       <div className={`${classes.globalFooter} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h3>Connect with raines perspectives</h3>
-          <p className={classes.desc}>Contact us to provide feedback or submit content proposals at <a href="mailto:perspectives@rainesinternational.com">perspectives@rainesinternational.com</a></p>
+          <p className={classes.desc}>Contact us to provide feedback or submit content proposals at <a href="mailto:perspectives@rainesinternational.com" className={classes.email}>perspectives@rainesinternational.com</a></p>
           <hr/>
           <div className={classes.footerFooter}>
             <i className="fa fa-twitter" aria-hidden="true"></i>
