@@ -35,6 +35,12 @@
 	.subtitle {
 		margin-bottom: 5px;
 	}
+	.featuredProfiles {
+		margin-top: 30px;
+		img {
+			width: 100%;
+		}
+	}
 	.featuredArticles {
 		margin-top: 20px;
 		hr {
@@ -60,8 +66,10 @@
 			.topicPreview {
 				color: $blue;
 				margin-bottom: 0px;
+				font-style: italic;
 			}
 			h4 {
+				font-size: 16px;
 				margin-top: 5px;
 			}
 		}

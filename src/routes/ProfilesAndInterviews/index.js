@@ -97,9 +97,6 @@ class ProfilesAndInterviews extends React.Component {
               
               <p>Ugh blog swag pork belly blue bottle. Meggings keffiyeh etsy, brunch ramps shoreditch 3 wolf moon kale chips raw denim. Roof party church-key mumblecore portland hashtag, cred craft beer organic echo park.</p>
             </div>
-            <div className={`${classes.hrDiv} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-              <hr/>
-            </div>
           </div>
           <div className={`${classes.filterBar} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <span className={classes.filter}>FILTER</span>

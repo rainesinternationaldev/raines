@@ -36,6 +36,8 @@
         padding: 0px;
         a {
           color: $blue;
+          font-family: 'Open Sans';
+          font-weight: 100;
           &:hover {
             color: $dark-blue;
           }

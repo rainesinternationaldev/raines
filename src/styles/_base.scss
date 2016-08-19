@@ -71,6 +71,10 @@ hr {
   color: white;
   border-style: none;
   transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  font-family: 'Open Sans';
+  letter-spacing: 1px;
+  font-weight: 100;
   &:hover {
     background-color: lighten($blue, 10%);
   }
@@ -86,6 +90,12 @@ hr {
 
 .error {
   color: lighten(red, 20%);
-  font-style: italic;
   margin-bottom: 0px;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.Dropdown-control {
+  border-radius: 10px;
 }

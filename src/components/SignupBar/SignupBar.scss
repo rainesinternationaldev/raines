@@ -8,6 +8,15 @@
     border-bottom: 1px solid $gray;
     padding-bottom: 20px;
   }
+  input::-webkit-input-placeholder {
+    font-style: italic;
+    // &:focus {
+    //   font-style: ;
+    // }
+  }
+  // input::-webkit-input-placeholder::focus{
+  //   font-style: inherit;
+  // }
   input {
     width: 100%;
     border: 1px solid $gray;
@@ -16,6 +25,10 @@
     margin-bottom: 0px;
     padding-left: 10px;
     font-size: 10px;
+    font-family: 'Open Sans';
+  }
+  .error {
+    padding-bottom: 5px;
   }
   button {
     @extend .raines-button;

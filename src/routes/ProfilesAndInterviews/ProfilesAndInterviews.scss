@@ -4,11 +4,11 @@
   .inner {
 		background: white;
     padding: 0;
-		.hr {
-      margin: 20px 15px;
+		hr {
+      margin-top: 5px;
     }
     .subtitle {
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      margin-bottom: 0px;
       text-transform: uppercase;
     }
     .featuredProfile {
@@ -38,24 +38,41 @@
       }
     }
     .filterBar {
+      margin-top: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: #7496B3;
       color: white;
       height: 40px;
+      font-family: 'Open Sans';
 
       .filter, .reset, .dropdown {
         padding: 15px;
+      }
+
+      .dropdown {
+        width: 230px;
       }
     }
     .profiles {
       padding-top: 20px;
       .profile {
+        text-align: center;
         margin-top: 10px;
         min-height: 291px;
         img {
           width: 100%;
+        }
+        .name {
+          color: $blue;
+          font-weight: 600;
+        }
+        .position {
+          font-weight: 100;
+        }
+        .company {
+          font-weight: 600;
         }
       }
     }
@@ -63,20 +80,25 @@
 }
 
 .viewMore {
-  margin-top: 20px;
   margin-bottom: 20px;
   .border {
-    width: calc((100% - 82px)/2);
+    width: calc((100% - 100px)/2);
     height: 5px;
     display: inline-block;
     margin: 0px;
     border-top: 1px solid black;
-    border-color: #EDEDED;
+
+    border-color:  #D8D8D8;
   }
   .buttonDiv {
     display: inline-block;
-    width: 82px;
+    width: 100px;
     .viewMoreButton {
+      font-family: 'Open Sans';
+      font-weight: 100;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
       width: 100%;
       background-color: $blue;
       color: white;
