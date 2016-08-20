@@ -7,7 +7,10 @@ import {
   FETCH_PROFILE_FAILURE,
   FETCH_REMAINING_PROFILE_IMAGES_ASYNC_REQUEST,
   FETCH_REMAINING_PROFILE_IMAGES_ASYNC_SUCCESS,
-  FETCH_REMAINING_PROFILE_IMAGES_ASYNC_FAILURE
+  FETCH_REMAINING_PROFILE_IMAGES_ASYNC_FAILURE,
+  FETCH_FEATURED_PROFILES_REQUEST,
+  FETCH_FEATURED_PROFILES_SUCCESS,
+  FETCH_FEATURED_PROFILES_FAILURE
 } from '../constants';
 import { request } from './utils';
 const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
@@ -103,6 +106,49 @@ export const fetchProfile = (id) => {
 			})
 			.catch((error) => {
 				dispatch(fetchProfileFailure());
+			});
+	};
+}
+
+export const fetchFeaturedProfilesRequest = () => {
+  return {
+    type: FETCH_PROFILE_REQUEST
+  }
+};
+
+export const fetchFeaturedProfilesSuccess = (profile) => {
+  return {
+    type: FETCH_PROFILE_SUCCESS,
+    payload: {
+      profile
+    }
+  }
+}
+
+export const fetchFeaturedProfilesFailure = () => {
+  return {
+    type: FETCH_PROFILE_FAILURE
+  }
+};
+
+export const fetchFeaturedProfiles = (id) => {
+  const url = `${baseurl}/profiles/${id}`;
+	
+	return (dispatch) => {
+		dispatch(fetchFeaturedProfilesRequest());
+		return request
+			.get(url)
+			.end()
+			.then((response) => {
+        let profile = response.body;
+        return fetchFeaturedProfilesImage(profile.featured_media)
+          .then((imageURL) => {
+            profile.imageURL = imageURL;
+            return dispatch(fetchFeaturedProfilesSuccess(profile));
+          })
+			})
+			.catch((error) => {
+				dispatch(fetchFeaturedProfilesFailure());
 			});
 	};
 }

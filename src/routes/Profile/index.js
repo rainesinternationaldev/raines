@@ -4,12 +4,14 @@ import SignupBar from '../../components/SignupBar';
 import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/profiles';
 import {connect} 							from 'react-redux';
+import * as data from './data';
+import utils from '../utils';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: null
+      currentProfile: null
     }
   }
 
@@ -21,11 +23,19 @@ class Profile extends React.Component {
     const cachedProfile = currentProfile && currentProfile.id == profileId;
     if (this.props.wordpress && !this.props.wordpress.profiles.length) {
       this.props.actions.fetchProfile(profileId)
+    } else if (this.props.wordpress && this.props.wordpress.profiles.length && !currentProfile) {
+      this.setState({
+        currentProfile: this.props.wordpress.profiles.filter((profile) => profile.id == profileId)[0]
+      })
+    } else if (!cachedProfile) {
+      this.setState({
+        currentProfile: this.props.wordpress.profiles.filter((profile) => profile.id == profileId)[0]
+      })
     }
   }
 
   render() {
-    const profile = this.props.wordpress.currentProfile;
+    const profile = this.state.currentProfile || this.props.wordpress.currentProfile;
     let contentStr;
     let imgSrc;
     let questions;
@@ -38,29 +48,35 @@ class Profile extends React.Component {
     return (
       <div className={classes.profile}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
-          <div className={`${classes.header} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <div className={classes.name}>
-              {
-                profile ?
-                <h1>{profile.title.rendered}</h1> : ""
-              }
-            </div>
-            <div className={classes.position}>
-              Senior Vice President, Strategy
-            </div>
-            <div className={classes.company}>
-              Ross Stores, Inc.
-            </div>
-            <hr/>
-          </div>
+          <hr/>
+          
           <div className={`${classes.content} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <div className={`${classes.image} col-lg-4 col-lg-offset-4 col-md-6 col-sm-12 col-xs-12`}>
+            <div className={`${classes.image} col-lg-5 col-md-5 col-sm-12 col-xs-12`}>
               {
                 profile ?
                 <img src={profile.imageURL}/> : ""
               }
             </div>
-            <div className={`${classes.interview} col-lg-10 col-lg-offset-1  col-md-6 col-sm-12 col-xs-12`}>
+            <div className={`${classes.info} col-lg-7 col-md-7 col-sm-12 col-xs-12`}>
+              {
+                profile ?
+                <div>
+                  <div className={classes.name}>
+                    <h1>{profile.title.rendered}</h1>
+                  </div>
+                  <div className={classes.position}>
+                    <h5>{utils.decodeEntities(data.titles[profile.titles[0]])}</h5>
+                  </div>
+                  <div className={classes.company}>
+                    <h5>{utils.decodeEntities(data.firms[profile.firms[0]])}</h5>
+                  </div>
+                  <div className={classes.excerpt}>
+                    <h5>{utils.decodeEntities(profile.excerpt.rendered)}</h5>
+                  </div>
+                </div> : ""
+              }
+            </div>
+            <div className={`${classes.interview} col-lg-12  col-md-6 col-sm-12 col-xs-12`}>
               {
                 questions ?
                 questions.map((question, i) => {

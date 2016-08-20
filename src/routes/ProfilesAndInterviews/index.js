@@ -7,6 +7,9 @@ import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/profiles';
 import {connect} 							from 'react-redux';
 import * as data from './data';
+import utils from '../utils';
+import moment from 'moment';
+import {Link} from 'react-router';
 
 class ProfilesAndInterviews extends React.Component {
   constructor(props) {
@@ -46,7 +49,7 @@ class ProfilesAndInterviews extends React.Component {
   componentWillMount() {
     if (!this.props.wordpress.profiles.length) {
       this.props.actions.fetchProfiles()
-      .then(() => {
+      .then((profiles) => {
         this.props.actions.fetchRemainingProfileImagesAsync();
       });
     }
@@ -54,16 +57,10 @@ class ProfilesAndInterviews extends React.Component {
 
   render() {
     let profiles = this.props.wordpress.profiles;
-    // let displayedProfiles = profiles.slice(0, this.state.displayedProfiles);
-    
-    // if (this.state.selectedIndustry) {
-    //   let industryId = this.state.selectedIndustry.value;
-    //   displayedProfiles = profiles.filter((profile) => {
-    //     return profile['industry-types'][0] == industryId;
-    //   }).slice(0, this.state.displayedProfiles);
-    // }
 
     let displayedProfiles = profiles.filter(filterByIndustryAndType.bind(this)).slice(0, this.state.displayedProfiles);
+
+    let featuredProfile = profiles.filter((profile) => profile.featured.indexOf(874) > -1 );
 
     function filterByIndustryAndType(profile) {
       let industryId = this.state.selectedIndustry && Number(this.state.selectedIndustry.value);
@@ -83,21 +80,24 @@ class ProfilesAndInterviews extends React.Component {
     return (
       <div className={classes.profilesAndInterviews}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
-          <div className={`${classes.featuredProfile} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <h4 className={classes.subtitle}>Featured Profile</h4>
-            <hr/>
-            <div className={`${classes.featuredImageDiv} col-lg-4 col-md-4 col-sm-12 col-xs-12`}>
-              <img className={classes.featuredImage} src="http://previews.123rf.com/images/pictrough/pictrough1002/pictrough100200049/6393797-Business-man-jumping-in-the-air-and-clicking-heels-Square-format--Stock-Photo.jpg"/>
-            </div>
-            <div className={`${classes.featuredContent} col-lg-8 col-md-8 col-sm-12 col-xs-12`}>
-              <h4 className={classes.name}>Delaney</h4>
-              <h4 className={classes.company}>Ross Stores, Inc.</h4>
-              <h5 className={classes.position}>Senior Vice President, Strategy & Marketing</h5>
-              <p><span className={classes.date}>June 2016</span> - Tilde wolf health goth, cred plaid before they sold out chillwave portland DIY single-origin coffee yuccie synth crucifix knausgaard. Green juice polaroid four loko, tofu tilde messenger bag raw denim before they sold out. Truffaut viral meditation ramps ugh direct trade.</p>
-              
-              <p>Ugh blog swag pork belly blue bottle. Meggings keffiyeh etsy, brunch ramps shoreditch 3 wolf moon kale chips raw denim. Roof party church-key mumblecore portland hashtag, cred craft beer organic echo park.</p>
-            </div>
-          </div>
+          {
+            featuredProfile.length ?
+            <div className={`${classes.featuredProfile} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+              <h4 className={classes.subtitle}>Featured Profile</h4>
+              <hr/>
+              <div className={`${classes.featuredImageDiv} col-lg-4 col-md-4 col-sm-12 col-xs-12`}>
+                <Link to={`/profile/${featuredProfile[0].id}-${utils.formatTitle(featuredProfile[0].title.rendered)}`}>
+                  <img className={classes.featuredImage} src={featuredProfile[0].imageURL}/>
+                </Link>
+              </div>
+              <div className={`${classes.featuredContent} col-lg-8 col-md-8 col-sm-12 col-xs-12`}>
+                <h4 className={classes.name}>{featuredProfile[0].title.rendered}</h4>
+                <h4 className={classes.company}>{data.firms[featuredProfile[0].firms[0]]}</h4>
+                <h5 className={classes.position}>{utils.decodeEntities(data.titles[featuredProfile[0].titles[0]])}</h5>
+                <p><span className={classes.date}>{moment(featuredProfile[0].date).format('MMMM YYYY')}</span> - <span className={classes.excerpt}>{utils.decodeEntities(featuredProfile[0].excerpt.rendered)}</span></p>
+              </div>
+            </div> : ""
+          }
           <div className={`${classes.filterBar} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <span className={classes.filter}>FILTER</span>
             <span className={classes.dropdown}>
@@ -123,12 +123,16 @@ class ProfilesAndInterviews extends React.Component {
               displayedProfiles ?
               displayedProfiles.map((profile, i) => {
                 return (
-                  <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
-                    <img src={profile.imageURL || "http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png" }/>
-                    <h5 className={classes.name}>{profile.title.rendered}</h5>
-                    <h5 className={classes.position}>{data.titles[profile.titles[0]]}</h5>
-                    <h5 className={classes.company}>{data.firms[profile.firms[0]]}</h5>
-                  </div>
+                    <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
+                      <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title.rendered)}`}>
+                        <img src={profile.imageURL || "http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png" }/>
+                      </Link>
+                      <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title.rendered)}`}>
+                        <h5 className={classes.name}>{profile.title.rendered}</h5>
+                      </Link>
+                      <h5 className={classes.position}>{utils.decodeEntities(data.titles[profile.titles[0]])}</h5>
+                      <h5 className={classes.company}>{utils.decodeEntities(data.firms[profile.firms[0]])}</h5>
+                    </div>
                 )
               }) : ""
             }

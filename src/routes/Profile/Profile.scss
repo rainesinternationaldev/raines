@@ -15,4 +15,16 @@
       }
     }
   }
+  .interview {
+    margin: 30px 0px;
+    .question {
+      font-weight: 600;
+      font-style: italic;
+      font-family: 'Open Sans';
+    }
+    .answer {
+      font-weight: 100;
+      font-family: 'Open Sans';
+    }
+  }
 }
