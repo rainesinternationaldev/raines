@@ -14,6 +14,26 @@ class Placements extends React.Component {
 
     this.displayMorePlacements = () => {
       console.log('displaying more placements')
+
+      let currentlyDisplayed = this.state.numDisplayed;
+      let newlyDisplayed = currentlyDisplayed + 10;
+
+      this.setState({
+        numDisplayed: newlyDisplayed
+      });
+      
+      setTimeout(() => {
+        this.props.placements.slice(currentlyDisplayed, newlyDisplayed).forEach((placement, i) => {
+          $(`.placement-${i+currentlyDisplayed}`).click(() => {
+            $(`.description-${i+currentlyDisplayed}`).slideToggle('fast');
+          })
+        })
+
+      }, 100);
+    }
+
+    this.state = {
+      numDisplayed: 10
     }
   }
 
@@ -55,14 +75,15 @@ class Placements extends React.Component {
         placement.title.tail = utils.decodeEntities(split[split.length - 1]);
       })
     }
+    let displayedPlacements = placements.slice(0, this.state.numDisplayed);
 
     return (
       <div className={classes.placements}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
           <hr className={classes.mainDivider}/>
           {
-            placements.length ?
-            placements.map((placement, i) => {
+            displayedPlacements.length ?
+            displayedPlacements.map((placement, i) => {
               return (
                 <div className={`${classes.placement} col-lg-12 col-md-12 col-sm-12 col-xs-12 placement-${i}`} key={i}>
                   <p className={`${classes.date} date-${i}`}>{moment(placement.date).format('MMMM YYYY')}</p>
@@ -70,14 +91,15 @@ class Placements extends React.Component {
                   <div className={`${classes.description} description-${i} col-lg-8 col-lg-offset-2`}>
                     <div dangerouslySetInnerHTML={{__html: placement.content.rendered}}></div>
                   </div>
-                  <hr/>
+                  {
+                    i === displayedPlacements.length - 1 ?
+                      "" : <hr/>
+                  }
                 </div>
               )
             }) : ""
           }
-          {
-          // <ViewMore viewMore={this.displayMorePlacements}/>
-          }
+          <ViewMore viewMore={this.displayMorePlacements}/>
         </div>
       </div>
     );
