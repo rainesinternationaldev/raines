@@ -1,3 +1,4 @@
+
 import React from 'react';
 import classes from './Placements.scss';
 import {bindActionCreators} from 'redux';
@@ -47,21 +48,29 @@ class Placements extends React.Component {
   }
   render() {
     const placements = this.props.placements;
+    if (placements.length) {
+      placements.forEach((placement, i) => {
+        let split = placement.title.rendered.split(',');
+        placement.title.head = utils.decodeEntities(split.slice(0, split.length - 1).join(',') + '.');
+        placement.title.tail = utils.decodeEntities(split[split.length - 1]);
+      })
+    }
 
     return (
       <div className={classes.placements}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
-          <hr/>
+          <hr className={classes.mainDivider}/>
           {
             placements.length ?
             placements.map((placement, i) => {
               return (
-                <div className={`${classes.placement} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12 placement-${i}`} key={i}>
+                <div className={`${classes.placement} col-lg-12 col-md-12 col-sm-12 col-xs-12 placement-${i}`} key={i}>
                   <p className={`${classes.date} date-${i}`}>{moment(placement.date).format('MMMM YYYY')}</p>
-                  <h1>{utils.decodeEntities(placement.title.rendered)}</h1>
-                  <div className={`${classes.description} description-${i}`}>
+                  <h1>{placement.title.head}</h1><h4>{placement.title.tail}</h4>
+                  <div className={`${classes.description} description-${i} col-lg-8 col-lg-offset-2`}>
                     <div dangerouslySetInnerHTML={{__html: placement.content.rendered}}></div>
                   </div>
+                  <hr/>
                 </div>
               )
             }) : ""

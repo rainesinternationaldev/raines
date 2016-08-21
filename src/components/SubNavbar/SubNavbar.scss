@@ -16,7 +16,7 @@ $blue: #7396B4;
   }
   .middleHr {
     border-color: #333333;
-    width: 100px;
+    width: 65%;
   }
   .subnavList {
     margin-top: 20px;
@@ -35,7 +35,7 @@ $blue: #7396B4;
       &:hover {
         color: $blue;
       }
-      font-family: 'Trebuchet MS';
+      font-family: 'Open Sans';
       text-transform: uppercase;
       display: inline;
       list-style-type: none;

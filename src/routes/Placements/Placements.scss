@@ -4,20 +4,49 @@
   .inner {
     background: white;
     padding: 0;
+    .mainDivider {
+      margin-bottom: 0px;
+    }
   }
   .placement {
     text-align: center;
-    margin-top: 20px;
+    padding-top: 20px;
+    &:hover {
+      cursor: pointer;
+      background: lighten(#eee, 4%);
+    }
     .date {
       margin-bottom: 0px;
+    }
+    h1, h4 {
+      // display: inline-block;
     }
     h1 {
       margin-top: 0px;
       font-size: 22px;
+      font-weight: 100;
+      margin-bottom: 0px;
+      color: $blue;
+    }
+    h4 {
+      margin-left: 5px;
+      margin-top: 5px;
+      margin-bottom: 30px;
+      // font-weight: 600;
+      // color: $blue;
+    }
+    hr {
+      width: 50%;
+      margin-bottom: 0px;
     }
     .description {
-      color: blue;
+      color: black;
       display: none;
+      text-align: left;
+      padding-bottom: 20px;
+      p {
+        font-family: 'Open Sans';
+      }
     }
   }
 }
