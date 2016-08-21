@@ -5,22 +5,30 @@
     background: white;
   }
   .intro {
-    color: $blue;
-    font-family: Trebuchet MS;
-    text-align: center;
-    font-size: 18px;
-    padding: 20px 120px;
-  }
-    h3 {
+    h1, h2, h3, h4, h5 {
       font-family: Georgia;
+      color: $blue;
     }
+    h5 {
+      font-style: italic;
+    }
+  }
+  h3 {
+    font-family: Georgia;
+    margin-bottom: 0px;
+  }
+  hr {
+    margin-top: 5px;
+  }
   .accountInfo {
     .description {
       margin-bottom: 30px;
     }
     .subtitle {
       text-transform: uppercase;
-      font-family: Trebuchet MS;
+      font-family: 'Open Sans';
+      font-weight: 600;
+      letter-spacing: 1px;
       margin-bottom: 0px;
       margin-top: 20px;
     }
@@ -34,9 +42,32 @@
       font-size: 10px;
     }
   }
+    .consultantCheck {
+      margin-top: 20px;
+      .checkbox {
+        width: initial;
+        height: inherit;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .checkboxDesc {
+        font-family: 'Open Sans';
+      }
+      .title {
+        width: inline-block;
+        font-family: 'Open Sans';
+      }
+    }
   .subscribe {
-    h3 {
-      margin-bottom: 20px;
+    margin-top: 20px;
+    .checkbox {
+      display: inline-block;
+      margin-right: 15px;
+    }
+    .title {
+      display: inline-block;
+      font-family: Georgia;
+      font-size: 20px;
     }
     .newsletters {
       overflow: hidden;
@@ -44,24 +75,36 @@
         font-family: Trebuchet MS;
         margin: 0px;
       }
-      hr {
-        border-color: #eee;
-        margin-top: 5px;
-      }
-      .checkbox {
-        display: inline-block;
-        margin-right: 15px;
-      }
-      .title {
-        font-family: Georgia;
-        font-size: 20px;
-      }
       .desc {
         padding-left: 28px;
       }
     }
   }
-  button {
+  .experience {
+    margin-top: 20px;
+    .consultantCheck {
+      margin-top: 10px;
+    }
+  }
+  .resume {
+    margin-top: 20px;
+    .icon {
+      padding-right: 5px;
+      padding-top: 5px;
+    }
+    button {
+      @extend .raines-button;
+      width: 150px;
+      height: 30px;
+    }
+    .disclaimer {
+      font-style: italic;
+    }
+    .checkboxDesc {
+      font-family: 'Open Sans';
+    }
+  }
+  .submitButton {
     @extend .raines-button;
 
     width: 150px;

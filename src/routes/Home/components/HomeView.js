@@ -84,6 +84,10 @@ class HomeView extends React.Component {
           </div>
           <SignupBar/>
           <div className={`${classes.featuredProfiles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h4 className={classes.subtitle}>Featured Profiles</h4>
+              <hr />
+            </div>
             {
               firstFour.length ?
               firstFour.map((profile, i) => {

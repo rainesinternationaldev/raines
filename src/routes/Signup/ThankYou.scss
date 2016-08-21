@@ -1,13 +1,32 @@
+@import '../../styles/base';
+
 .thankYou {
   min-height: calc(100vh - 402px);
   background: white;
   .inner {
-    text-align: center;
-    h1, h4 {
-      font-family: Georgia;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    h1 {
+      color: $blue;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 100;
+      font-size: 36px;
+      margin-top: 0px;
     }
-    h4 {
-      padding: 0px 120px;
+    p {
+      font-family: 'Georgia';
+      // font-family: 'Open Sans';
+      // font-weight: 100;
+      font-size: 16px;
+    }
+    a {
+      color: $blue;
+    }
+    .signature {
+      p {
+        margin: 0px;
+      }
     }
   }
 }

@@ -6,6 +6,14 @@ import {
   FETCH_POST_SUCCESS,
   FETCH_POST_FAILURE,
 
+  FETCH_FEATURED_ON_HOMEPAGE_REQUEST,
+  FETCH_FEATURED_ON_HOMEPAGE_SUCCESS,
+  FETCH_FEATURED_ON_HOMEPAGE_FAILURE,
+  FETCH_FEATURED_PERSPECTIVE_REQUEST,
+  FETCH_FEATURED_PERSPECTIVE_SUCCESS,
+  FETCH_FEATURED_PERSPECTIVE_FAILURE,
+
+
 
 
   FETCH_PROFILES_REQUEST,
@@ -20,6 +28,112 @@ import {
 } from '../constants';
 import { request } from './utils';
 const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
+
+
+
+/////////
+export const fetchPostsRequest = () => {
+  return {
+    type: FETCH_POSTS_REQUEST
+  }
+};
+
+export const fetchPostsSuccess = (posts) => {
+  return {
+    type: FETCH_POSTS_SUCCESS,
+    payload: {
+      posts
+    }
+  }
+}
+
+export const fetchPostsFailure = () => {
+  return {
+    type: FETCH_POSTS_FAILURE
+  }
+};
+
+export const fetchPosts = (numPosts, offset, pageNum) => {
+  let params = [];
+  let appendage;
+  if (numPosts) params.push(`per_page=${numPosts}`);
+  if (offset)   params.push(`offset=${offset}`);
+  if (pageNum)  params.push(`page=${pageNum}`);
+  if (params.length) appendage = '?' + params.join('&');
+
+  const query = appendage ? appendage : ``;
+
+  const url = `${baseurl}/posts/${query}`;
+	
+	return (dispatch) => {
+		dispatch(fetchPostsRequest());
+		return request
+			.get(url)
+			.end()
+			.then((response) => {
+				return dispatch(fetchPostsSuccess(response.body));
+			})
+			.catch((error) => {
+				dispatch(fetchPostsFailure());
+			});
+	};
+}
+
+export const fetchPostRequest = () => {
+  return {
+    type: FETCH_POST_REQUEST
+  }
+};
+
+export const fetchPostSuccess = (post) => {
+  return {
+    type: FETCH_POST_SUCCESS,
+    payload: {
+      post
+    }
+  }
+}
+
+export const fetchPostFailure = () => {
+  return {
+    type: FETCH_POST_FAILURE
+  }
+};
+
+export const fetchPost = (id) => {
+  if (!id) id = "";
+  const url = `${baseurl}/posts/${id}`;
+	
+	return (dispatch) => {
+		dispatch(fetchPostRequest());
+		return request
+			.get(url)
+			.end()
+			.then((response) => {
+				return dispatch(fetchPostSuccess(response.body));
+			})
+			.catch((error) => {
+				dispatch(fetchPostFailure());
+			});
+	};
+}
+
+export const fetchNextEightPosts = (offset) => {
+  const url = `${baseurl}/posts/?per_page=8&offset=${offset}&pageNum=1`;
+	
+	return (dispatch) => {
+		dispatch(fetchPostsRequest());
+		return request
+			.get(url)
+			.end()
+			.then((response) => {
+				return dispatch(fetchPostsSuccess(response.body));
+			})
+			.catch((error) => {
+				dispatch(fetchPostsFailure());
+			});
+	};
+}
 
 
 export const fetchProfilesRequest = () => {
@@ -168,108 +282,4 @@ function fetchProfileImage(id) {
     .catch((error) => {
       return 'http://previews.123rf.com/images/pictrough/pictrough1002/pictrough100200049/6393797-Business-man-jumping-in-the-air-and-clicking-heels-Square-format--Stock-Photo.jpg'
     });
-}
-
-/////////
-export const fetchPostsRequest = () => {
-  return {
-    type: FETCH_POSTS_REQUEST
-  }
-};
-
-export const fetchPostsSuccess = (posts) => {
-  return {
-    type: FETCH_POSTS_SUCCESS,
-    payload: {
-      posts
-    }
-  }
-}
-
-export const fetchPostsFailure = () => {
-  return {
-    type: FETCH_POSTS_FAILURE
-  }
-};
-
-export const fetchPosts = (numPosts, offset, pageNum) => {
-  let params = [];
-  let appendage;
-  if (numPosts) params.push(`per_page=${numPosts}`);
-  if (offset)   params.push(`offset=${offset}`);
-  if (pageNum)  params.push(`page=${pageNum}`);
-  if (params.length) appendage = '?' + params.join('&');
-
-  const query = appendage ? appendage : ``;
-
-  const url = `${baseurl}/posts/${query}`;
-	
-	return (dispatch) => {
-		dispatch(fetchPostsRequest());
-		return request
-			.get(url)
-			.end()
-			.then((response) => {
-				return dispatch(fetchPostsSuccess(response.body));
-			})
-			.catch((error) => {
-				dispatch(fetchPostsFailure());
-			});
-	};
-}
-
-export const fetchPostRequest = () => {
-  return {
-    type: FETCH_POST_REQUEST
-  }
-};
-
-export const fetchPostSuccess = (post) => {
-  return {
-    type: FETCH_POST_SUCCESS,
-    payload: {
-      post
-    }
-  }
-}
-
-export const fetchPostFailure = () => {
-  return {
-    type: FETCH_POST_FAILURE
-  }
-};
-
-export const fetchPost = (id) => {
-  if (!id) id = "";
-  const url = `${baseurl}/posts/${id}`;
-	
-	return (dispatch) => {
-		dispatch(fetchPostRequest());
-		return request
-			.get(url)
-			.end()
-			.then((response) => {
-				return dispatch(fetchPostSuccess(response.body));
-			})
-			.catch((error) => {
-				dispatch(fetchPostFailure());
-			});
-	};
-}
-
-export const fetchNextEightPosts = (offset) => {
-  const url = `${baseurl}/posts/?per_page=8&offset=${offset}&pageNum=1`;
-	
-	return (dispatch) => {
-		dispatch(fetchPostsRequest());
-		return request
-			.get(url)
-			.end()
-			.then((response) => {
-				return dispatch(fetchPostsSuccess(response.body));
-			})
-			.catch((error) => {
-				dispatch(fetchPostsFailure());
-			});
-	};
 }

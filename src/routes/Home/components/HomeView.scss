@@ -37,8 +37,24 @@
 	}
 	.featuredProfiles {
 		margin-top: 30px;
+		hr {
+			margin-top: 5px;
+		}
 		img {
 			width: 100%;
+		}
+		.profile {
+			text-align: center;
+			.name {
+				color: $blue;
+				font-weight: 600;
+			}
+			.position {
+				font-weight: 100;
+			}
+			.company {
+				font-weight: 600;
+			}
 		}
 	}
 	.featuredArticles {
@@ -75,6 +91,7 @@
 		}
 	}
 	.perspectives {
+		margin-top: 30px;
 		padding-bottom:30px;
 		// padding-top: 20px;
 		.perspectivesHeader {
@@ -90,6 +107,8 @@
 		}
 	}
 	.featuredImage {
+		// when screen is LARGE
+		max-height: 250px;
 		width: 100%;
 	}
 	.perspectiveImage {
