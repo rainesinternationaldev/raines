@@ -27,7 +27,7 @@ import {
   FETCH_REMAINING_PROFILE_IMAGES_ASYNC_FAILURE
 } from '../constants';
 import { request } from './utils';
-const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
+const baseurl = '//www.consultanttrack.com/wp-json/wp/v2';
 
 
 

@@ -13,7 +13,7 @@ import {
   FETCH_FEATURED_PROFILES_FAILURE
 } from '../constants';
 import { request } from './utils';
-const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
+const baseurl = '//www.consultanttrack.com/wp-json/wp/v2';
 
 export const fetchProfilesRequest = () => {
   return {
