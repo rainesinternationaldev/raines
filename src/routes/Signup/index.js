@@ -1,8 +1,11 @@
 import React from 'react';
 import classes from './Signup.scss';
 import Dropzone from 'react-dropzone';
+import {bindActionCreators} 	from 'redux';
+import * as actionCreators  	from '../../actions/signup';
+import {connect} 							from 'react-redux';
 
-export default class Signup extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
 
@@ -94,12 +97,14 @@ export default class Signup extends React.Component {
   }
 
   render() {
+    const data = this.props.signup.data;
+
     return (
       <div className={classes.signup}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
           <div className={`${classes.intro} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <h2>Welcome.</h2>
-            <h3>We believe that candidates are clients too, and we treat you as such. By registering with Raines Perspectives, you can shorten the time it takes to get your qualifications in front of our network for experienced recruiters.</h3>
+            <h4>We believe that candidates are clients too, and we treat you as such. By registering with Raines Perspectives, you can shorten the time it takes to get your qualifications in front of our network for experienced recruiters.</h4>
             <h5>Please Note: We carefully review every resume submitted and add your data to our candidate database. A search consultant will contact you directly if your profile matches the requirements of a specific role or should suitable opportunities arise.</h5>
           </div>
           <form >
@@ -107,32 +112,34 @@ export default class Signup extends React.Component {
               <h3>Step 1: Create your account information</h3>
               <hr/>
               <p className={classes.description}>Get full access to articles and reports, and receive email newsletters and alerts that keep you in touch with our latest thinking.</p>
-              <p className={classes.subtitle}>First Name</p>
-              <input className="firstName"/>
-              {
-                this.state.fields.firstName.error ? <p className={classes.error}>Required</p> : ""
-              }
-              <p className={classes.subtitle}>Last Name</p>
-              <input className="lastName"/>
-              {
-                this.state.fields.lastName.error ? <p className={classes.error}>Required</p> : ""
-              }
-              <p className={classes.subtitle}>Email</p>
-              <input className="email"/>
-              {
-                this.state.fields.email.error ? <p className={classes.error}>Required</p> : ""
-              }
-              <p className={classes.subtitle}>Current Company</p>
-              <input className="company"/>
-              {
-                this.state.fields.company.error ? <p className={classes.error}>Required</p> : ""
-              }
-              <p className={classes.subtitle}>Current Title</p>
-              <input className="title"/>
-              {
-                this.state.fields.title.error ? <p className={classes.error}>Required</p> : ""
-              }
-              <div className={classes.consultantCheck}>
+              <div className={`${classes.inputs} col-lg-5 col-md-6 col-sm-12 col-xs-12`}>
+                <p className={classes.subtitle}>First Name</p>
+                <input className="firstName" defaultValue={data.firstName}/>
+                {
+                  this.state.fields.firstName.error ? <p className={classes.error}>Required</p> : ""
+                }
+                <p className={classes.subtitle}>Last Name</p>
+                <input className="lastName" defaultValue={data.lastName}/>
+                {
+                  this.state.fields.lastName.error ? <p className={classes.error}>Required</p> : ""
+                }
+                <p className={classes.subtitle}>Email</p>
+                <input className="email" defaultValue={data.email}/>
+                {
+                  this.state.fields.email.error ? <p className={classes.error}>Required</p> : ""
+                }
+                <p className={classes.subtitle}>Current Company</p>
+                <input className="company"/>
+                {
+                  this.state.fields.company.error ? <p className={classes.error}>Required</p> : ""
+                }
+                <p className={classes.subtitle}>Current Title</p>
+                <input className="title"/>
+                {
+                  this.state.fields.title.error ? <p className={classes.error}>Required</p> : ""
+                }
+              </div>
+              <div className={`${classes.consultantCheck} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                 <input
                   type="checkbox"
                   className={`${classes.checkbox} rainesMonthlyHighlightsForConsultants`}/><span className={classes.title}>I am a current or former management consultant</span>
@@ -142,36 +149,28 @@ export default class Signup extends React.Component {
               <h3>Step 2: Subscribe to our newsletters and alerts</h3>
               <hr/>
               <div className={classes.newsletters}>
-                <h4>Newsletters</h4>
-                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                   <input
                     type="checkbox"
                     className={`${classes.checkbox} rainesMonthlyHighlights`}/><span className={classes.title}>Monthly Highlights</span>
                   <p className={classes.desc}>Our monthly selection of the newest and most distinctive articles, reports, multimedia and special features</p>
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                   <input
                     type="checkbox"
                     className={`${classes.checkbox} rainesTopTen`}/><span className={classes.title}>Top Ten Most Popular</span>
                   <p className={classes.desc}>A roundup of our most popular content each quarter</p>
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                   <input
                     type="checkbox"
                     className={`${classes.checkbox} rainesClassics`}/><span className={classes.title}>Raines Classics</span>
                   <p className={classes.desc}>Every two months, we spotlight an archival article whose insights are as relevant today as ever</p>
                 </div>
               </div>
-              <div className={classes.experience}>
-                <h4>Experience</h4>
-                <div className={classes.consultantCheck}>
-                  <input
-                    type="checkbox"
-                    className={`${classes.checkbox} rainesMonthlyHighlightsForConsultants`}/><span className={classes.checkboxDesc}>I am a current or former management consultant</span>
-                </div>
-              </div>
+              <h3>Step 3: Upload Resume / CV <span className={classes.optional}>(optional)</span></h3>
+              <hr/>
               <div className={classes.resume}>
-                <h4>Resume / CV</h4>
                 <Dropzone
                   className="dropzone"
                   ref="dropzone"
@@ -200,7 +199,7 @@ export default class Signup extends React.Component {
                   this.state.cvAgreementError ? <p className={classes.error}>Required</p> : ""
                 }
               </div>
-              <div className="g-recaptcha" data-sitekey="6LdljSQTAAAAAINIAU365Vt1r0Kvm17oMrCPfYvM"></div>
+              <div className={`g-recaptcha ${classes.gRecaptcha}`} data-sitekey="6LdljSQTAAAAAINIAU365Vt1r0Kvm17oMrCPfYvM"></div>
               <button
                 className={classes.submitButton}
                 type="submit"
@@ -216,3 +215,13 @@ export default class Signup extends React.Component {
 Signup.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  signup: state.signup
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(actionCreators, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

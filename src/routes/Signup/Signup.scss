@@ -5,24 +5,49 @@
     background: white;
   }
   .intro {
-    h1, h2, h3, h4, h5 {
-      font-family: Georgia;
+    margin-top: 30px;
+    background: #f8f8f8;
+    padding: 0px 100px;
+    text-align: justify;
+    h2 {
+      text-transform: uppercase;
+      font-weight: 100;
+      letter-spacing: 1px;
       color: $blue;
+      margin-bottom: 30px;
+    }
+    h1, h2, h3, h4, h5 {
+      font-weight: 100;
+    }
+    h4 {
+      margin-bottom: 20px;
     }
     h5 {
       font-style: italic;
     }
+    padding-bottom: 30px;
+
+  }
+  p {
+    font-family: 'Open Sans';
   }
   h3 {
     font-family: Georgia;
     margin-bottom: 0px;
+    margin-top: 40px;
   }
   hr {
     margin-top: 5px;
   }
+  form {
+    padding: 0px 80px;
+  }
   .accountInfo {
+    input[type=checkbox] {
+      transform: scale(1.2);
+    }
     .description {
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
     }
     .subtitle {
       text-transform: uppercase;
@@ -31,6 +56,9 @@
       letter-spacing: 1px;
       margin-bottom: 0px;
       margin-top: 20px;
+    }
+    .inputs {
+      padding: 0px;
     }
     input {
       width: 100%;
@@ -43,12 +71,13 @@
     }
   }
     .consultantCheck {
+      padding: 0px;
       margin-top: 20px;
       .checkbox {
         width: initial;
         height: inherit;
         display: inline-block;
-        margin-right: 10px;
+        margin-right: 17px;
       }
       .checkboxDesc {
         font-family: 'Open Sans';
@@ -56,6 +85,7 @@
       .title {
         width: inline-block;
         font-family: 'Open Sans';
+        font-size: 16px;
       }
     }
   .subscribe {
@@ -66,18 +96,30 @@
     }
     .title {
       display: inline-block;
-      font-family: Georgia;
-      font-size: 20px;
+      font-family: 'Open Sans';
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
     }
     .newsletters {
       overflow: hidden;
+      .newsletter {
+        padding: 0px;
+      }
       .subtitle {
         font-family: Trebuchet MS;
         margin: 0px;
       }
       .desc {
         padding-left: 28px;
+        font-size: 12px;
       }
+    }
+    .optional {
+      font-size: 14px;
+      color: $gray;
+      font-style: italic;
     }
   }
   .experience {
@@ -98,11 +140,16 @@
       height: 30px;
     }
     .disclaimer {
+      margin-top: 20px;
+      text-align: justify;
       font-style: italic;
     }
     .checkboxDesc {
       font-family: 'Open Sans';
     }
+  }
+  .gRecaptcha {
+    margin-top: 30px;
   }
   .submitButton {
     @extend .raines-button;

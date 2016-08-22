@@ -94,7 +94,7 @@ class ProfilesAndInterviews extends React.Component {
                 <h4 className={classes.name}>{featuredProfile[0].title.rendered}</h4>
                 <h4 className={classes.company}>{data.firms[featuredProfile[0].firms[0]]}</h4>
                 <h5 className={classes.position}>{utils.decodeEntities(data.titles[featuredProfile[0].titles[0]])}</h5>
-                <p><span className={classes.date}>{moment(featuredProfile[0].date).format('MMMM YYYY')}</span> - <span className={classes.excerpt}>{utils.decodeEntities(featuredProfile[0].excerpt.rendered)}</span></p>
+                <p><span className={classes.excerpt}>{utils.decodeEntities(featuredProfile[0].content.rendered)}</span></p>
               </div>
             </div> : ""
           }

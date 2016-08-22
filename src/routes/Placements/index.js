@@ -71,7 +71,7 @@ class Placements extends React.Component {
     if (placements.length) {
       placements.forEach((placement, i) => {
         let split = placement.title.rendered.split(',');
-        placement.title.head = utils.decodeEntities(split.slice(0, split.length - 1).join(',') + '.');
+        placement.title.head = utils.decodeEntities(split.slice(0, split.length - 1).join(','));
         placement.title.tail = utils.decodeEntities(split[split.length - 1]);
       })
     }

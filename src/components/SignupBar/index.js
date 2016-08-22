@@ -1,7 +1,10 @@
 import React from 'react';
 import classes from './SignupBar.scss';
+import {bindActionCreators} 	from 'redux';
+import * as actionCreators  	from '../../actions/signup';
+import {connect} 							from 'react-redux';
 
-export default class SignupBar extends React.Component {
+class SignupBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,6 +29,13 @@ export default class SignupBar extends React.Component {
         console.log($('.firstName').val());
         console.log($('.lastName').val());
         console.log($('.email').val());
+
+        this.props.actions.cacheSignupData({
+          firstName: $('.firstName').val(),
+          lastName: $('.lastName').val(),
+          email: $('.email').val()
+        });
+        this.context.router.push('/signup');
       }
     }
 
@@ -73,3 +83,17 @@ export default class SignupBar extends React.Component {
     )
   }
 }
+
+SignupBar.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  signup: state.signup
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(actionCreators, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupBar);

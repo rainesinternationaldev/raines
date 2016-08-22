@@ -3,6 +3,7 @@ $blue: #7396B4;
 .subNavbar {
   text-align: center;
   h1 {
+    margin-bottom: 10px;
     font-family: Georgia;
     a {
       color: #333;
@@ -17,9 +18,11 @@ $blue: #7396B4;
   .middleHr {
     border-color: #333333;
     width: 65%;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   .subnavList {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
     padding: 0px 150px;

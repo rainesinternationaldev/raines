@@ -10,10 +10,10 @@ export const ThankYou = () => (
       <p>If at any point you wish to remove your information from our database, please alert us using the <a href="http://rainesinternational.com/contact.html">contact form</a> on our website.</p>
       <p>Thank you for entrusting your information to us. We are happy to know a little about you!</p>
 
-      <span className={classes.signature}>
+      <div className={classes.signature}>
         <p>Sincerely,</p>
-        <p>The Raines Perspectives Team</p>
-      </span>
+        <p className={classes.team}>The Raines Perspectives Team</p>
+      </div>
     </div>
   </div>
 );

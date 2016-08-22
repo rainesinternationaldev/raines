@@ -83,25 +83,6 @@ class HomeView extends React.Component {
             </div>
           </div>
           <SignupBar/>
-          <div className={`${classes.featuredProfiles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <h4 className={classes.subtitle}>Featured Profiles</h4>
-              <hr />
-            </div>
-            {
-              firstFour.length ?
-              firstFour.map((profile, i) => {
-                return (
-                  <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
-                    <img src={profile.imageURL || "http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png" }/>
-                    <h5 className={classes.name}>{profile.title.rendered}</h5>
-                    <h5 className={classes.position}>{data.titles[profile.titles[0]]}</h5>
-                    <h5 className={classes.company}>{data.firms[profile.firms[0]]}</h5>
-                  </div>
-                )
-              }) : ""
-            }
-          </div>
           <div className={`${classes.featured} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <div className={`${classes.featuredArticles} col-lg-9 col-md-9 col-sm-9 col-xs-12`}>
               <h4 className={classes.subtitle}>Featured Insights</h4>
@@ -145,6 +126,25 @@ class HomeView extends React.Component {
               // <div className={`${classes.end} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
               //   <hr/>
               // </div>
+            }
+          </div>
+          <div className={`${classes.featuredProfiles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h4 className={classes.subtitle}>Featured Profiles</h4>
+              <hr />
+            </div>
+            {
+              firstFour.length ?
+              firstFour.map((profile, i) => {
+                return (
+                  <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
+                    <img src={profile.imageURL || "http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png" }/>
+                    <h5 className={classes.name}>{profile.title.rendered}</h5>
+                    <h5 className={classes.position}>{data.titles[profile.titles[0]]}</h5>
+                    <h5 className={classes.company}>{data.firms[profile.firms[0]]}</h5>
+                  </div>
+                )
+              }) : ""
             }
           </div>
           <div className={`${classes.perspectives} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
