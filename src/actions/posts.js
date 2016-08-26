@@ -27,7 +27,7 @@ import {
   FETCH_REMAINING_PROFILE_IMAGES_ASYNC_FAILURE
 } from '../constants';
 import { request } from './utils';
-const baseurl = '//www.consultanttrack.com/wp-json/wp/v2';
+const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
 
 
 
@@ -53,12 +53,13 @@ export const fetchPostsFailure = () => {
   }
 };
 
-export const fetchPosts = (numPosts, offset, pageNum) => {
+export const fetchPosts = (numPosts, offset, pageNum, categoryId) => {
   let params = [];
   let appendage;
   if (numPosts) params.push(`per_page=${numPosts}`);
   if (offset)   params.push(`offset=${offset}`);
   if (pageNum)  params.push(`page=${pageNum}`);
+  if (categoryId) params.push(`categories=${categoryId}`);
   if (params.length) appendage = '?' + params.join('&');
 
   const query = appendage ? appendage : ``;
@@ -118,8 +119,9 @@ export const fetchPost = (id) => {
 	};
 }
 
-export const fetchNextEightPosts = (offset) => {
-  const url = `${baseurl}/posts/?per_page=8&offset=${offset}&pageNum=1`;
+export const fetchNextEightPosts = (offset, categoryId) => {
+  let url = `${baseurl}/posts/?per_page=8&offset=${offset}&pageNum=1`;
+  if (categoryId) url += `&categories=${categoryId}`
 	
 	return (dispatch) => {
 		dispatch(fetchPostsRequest());
@@ -134,7 +136,6 @@ export const fetchNextEightPosts = (offset) => {
 			});
 	};
 }
-
 
 export const fetchProfilesRequest = () => {
   return {

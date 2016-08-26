@@ -37,32 +37,10 @@ class IdeasAndInsights extends React.Component {
     let parsedArticles = [];
     if (posts.length) {
       for (let i = 0; i < posts.length; i++) {
-        parsedArticles.push(parseArticleData(posts[i]));
+        parsedArticles.push(utils.parseArticleData(posts[i]));
       }
     }
     let nextArticles = parsedArticles.slice(4);
-
-    /**
-     * Convert raw data from WP API to readable form
-     */
-    function parseArticleData(article) {
-      let articleData = {};
-      let contentStr = article.content.rendered;
-      let el = el = $('<div></div>');
-      el.html(contentStr);
-      let featuredImg = $('img', el)[0];
-      let imgSrc = featuredImg 
-        ? featuredImg.src
-        : "https://images.unsplash.com/photo-1430609098125-581618d0482f?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1274&amp;h=849&amp;q=80";
-
-      articleData.id = article.id;
-      articleData.imgSrc = imgSrc;
-      articleData.title = utils.decodeEntities(article.title.rendered);
-      articleData.date = moment(article.date).format('MMMM YYYY');
-      articleData.excerpt = utils.decodeEntities(article.excerpt.rendered);
-      return articleData;
-    }
-
 
     return (
       <div className={`${classes.ideasAndInsights} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
@@ -91,28 +69,43 @@ class IdeasAndInsights extends React.Component {
             <hr/>
             <div className={classes.topicList}>
               <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
-                <Link to={`${baseurl}/financial-markets`}>
-                  <i className="fa fa-angle-right" aria-hidden="true"></i>Financial Markets
+                <Link to={`${baseurl}/career-insights`}>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>Career Insights
                 </Link>
               </p>
               <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
-                <Link to={`${baseurl}/natural-resources`}>
-                  <i className="fa fa-angle-right" aria-hidden="true"></i>Natural Resources
+                <Link to={`${baseurl}/consulting`}>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>Consulting
                 </Link>
               </p>
               <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
-                <Link to={`${baseurl}/technology-innovation`}>
-                  <i className="fa fa-angle-right" aria-hidden="true"></i>Technology & Innovation
+                <Link to={`${baseurl}/current-events`}>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>Current Events
                 </Link>
               </p>
               <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
-                <Link to={`${baseurl}/labor-markets`}>
-                  <i className="fa fa-angle-right" aria-hidden="true"></i>Labor Markets
+                <Link to={`${baseurl}/diversity-and-inclusion`}>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>Diversity & Inclusion
                 </Link>
               </p>
               <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
-                <Link to={`${baseurl}/productivity`}>
-                  <i className="fa fa-angle-right" aria-hidden="true"></i>Productivty, Competitiveness & Growth
+                <Link to={`${baseurl}/leadership-and-governance`}>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>Leadership & Governance
+                </Link>
+              </p>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+                <Link to={`${baseurl}/making-moves`}>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>Making Moves
+                </Link>
+              </p>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+                <Link to={`${baseurl}/opportunities`}>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>Opportunities
+                </Link>
+              </p>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+                <Link to={`${baseurl}/all`}>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>All Ideas & Insights
                 </Link>
               </p>
             </div>

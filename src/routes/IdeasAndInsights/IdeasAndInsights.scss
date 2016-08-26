@@ -8,6 +8,13 @@
   .subtitle {
 		margin-bottom: 5px;
 	}
+  .topicTitle {
+    margin-bottom: 5px;
+    // text-transform: uppercase;
+    // font-weight: 600;
+    font-size: 44px;
+    font-family: Georgia;
+  }
   hr {
     margin-top: 0px;
   }
@@ -18,7 +25,7 @@
     // padding: 0px;
     margin-bottom: 40px;
     .imageDiv {
-      padding: 0px;
+      padding-left: 0px;
       img {
         width: 100%;
       }
