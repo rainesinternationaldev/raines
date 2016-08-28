@@ -60,38 +60,4 @@ export const subscribeUserToMailchimp = (lists, data) => {
     console.log('yay result', results)
   })
 
-
-  // lists.forEach((listName) => {
-    
-  //   const listId = mcLists[listName].id;
-  //   const mcData = {
-  //     email_address: data.email,
-  //     status: 'subscribed',
-  //     merge_fields: {
-  //       FNAME: data.firstName,
-  //       LNAME: data.lastName,
-  //       company: data.company,
-  //       title: data.title
-  //     }
-  //   };
-
-  //   mailchimp.post(`/lists/${listId}/members`, {
-  //     email_address: data.email,
-  //     status: 'subscribed',
-  //     merge_fields: {
-  //       FNAME:    data.firstName,
-  //       LNAME:    data.lastName,
-  //       company:  data.company,
-  //       title:    data.developer
-  //     }
-  //   })
-  //   .then(function(result){
-  //     console.log(result);
-  //   })
-  //   .catch(function(error){
-  //     console.log(error);
-  //   });
-    
-  // })
-  
 }

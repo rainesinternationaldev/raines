@@ -21,19 +21,16 @@ router.post('/resume', (ctx) => {
       }
       subscribeUserToMailchimp(lists, personal);
 
-      ctx.body = 'temp'
-
-
       // Send resume attachment to internal email
-      // sendMail(fields.candidateName[0], files.attachment)
-      //   .then((completed) => {
-      //     ctx.body = completed;
-      //     resolve();
-      //   })
-      //   .catch((err) => {
-      //     ctx.body = 'ERROR: ' + err;
-      //     reject();
-      //   })
+      sendMail(fields.candidateName[0], files.attachment)
+        .then((completed) => {
+          ctx.body = completed;
+          resolve();
+        })
+        .catch((err) => {
+          ctx.body = 'ERROR: ' + err;
+          reject();
+        })
     });
   });
 })
