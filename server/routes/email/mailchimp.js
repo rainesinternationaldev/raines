@@ -30,23 +30,14 @@ export const subscribeUserToMailchimp = (lists, data) => {
       merge_fields: {
         FNAME: data.firstName,
         LNAME: data.lastName,
-        company: data.company,
-        title: data.title
+        COMPANY: data.company,
+        TITLE: data.title
       }
     };
 
     console.log('data!!!', mcData);
 
-    return mailchimp.post(`/lists/${listId}/members`, {
-      email_address: data.email,
-      status: 'subscribed',
-      merge_fields: {
-        FNAME:    data.firstName,
-        LNAME:    data.lastName,
-        company:  data.company,
-        title:    data.developer
-      }
-    })
+    return mailchimp.post(`/lists/${listId}/members`, mcData)
     .then(function(result){
       console.log(`....${result}`);
       return result;
