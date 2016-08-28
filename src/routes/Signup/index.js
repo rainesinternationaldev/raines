@@ -18,20 +18,26 @@ class Signup extends React.Component {
           erroredFields.push(field);
         }
       });
-      //////////
+      ////////// make sure it is errorFields.length
       if (erroredFields.length) {
         let newFields = Object.assign({}, this.state.fields);
         erroredFields.forEach((field) => {
           newFields[field].error = true;
         })
         this.setState({ fields: newFields })
+
+        if (this.state.resume && !$('.cvAgreement')[0].checked) {
+          this.setState({
+            cvAgreementError: true
+          })
+        }
+
+        ////////// make sure it is this.state.resume
       } else if (this.state.resume && !$('.cvAgreement')[0].checked) {
         this.setState({
           cvAgreementError: true
         })
       } else {
-        console.log('THOU SHALL PASS')
-
         let newsletters = {
           rainesMonthlyHighlights: true,
           rainesMonthlyHighlightsForConsultants: false,
@@ -43,20 +49,22 @@ class Signup extends React.Component {
           newsletters.rainesMonthlyHighlightsForConsultants = true;
         }
 
+        let personal = {
+          firstName:  $('.firstName').val(),
+          lastName:   $('.lastName').val(),
+          email:      $('.email').val(),
+          company:    $('.company').val(),
+          title:      $('.title').val()
+        };
+
         const formData = {
-          personal: {
-            firstName:  $('.firstName').val(),
-            lastName:   $('.lastName').val(),
-            email:      $('.email').val(),
-            company:    $('.company').val(),
-            title:      $('.title').val()
-          },
-          newsletters,
-          resume: this.state.resume
+          personal: JSON.stringify(personal),
+          newsletters: JSON.stringify(newsletters),
+          candidateName: `${$('.firstName').val()} ${$('.lastName').val()}`,
+          attachment: this.state.resume
         }
-        // send form data to server
-        console.log(formData)
-        this.context.router.push('/thank-you');
+        this.props.actions.signupUser(formData);
+        // this.context.router.push('/thank-you');
       }
     }
 

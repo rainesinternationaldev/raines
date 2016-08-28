@@ -27,7 +27,13 @@ const constants = createConstants(
   'FETCH_PLACEMENTS_SUCCESS',
   'FETCH_PLACEMENTS_FAILURE',
 
-  'CACHE_SIGNUP_DATA'
+  /**
+   * Signup Actions
+   */
+  'CACHE_SIGNUP_DATA',
+  'SIGNUP_USER_REQUEST',
+  'SIGNUP_USER_SUCCESS',
+  'SIGNUP_USER_FAILURE'
 );
 
 module.exports = constants;
