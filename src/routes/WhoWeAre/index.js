@@ -1,5 +1,10 @@
 import React from 'react';
+import introImg from './assets/intro.png';
+import thoughtLeadershipImg from './assets/thoughtleadership.jpg';
+import accessToTalentImg from './assets/accesstotalent.jpg';
+import careerInsightsImg from './assets/careerinsights.jpg';
 import classes from './WhoWeAre.scss';
+import {Link} from 'react-router';
 
 export const WhoWeAre = () => (
   <div className={`${classes.whoWeAre} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
@@ -7,23 +12,45 @@ export const WhoWeAre = () => (
       <hr className={classes.hr}/>
       <img
         className={classes.splashImage}
-        src="https://images.unsplash.com/photo-1432163230927-a32e4fd5a326?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=863c63e7e71fe3d25792265210c988f8"/>
-      
-      <div className={classes.innerBody}>
-        <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <h3>Title Title Title Title</h3>
-          <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+        src={introImg}/>
+      <hr className={classes.hr}/>
+      <div className={`${classes.row} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+        <div className={`${classes.column} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+          <img src={thoughtLeadershipImg}/>
         </div>
-        <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <h3>Title Title Title Title</h3>
-          <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-        </div>
-        <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <h3>Title Title Title Title</h3>
-          <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+        <div className={`${classes.column} ${classes.textColumn} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+          <h1>Thought Leaders</h1>
+          <p>With more than 45 years of experience working with top talent, Raines International shares our industry and functional expertise to keep you prepared for the issues businesses face today.</p>
+          <p className={classes.link}><Link to="/ideas-and-insights">View Ideas & Insights (arrow icon)</Link></p>
         </div>
       </div>
-      
+      <div className={`${classes.hrDiv} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+        <hr className={classes.hr}/>
+      </div>
+      <div className={`${classes.row} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+        <div className={`${classes.column} ${classes.textColumn} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+          <h1>Access to Talent</h1>
+          <p>Meet successful executive leaders through our profiles and recent Raines International placements to stay on top of the latest in leadership and career strategies.</p>
+          <p className={classes.link}><Link to="/profiles-and-interviews">View Profiles (arrow icon)</Link></p>
+          <p className={classes.link}><Link to="/placements">View Placements (arrow icon)</Link></p>
+        </div>
+        <div className={`${classes.column} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+          <img src={accessToTalentImg}/>
+        </div>
+      </div>
+      <div className={`${classes.hrDiv} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+        <hr className={classes.hr}/>
+      </div>
+      <div className={`${classes.row} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+        <div className={`${classes.column} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+          <img src={careerInsightsImg}/>
+        </div>
+        <div className={`${classes.column} ${classes.textColumn} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+          <h1>Career Insights</h1>
+          <p>By analyzing current career trends in the global marketplace, Raines International provides valuable insights to give you an undeniable edge in determining the next step for you and your career.</p>
+          <p className={classes.link}><Link to="/ideas-and-insights/career-insights">View Career Insights (arrow icon)</Link></p>
+        </div>
+      </div>      
     </div>
   </div>
 );

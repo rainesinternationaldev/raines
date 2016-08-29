@@ -55,10 +55,6 @@ class Topic extends React.Component {
         'opportunities': {
           id: 879,
           name: 'Opportunities'
-        },
-        'all': {
-          id: 880,
-          name: 'All Ideas & Insights'
         }
       }
     }

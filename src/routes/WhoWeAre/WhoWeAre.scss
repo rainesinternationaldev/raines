@@ -3,50 +3,45 @@
   min-height: calc(100vh - 402px);
   background: white;
   .inner {
-    text-align: center;
+    overflow: hidden;
+    margin-bottom: 30px;
     h1, h4, h5 {
       font-family: Georgia;
     }
     h4 {
       padding: 0px 120px;
     }
-    .hr {
-      margin: 20px 15px;
-    }
-  }
-  .center {
-		margin: 0 auto;
-		text-align: center;
-	}
-  .splashImage {
-		padding: 0px 15px;
-		width: 100%;
-	}
-  .banner {
-		hr {
-			margin-bottom: 0px;
-		}
-		h3 {
-			margin-top: 15px;
-			margin-bottom: 15px;
-			font-family: 'Trebuchet MS';
-			font-weight: 400;
-			color: $blue;
-		}
-	}
-  .ourPeople {
-    margin-bottom: 40px;
-    h3 {
-      text-align: left;
-    }
-    hr {
-      margin-top: 0px;
-    }
     img {
       width: 100%;
     }
-    .name {
-      font-weight: bold;
+    .hr {
+      margin: 10px 15px;
+    }
+    .hrDiv {
+      padding: 0px;
+    }
+    .splashImage {
+      padding: 0px 15px;
+    }
+    .row {
+      .column {
+        padding: 0px;
+        img {
+          max-height: 264px;
+        }
+        .link {
+          font-style: italic;
+          a {
+            color: $blue !important;
+          }
+        }
+      }
+      .textColumn {
+        padding: 0px 25px;
+        p {
+          font-size: 15px;
+        }
+      }
     }
   }
 }

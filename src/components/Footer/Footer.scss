@@ -1,27 +1,31 @@
 @import '../../styles/base';
 
 .globalFooter {
-  height: 160px;
+  // height: 160px;
   clear: both;
   background: #EDEDED;
+  padding-bottom: 25px;
   .desc {
     font-size: 12px;
+    font-family: 'Open Sans';
   }
   .email {
     color: $blue;
   }
   hr {
     border-color: #DCDFE4;
+    margin-bottom: 0px;
   }
   h3 {
-    font-family: Georgia;
+    font-family: 'Open Sans';
   }
   .footerFooter {
     i {
       padding: 5px 10px;
     }
     span {
-      font-family: Georgia;
+      font-family: 'Open Sans';
+      font-size: 12px;
       margin-left: 25px;
     }
   }

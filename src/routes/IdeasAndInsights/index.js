@@ -103,11 +103,6 @@ class IdeasAndInsights extends React.Component {
                   <i className="fa fa-angle-right" aria-hidden="true"></i>Opportunities
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
-                <Link to={`${baseurl}/all`}>
-                  <i className="fa fa-angle-right" aria-hidden="true"></i>All Ideas & Insights
-                </Link>
-              </p>
             </div>
             <h4 className={classes.subtitle}>INSIGHTS</h4>
             <hr/>

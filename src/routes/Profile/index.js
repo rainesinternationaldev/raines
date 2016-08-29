@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Profile.scss';
-import SignupBar from '../../components/SignupBar';
 import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/profiles';
 import {connect} 							from 'react-redux';
@@ -90,7 +89,6 @@ class Profile extends React.Component {
               }
             </div>
           </div>
-          <SignupBar/>
         </div>
       </div>
     )

@@ -2,7 +2,6 @@ import React from 'react'
 import Dropdown from 'react-dropdown';
 import {ViewMore} from './ViewMore';
 import classes from './ProfilesAndInterviews.scss'
-import SignupBar from '../../components/SignupBar';
 import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/profiles';
 import {connect} 							from 'react-redux';
@@ -138,7 +137,6 @@ class ProfilesAndInterviews extends React.Component {
             }
           </div>
           <ViewMore viewMore={this.displayMoreProfiles}/>
-          <SignupBar/>
         </div>
       </div>
     );
