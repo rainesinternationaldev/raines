@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import classes from './SubNavbar.scss';
 
 export const SubNavbar = () => (
-  <div className={classes.subNavbar}>
+  <div className={`${classes.subNavbar} subNavbar`}>
     <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
       <div className="center col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h1><Link to="/">raines perspectives</Link></h1>

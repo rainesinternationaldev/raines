@@ -4,7 +4,7 @@ import classes from './Navbar.scss';
 import CompanyLogo from './assets/raineslogo.png';
 
 export const Navbar = () => (
-  <div className={classes.globalNavbar}>
+  <div className={`${classes.globalNavbar} globalNavbar`}>
     <div className="col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12">
       <a href="http://rainesinternational.com/">
         <img src={CompanyLogo} className={classes.companyLogo}/>

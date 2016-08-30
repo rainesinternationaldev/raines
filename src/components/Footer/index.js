@@ -5,9 +5,8 @@ import classes from './Footer.scss';
 export default class Footer extends React.Component {
   render() {
     let isHomepage = window.location.pathname === '/';
-    console.log('isHomepage', isHomepage)
     return (
-      <div className={`${classes.globalFooter} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+      <div className={`${classes.globalFooter} globalFooter col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
         <div>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Connect with raines perspectives</h3>

@@ -18,6 +18,17 @@
 	.splashArticle {
 		padding: 0px;
 	}
+	.socialMediaShareButton {
+		display: inline-block;
+		padding: 12px 10px;
+		&:hover {
+			cursor: pointer;
+		}
+		.printerIcon {
+			width: 32px;
+			vertical-align: inherit;
+		}
+	}
 	.mostRecent {
 		hr {
 			margin-top: 0px;

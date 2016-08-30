@@ -99,3 +99,12 @@ hr {
 .Dropdown-control {
   border-radius: 10px;
 }
+
+@media print {
+  .globalNavbar, .subNavbar, .globalFooter, .mostRecent, .socialMediaShare {
+    display: none;
+  }
+  a[href]:after {
+    content: none !important;
+  }
+}

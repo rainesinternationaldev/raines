@@ -107,7 +107,9 @@ class Topic extends React.Component {
               parsedArticles.length ?
               <div>
                 <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
-                  <img src={parsedArticles[0].imgSrc}/>
+                  <Link to={`/article/${parsedArticles[0].id}-${parsedArticles[0].title}`}>
+                    <img src={parsedArticles[0].imgSrc}/>
+                  </Link>
                 </div>
                 <div className={`${classes.desc} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
                   <Link to={`/article/${parsedArticles[0].id}-${parsedArticles[0].title}`}>
@@ -129,19 +131,31 @@ class Topic extends React.Component {
               parsedArticles.length ?
               <div>
                 <div className={`${classes.latestArticle} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
-                  <img src={parsedArticles[1].imgSrc}/>
-                  <h5 className={classes.articleTitle}>{parsedArticles[1].title}</h5>
+                  <Link to={`/article/${parsedArticles[1].id}-${parsedArticles[1].title}`}>
+                    <img src={parsedArticles[1].imgSrc}/>
+                  </Link>
+                  <Link to={`/article/${parsedArticles[1].id}-${parsedArticles[1].title}`}>
+                    <h5 className={classes.articleTitle}>{parsedArticles[1].title}</h5>
+                  </Link>
                   <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[1].date}</span> - {parsedArticles[1].excerpt}</p>
                 </div>
                 <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
                   <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
-                    <img src={parsedArticles[2].imgSrc}/>
-                    <h5 className={classes.articleTitle}>{parsedArticles[2].title}</h5>
+                    <Link to={`/article/${parsedArticles[2].id}-${parsedArticles[2].title}`}>
+                      <img src={parsedArticles[2].imgSrc}/>
+                    </Link>
+                    <Link to={`/article/${parsedArticles[2].id}-${parsedArticles[2].title}`}>
+                      <h5 className={classes.articleTitle}>{parsedArticles[2].title}</h5>
+                    </Link>
                     <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[2].date}</span> - {parsedArticles[2].excerpt}</p>
                   </div>
                   <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
-                    <img src={parsedArticles[3].imgSrc}/>
-                    <h5 className={classes.articleTitle}>{parsedArticles[3].title}</h5>
+                    <Link to={`/article/${parsedArticles[3].id}-${parsedArticles[3].title}`}>
+                      <img src={parsedArticles[3].imgSrc}/>
+                    </Link>
+                    <Link to={`/article/${parsedArticles[3].id}-${parsedArticles[3].title}`}>
+                      <h5 className={classes.articleTitle}>{parsedArticles[3].title}</h5>
+                    </Link>
                     <p className={classes.articleSummary}><span className={classes.date}>{parsedArticles[3].date}</span> - {parsedArticles[3].excerpt}</p>
                   </div>
                 </div>
@@ -154,8 +168,12 @@ class Topic extends React.Component {
                 nextArticles.map((article, i) => {
                   return (
                     <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
-                      <img src={nextArticles[i].imgSrc}/>
-                      <h5 className={classes.articleTitle}>{nextArticles[i].title}</h5>
+                      <Link to={`/article/${nextArticles[i].id}-${nextArticles[i].title}`}>
+                        <img src={nextArticles[i].imgSrc}/>
+                      </Link>
+                      <Link to={`/article/${nextArticles[i].id}-${nextArticles[i].title}`}>
+                        <h5 className={classes.articleTitle}>{nextArticles[i].title}</h5>
+                      </Link>
                     </div>
                   )
                 }) : ""

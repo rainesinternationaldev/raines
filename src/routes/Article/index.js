@@ -6,10 +6,18 @@ import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../utils';
+import {
+  ShareButtons,
+  ShareCounts,
+  generateShareIcon
+} from 'react-share';
+import printerIcon from './assets/printer-icon.png';
 
 export class Article extends React.Component {
   constructor(props) {
     super(props);
+
+    this.displayPrintPreview = window.print;
 
     this.state = {
       categories: {
@@ -53,12 +61,24 @@ export class Article extends React.Component {
   }
 
   render() {
+    
+    const {
+      FacebookShareButton,
+      LinkedinShareButton,
+      TwitterShareButton
+    } = ShareButtons;
+
+    const FacebookIcon = generateShareIcon('facebook');
+    const TwitterIcon = generateShareIcon('twitter');
+    const LinkedinIcon = generateShareIcon('linkedin');
+
     const post = this.props.wordpress.currentPost;
     let contentStr;
     let imgSrc;
     let title;
     let date;
     let textContent;
+    let excerpt;
     if (post && post.id) {
       contentStr = post.content.rendered;
       const el = $('<div></div>');
@@ -83,6 +103,7 @@ export class Article extends React.Component {
 
       title = utils.decodeEntities(post.title.rendered);
       date = moment(post.date).format('MMMM YYYY');
+      excerpt = utils.decodeEntities(post.excerpt.rendered);
     }
 
     const posts = this.props.wordpress.posts;
@@ -91,6 +112,8 @@ export class Article extends React.Component {
       mostRecentPosts = posts.slice(0, 5);
     }
 
+    let currentLocation = window.location.href;
+    currentLocation = 'https://mysterious-brook-13530.herokuapp.com/'
 
     return (
       <div className={classes.article}>
@@ -101,6 +124,41 @@ export class Article extends React.Component {
               <div className={`${classes.imageContainer} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                 <img className={classes.featuredImage} src={imgSrc}/>
               </div>
+              <div className={`${classes.socialMediaShare} socialMediaShare col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+                <div className={classes.socialMediaShareButton}>
+                  <FacebookShareButton
+                    title={title}
+                    url={currentLocation}
+                    media={imgSrc}
+                    description={excerpt}>
+                    <FacebookIcon size={32} round={true} />
+                  </FacebookShareButton>
+                </div>
+                <div className={classes.socialMediaShareButton}>
+                  <TwitterShareButton
+                    title={title}
+                    url={currentLocation}
+                    media={imgSrc}
+                    description={excerpt}>
+                    <TwitterIcon size={32} round={true} />
+                  </TwitterShareButton>
+                </div>
+                <div className={classes.socialMediaShareButton}>
+                  <LinkedinShareButton
+                    title={title}
+                    url={currentLocation}
+                    media={imgSrc}
+                    description={excerpt}>
+                    <LinkedinIcon size={32} round={true} />
+                  </LinkedinShareButton>
+                </div>
+                <div className={classes.socialMediaShareButton}>
+                  <img
+                    className={classes.printerIcon}
+                    src={printerIcon}
+                    onClick={this.displayPrintPreview}/>
+                </div>
+              </div>
               <div className={`${classes.textBody} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                 <h4>{title}</h4>
                 <p className="date-preview">{date}</p>
@@ -108,7 +166,7 @@ export class Article extends React.Component {
               </div>
             </div> : ""
           }
-          <div className={`${classes.mostRecent} col-lg-3 col-md-3 col-sm-3 col-xs-12`}>
+          <div className={`${classes.mostRecent} mostRecent col-lg-3 col-md-3 col-sm-3 col-xs-12`}>
             <h5>Recent Articles</h5>
             <hr/>
             {

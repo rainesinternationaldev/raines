@@ -38,7 +38,7 @@ class HomeView extends React.Component {
 
     if (!this.props.wordpress.profiles.length) {
       this.props.actions.fetchProfiles()
-        .then(() => { console.log('fetched profiles') });
+        // .then(() => { console.log('fetched profiles') });
     }
   }
 
@@ -93,7 +93,9 @@ class HomeView extends React.Component {
                 posts.length ?
                 <div>
                   <div className={`${classes.imageContainer} col-lg-8 col-md-8 col-sm-8 col-xs-12`}>
-                    <img className={classes.featuredImage} src={imgSrc}/>
+                    <Link to={`/article/${featuredPost.id}-${utils.formatTitle(featuredPost.title.rendered)}`}>
+                      <img className={classes.featuredImage} src={imgSrc}/>
+                    </Link>
                   </div>
                   <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <Link to={`/article/${featuredPost.id}-${utils.formatTitle(featuredPost.title.rendered)}`}>
@@ -112,7 +114,7 @@ class HomeView extends React.Component {
               {
                 posts.length ?
                 mostRecentPosts.map((post, i) => {
-                  console.log(post)
+                  // console.log(post)
                   return (
                     <div className={classes.article} key={i}>
                       <p className={classes.topicPreview}>{this.state.categories[post.categories[0]]}</p>
@@ -140,8 +142,12 @@ class HomeView extends React.Component {
               firstFour.map((profile, i) => {
                 return (
                   <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
-                    <img src={profile.imageURL || "http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png" }/>
-                    <h5 className={classes.name}>{profile.title.rendered}</h5>
+                    <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title.rendered)}`}>
+                      <img src={profile.imageURL}/>
+                    </Link>
+                    <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title.rendered)}`}>
+                      <h5 className={classes.name}>{profile.title.rendered}</h5>
+                    </Link>
                     <h5 className={classes.position}>{data.titles[profile.titles[0]]}</h5>
                     <h5 className={classes.company}>{data.firms[profile.firms[0]]}</h5>
                   </div>
