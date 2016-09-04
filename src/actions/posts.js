@@ -6,14 +6,13 @@ import {
   FETCH_POST_SUCCESS,
   FETCH_POST_FAILURE,
 
+
   FETCH_FEATURED_ON_HOMEPAGE_REQUEST,
   FETCH_FEATURED_ON_HOMEPAGE_SUCCESS,
   FETCH_FEATURED_ON_HOMEPAGE_FAILURE,
   FETCH_FEATURED_PERSPECTIVE_REQUEST,
   FETCH_FEATURED_PERSPECTIVE_SUCCESS,
   FETCH_FEATURED_PERSPECTIVE_FAILURE,
-
-
 
 
   FETCH_PROFILES_REQUEST,
@@ -30,8 +29,6 @@ import { request } from './utils';
 const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
 
 
-
-/////////
 export const fetchPostsRequest = () => {
   return {
     type: FETCH_POSTS_REQUEST
@@ -136,6 +133,12 @@ export const fetchNextEightPosts = (offset, categoryId) => {
 			});
 	};
 }
+
+
+
+
+
+
 
 export const fetchProfilesRequest = () => {
   return {
