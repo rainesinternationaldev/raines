@@ -45,8 +45,30 @@ export default createReducer(initialState, {
 		});
 	},
 	[FETCH_PROFILES_SUCCESS]: (state, payload) => {
+		let profiles = payload.profiles.map(extractProfileMetadata)
+
+		function extractProfileMetadata(profile) {
+			let content = profile.content;
+			let rex = /<p>(.*?)<\/p>/g;
+			let matches = content.match(rex);
+			let meta = {};
+			for (let i = 0; i < 3; i++) {
+				let matched = matches[i].replace(rex, '$1').split(': ')[1];
+				switch(i) {
+					case 0:
+						meta.position = matched;
+					case 1:
+						meta.current_firm = matched;
+					case 2:
+						meta.consulting_firm = matched;
+				}		
+			}
+			return Object.assign(profile, meta);
+		}
+
+
 		return Object.assign({}, state, {
-			profiles: payload.profiles
+			profiles: profiles
 		})
 	},
 	[FETCH_PROFILE_SUCCESS]: (state, payload) => {

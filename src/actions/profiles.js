@@ -13,7 +13,8 @@ import {
   FETCH_FEATURED_PROFILES_FAILURE
 } from '../constants';
 import { request } from './utils';
-const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
+const baseurl = `https://public-api.wordpress.com/rest/v1.1/sites/rainesinternational.wordpress.com/posts?`;
+// const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
 
 export const fetchProfilesRequest = () => {
   return {
@@ -37,7 +38,7 @@ export const fetchProfilesFailure = () => {
 };
 
 export const fetchProfiles = () => {
-  const url = `${baseurl}/profiles/?per_page=100&orderby=menu_order&order=asc`;
+  const url = `${baseurl}category=profile`;
 	
 	return (dispatch) => {
 		dispatch(fetchProfilesRequest());
@@ -45,21 +46,7 @@ export const fetchProfiles = () => {
 			.get(url)
 			.end()
 			.then((response) => {
-        let profiles = [];
-        let firstEight = response.body.slice(0, 8);
-        firstEight.forEach((profile) => {
-          let newProfile = fetchProfileImage(profile.featured_media)
-            .then((imageURL) => {
-              profile.imageURL = imageURL;
-              return profile;
-            })
-          profiles.push(newProfile);
-        });
-
-        return Promise.all(profiles).then((result) => {
-          const total = result.concat(response.body.slice(8));
-          return dispatch(fetchProfilesSuccess(total))
-        })
+        return dispatch(fetchProfilesSuccess(response.body.posts));
 			})
 			.catch((error) => {
 				dispatch(fetchProfilesFailure());

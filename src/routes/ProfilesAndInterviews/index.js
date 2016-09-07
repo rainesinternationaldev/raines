@@ -48,29 +48,40 @@ class ProfilesAndInterviews extends React.Component {
   componentWillMount() {
     if (!this.props.wordpress.profiles.length) {
       this.props.actions.fetchProfiles()
-      .then((profiles) => {
-        this.props.actions.fetchRemainingProfileImagesAsync();
-      });
     }
   }
 
   render() {
     let profiles = this.props.wordpress.profiles;
 
-    let displayedProfiles = profiles.filter(filterByIndustryAndType.bind(this)).slice(0, this.state.displayedProfiles);
+    let featuredProfile;
+    if (profiles.length) {
+      profiles.forEach(profile => {
+        if (profile.categories['Profiles Page - Profiles']) {
+          featuredProfile = profile;
+        }
+      })
+    }
 
-    let featuredProfile = profiles.filter((profile) => profile.featured.indexOf(874) > -1 );
+    let displayedProfiles = profiles.filter(filterByIndustryAndType.bind(this)).slice(0, this.state.displayedProfiles);
+    console.log('the displayed profiles', displayedProfiles)
+    console.log(this.state.selectedIndustry, this.state.selectedTrack)
+
+    // TODO: Make sure to get the correct Technology category names in data.js
+    // Better TODO: Instead of hard-coding Industry List and Track List in data.js, fetch these arrays dynamically from WP by querying /categories and sorting by Parent ID for industry, track
+    // TODO: change "Title: " in WP to "Position: ". also edit reducer that currently parses "Title: "
 
     function filterByIndustryAndType(profile) {
-      let industryId = this.state.selectedIndustry && Number(this.state.selectedIndustry.value);
-      let trackId    = this.state.selectedTrack && Number(this.state.selectedTrack.value);
-      if (industryId && trackId) {
-        return profile['industry-types'].indexOf(industryId) > -1 && profile['track-types'].indexOf(trackId) > -1;
-      } else if (industryId) {
-        console.log(profile['industry-types'].indexOf(industryId))
-        return profile['industry-types'].indexOf(industryId) > -1;
-      } else if (trackId) {
-        return profile['track-types'].indexOf(trackId) > -1;
+      let industry = this.state.selectedIndustry && this.state.selectedIndustry.value;
+      let track    = this.state.selectedTrack && this.state.selectedTrack.value;
+      let belongsToIndustry = profile.categories[industry];
+      let belongsToTrack    = profile.categories[track];
+      if (industry && track) {
+        return belongsToIndustry && belongsToTrack
+      } else if (industry) {
+        return belongsToIndustry
+      } else if (track) {
+        return belongsToTrack
       } else {
         return true;
       }
@@ -80,20 +91,20 @@ class ProfilesAndInterviews extends React.Component {
       <div className={classes.profilesAndInterviews}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
           {
-            featuredProfile.length ?
+            featuredProfile ?
             <div className={`${classes.featuredProfile} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
               <h4 className={classes.subtitle}>Featured Profile</h4>
               <hr/>
               <div className={`${classes.featuredImageDiv} col-lg-4 col-md-4 col-sm-12 col-xs-12`}>
-                <Link to={`/profile/${featuredProfile[0].id}-${utils.formatTitle(featuredProfile[0].title.rendered)}`}>
-                  <img className={classes.featuredImage} src={featuredProfile[0].imageURL}/>
+                <Link to={`/profile/${featuredProfile.ID}-${utils.formatTitle(featuredProfile.title)}`}>
+                  <img className={classes.featuredImage} src={featuredProfile.post_thumbnail.URL}/>
                 </Link>
               </div>
               <div className={`${classes.featuredContent} col-lg-8 col-md-8 col-sm-12 col-xs-12`}>
-                <h4 className={classes.name}>{featuredProfile[0].title.rendered}</h4>
-                <h4 className={classes.company}>{data.firms[featuredProfile[0].firms[0]]}</h4>
-                <h5 className={classes.position}>{utils.decodeEntities(data.titles[featuredProfile[0].titles[0]])}</h5>
-                <p><span className={classes.excerpt}>{utils.decodeEntities(featuredProfile[0].content.rendered)}</span></p>
+                <h4 className={classes.name}>{featuredProfile.title}</h4>
+                <h4 className={classes.company}>{featuredProfile.current_firm}</h4>
+                <h5 className={classes.position}>{featuredProfile.position}</h5>
+                <p><span className={classes.excerpt}>{utils.decodeEntities(featuredProfile.excerpt)}</span></p>
               </div>
             </div> : ""
           }
@@ -123,14 +134,14 @@ class ProfilesAndInterviews extends React.Component {
               displayedProfiles.map((profile, i) => {
                 return (
                     <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
-                      <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title.rendered)}`}>
-                        <img src={profile.imageURL || "http://static.giantbomb.com/uploads/square_small/13/135472/1891872-134vaporeon.png" }/>
+                      <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
+                        <img src={profile.post_thumbnail.URL}/>
                       </Link>
-                      <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title.rendered)}`}>
-                        <h5 className={classes.name}>{profile.title.rendered}</h5>
+                      <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
+                        <h5 className={classes.name}>{profile.title}</h5>
                       </Link>
-                      <h5 className={classes.position}>{utils.decodeEntities(data.titles[profile.titles[0]])}</h5>
-                      <h5 className={classes.company}>{utils.decodeEntities(data.firms[profile.firms[0]])}</h5>
+                      <h5 className={classes.position}>{profile.position}</h5>
+                      <h5 className={classes.company}>{profile.current_firm}</h5>
                     </div>
                 )
               }) : ""
@@ -139,7 +150,7 @@ class ProfilesAndInterviews extends React.Component {
           <ViewMore viewMore={this.displayMoreProfiles}/>
         </div>
       </div>
-    );
+    )
   }
 }
 

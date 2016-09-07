@@ -1,3 +1,629 @@
+var sampleArticle = {
+      "ID": 8142,
+      "site_ID": 112512176,
+      "author": {
+        "ID": 106218500,
+        "login": "rainesinternational",
+        "email": false,
+        "name": "rainesinternational",
+        "first_name": "",
+        "last_name": "",
+        "nice_name": "rainesinternational",
+        "URL": "http://rainesinternational.wordpress.com",
+        "avatar_URL": "https://2.gravatar.com/avatar/b9d244ede991b8aefb16b6878d4c0242?s=96&d=identicon&r=G",
+        "profile_URL": "http://en.gravatar.com/rainesinternational",
+        "site_ID": 112512176
+      },
+      "date": "2016-08-26T16:40:11+00:00",
+      "modified": "2016-09-03T23:36:05+00:00",
+      "title": "What We&#8217;re Reading: August 26",
+      "URL": "https://rainesinternational.wordpress.com/2016/08/26/reading-august-26/",
+      "short_URL": "http://wp.me/p7C5yw-27k",
+      "content": "<p><img class=\"aligncenter wp-image-7621 size-full\" src=\"https://rainesinternational.files.wordpress.com/2016/04/books-683897_1920-e1472229457613.jpg?w=500&#038;h=333\" alt=\"books-683897_1920\" width=\"500\" height=\"333\" /></p>\n<p>&nbsp;</p>\n<p><em>This August 26 post is our latest installment of our weekly roundup of the must read articles and advice on business, consulting, recruiting and jobs that we at ConsultantTrack are reading. See <a href=\"http://consultanttrack.com/reading-aug-12-edition/#.V7YhLigrKDs\">last week&#8217;s roundup</a> and send articles you think we should feature to ssmith@rainesinternational.com.</em></p>\n<p>&nbsp;</p>\n<p>1. Forbes pointed to a new study from Robert Half about employee engagement and management that may impact performance. The survey found only 47% of employees found the connection &#8220;between your day-to-day duties and how they contribute to the company&#8217;s bottom line.&#8221;</p>\n<p>According to Robert Half&#8217;s survey, &#8220;employees who see the direct correlation between their contributions and company performance are more engaged, make better spending decisions, and can identify new ways to increase productivity and growth.&#8221; Read &#8220;<a href=\"http://www.forbes.com/sites/victorlipman/2016/08/15/new-study-employees-often-dont-know-how-their-job-affects-bottom-line/?utm_source=TWITTER&amp;utm_medium=social&amp;utm_content=546339629&amp;utm_campaign=sprinklrForbesLeaders#203a9c873a11\">New Study: Employees often don&#8217;t know how their job affects the bottom line.&#8221;</a></p>\n<p>&nbsp;</p>\n<p>2. United Airlines has made some changes to its management. The airline is appointing Andrew Levy as CEO and former Boston Consulting Group partner Julia Haywood as chief commercial officer. Read &#8220;<a href=\"http://www.businessinsider.com/r-united-air-shakes-up-management-names-cfo-chief-commercial-officer-2016-8\">United Airlines just announced a management shakeup.&#8221;</a></p>\n<p>&nbsp;</p>\n<p>3. KPMG looked at the advantage to apprenticeships for helping people obtain degrees, and the way that impacts recruiters. &#8220;Degree apprenticeships present an opportunity to recruit from a wider talent pool and build a more diverse workforce,&#8221; according to KPMG.</p>\n<p>Read <a href=\"https://home.kpmg.com/uk/en/home/insights/2016/08/new-apprenticeship-levy-a-game-changer-for-graduate-recruiters.html?utm_source=twitter&amp;utm_medium=social&amp;utm_campaign=ou&amp;hootPostID=54d63739354efee3b3e26855799873ac\">&#8220;Apprenticeship levy: a game changer for graduate recruiters.&#8221;</a></p>\n<p>4.  &#8220;Simply put, we are biased to hire people that think like us,&#8221; Adam Hartung wrote at Forbes. But, he reminded hiring managers need to hire those who think differently. &#8220;Diverse thinking leads to working better, and smarter, to see if your assumptions, ideas and actions can perform better than your challengers,&#8221; he wrote.</p>\n<p>Hartung recommended companies &#8220;put results and accomplishments ahead of culture or fit,&#8221; and &#8220;set goals, not process.&#8221; Read<a href=\"http://www.forbes.com/sites/adamhartung/2016/08/12/mythbusters-6-steps-to-greater-diversity-and-superior-results/#4b6a387564d2\"> &#8220;Mythbusters: Six Steps to Greater Diversity and Superior Results.&#8221;</a></p>\n",
+      "excerpt": "<p>&nbsp; This August 26 post is our latest installment of our weekly roundup of the must read articles and advice on business, consulting, recruiting and jobs that we at ConsultantTrack are reading. See last week&#8217;s roundup and send articles you think we should feature to ssmith@rainesinternational.com. &nbsp; 1. Forbes pointed to a new study from Robert [&hellip;]</p>\n",
+      "slug": "reading-august-26",
+      "guid": "http://consultanttrack.com/?p=8142",
+      "status": "publish",
+      "sticky": false,
+      "password": "",
+      "parent": false,
+      "type": "post",
+      "discussion": {
+        "comments_open": false,
+        "comment_status": "closed",
+        "pings_open": false,
+        "ping_status": "closed",
+        "comment_count": 0
+      },
+      "likes_enabled": true,
+      "sharing_enabled": true,
+      "like_count": 0,
+      "i_like": false,
+      "is_reblogged": false,
+      "is_following": false,
+      "global_ID": "46e2e5343986fa90f202ee7debf376d3",
+      "featured_image": "",
+      "post_thumbnail": null,
+      "format": "standard",
+      "geo": false,
+      "menu_order": 0,
+      "page_template": "",
+      "publicize_URLs": [],
+      "terms": {
+        "category": {
+          "Uncategorized": {
+            "ID": 1,
+            "name": "Uncategorized",
+            "slug": "uncategorized",
+            "description": "",
+            "post_count": 65,
+            "parent": 0,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:uncategorized",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:uncategorized/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          }
+        },
+        "post_tag": {
+          "1": {
+            "ID": 5584,
+            "name": "1",
+            "slug": "1",
+            "description": "",
+            "post_count": 1,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/tags/slug:1",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/tags/slug:1/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          }
+        },
+        "post_format": {},
+        "mentions": {}
+      },
+      "tags": {
+        "1": {
+          "ID": 5584,
+          "name": "1",
+          "slug": "1",
+          "description": "",
+          "post_count": 1,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/tags/slug:1",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/tags/slug:1/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        }
+      },
+      "categories": {
+        "Uncategorized": {
+          "ID": 1,
+          "name": "Uncategorized",
+          "slug": "uncategorized",
+          "description": "",
+          "post_count": 65,
+          "parent": 0,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:uncategorized",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:uncategorized/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        }
+      },
+      "attachments": {},
+      "attachment_count": 0,
+      "metadata": false,
+      "meta": {
+        "links": {
+          "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8142",
+          "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8142/help",
+          "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176",
+          "replies": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8142/replies/",
+          "likes": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8142/likes/"
+        }
+      },
+      "capabilities": {
+        "publish_post": false,
+        "delete_post": false,
+        "edit_post": false
+      },
+      "other_URLs": {}
+    }
+
+var sampleprofiles = [{
+  "found": 1,
+  "posts": [
+    {
+      "ID": 8151,
+      "site_ID": 112512176,
+      "author": {
+        "ID": 106218500,
+        "login": "rainesinternational",
+        "email": false,
+        "name": "rainesinternational",
+        "first_name": "",
+        "last_name": "",
+        "nice_name": "rainesinternational",
+        "URL": "http://rainesinternational.wordpress.com",
+        "avatar_URL": "https://2.gravatar.com/avatar/b9d244ede991b8aefb16b6878d4c0242?s=96&d=identicon&r=G",
+        "profile_URL": "http://en.gravatar.com/rainesinternational",
+        "site_ID": 112512176
+      },
+      "date": "2016-09-04T16:17:43+00:00",
+      "modified": "2016-09-04T22:25:56+00:00",
+      "title": "Jorge",
+      "URL": "https://rainesinternational.wordpress.com/2016/09/04/jorge/",
+      "short_URL": "http://wp.me/s7C5yw-jorge",
+      "content": "<p>Title: SVP, Head of Operations, North America</p>\n<p>Current Firm: DigitasLBi</p>\n<p>Consulting Firm: BCG</p>\n<p>&nbsp;</p>\n<p><em>You spent your pre-MBA career at the Boston Consulting Group, leaving after four years to earn your MBA at MIT. What prompted you to pursue your MBA at that point?</em></p>\n<p><em>After business school you returned to BCG. What was your experience like in BCG’s New York office after spending your first four years with the firm in Madrid?</em></p>\n<p><em>What were you looking to get out of your consulting experience the second time around?</em></p>\n<p><em>Within consulting, how did you make your way into the Technology, Media &amp; Entertainment Practice?</em></p>\n<p><em>At what point did you decide to pursue opportunities outside the firm?</em></p>\n<p><em>How did the opportunity at AOL come about?</em></p>\n<p><em>You joined AOL after nearly eight years with BCG. What was the transition like from management consulting to industry given your extensive consulting background? Were there any surprises or challenges?</em></p>\n<p><em>You have worked in many different work environments during your post-consulting career, with 3.5 years under the leadership of Tim Armstrong at AOL and Huffington Post, nearly a year in a high-risk high-reward start-up environment at Fusion, and in the post-merger environment of DigitasLBi. Having worked under a variety of CEOs, what do you find most compelling in a leader?</em></p>\n<p><em>How did you come to know what the best leadership style is for you?</em></p>\n<p><em>As you know, there has been a lot of discussion recently on the composition of the advertising workforce. How do you see DigitasLBi highlighting diversity as a priority and how do you address these issues within your own role?</em></p>\n<p><em>On the topic of the advertising industry, digital and mobile are taking a sizable share of companies’ advertising budgets. How is your company embracing the shift to digital and how are you preparing for that in your own role?</em></p>\n<p><em>Looking back on your experiences over the five years since you left the Boston Consulting Group, how has your consulting experience shaped your career since leaving the firm? Could you have arrived to the same point without it?</em></p>\n<p>&nbsp;</p>\n",
+      "excerpt": "<p>Jorge Urrutia del Pozo spent the first eight years of his professional career at The Boston Consulting Group. Leaving the firm as a Principal, he joined the corporate world and quickly climbed the ranks through a series of high-performing companies to become SVP, Head of Operations at DigitasLBi. Read on as he shares his thoughts on how consulting prepares you for the &#8220;real world,&#8221; the ins and outs of effective leadership, and embracing the changing face of the advertising industry.</p>\n<p>Interviewed by Jessica DeOliveira, June 2016.</p>\n",
+      "slug": "jorge",
+      "guid": "https://rainesinternational.wordpress.com/?p=8151",
+      "status": "publish",
+      "sticky": false,
+      "password": "",
+      "parent": false,
+      "type": "post",
+      "discussion": {
+        "comments_open": true,
+        "comment_status": "open",
+        "pings_open": true,
+        "ping_status": "open",
+        "comment_count": 0
+      },
+      "likes_enabled": true,
+      "sharing_enabled": true,
+      "like_count": 1,
+      "i_like": false,
+      "is_reblogged": false,
+      "is_following": false,
+      "global_ID": "37c92ea51aa729c2a5294d961fbad7d9",
+      "featured_image": "https://rainesinternational.files.wordpress.com/2016/09/jorge.jpg",
+      "post_thumbnail": {
+        "ID": 8164,
+        "URL": "https://rainesinternational.files.wordpress.com/2016/09/jorge.jpg",
+        "guid": "http://rainesinternational.files.wordpress.com/2016/09/jorge.jpg",
+        "mime_type": "image/jpeg",
+        "width": 377,
+        "height": 377
+      },
+      "format": "standard",
+      "geo": false,
+      "menu_order": 0,
+      "page_template": "",
+      "publicize_URLs": [],
+      "terms": {
+        "category": {
+          "Advertising": {
+            "ID": 521,
+            "name": "Advertising",
+            "slug": "advertising",
+            "description": "",
+            "post_count": 1,
+            "parent": 3570,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:advertising",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:advertising/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Featured Profile": {
+            "ID": 2590484,
+            "name": "Featured Profile",
+            "slug": "featured-profile",
+            "description": "",
+            "post_count": 1,
+            "parent": 0,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:featured-profile",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:featured-profile/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Home Page - Profiles": {
+            "ID": 535858879,
+            "name": "Home Page - Profiles",
+            "slug": "home-page-profiles",
+            "description": "",
+            "post_count": 1,
+            "parent": 2590484,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:home-page-profiles",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:home-page-profiles/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Industry": {
+            "ID": 3570,
+            "name": "Industry",
+            "slug": "industry",
+            "description": "",
+            "post_count": 1,
+            "parent": 3053,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:industry",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:industry/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Marketing": {
+            "ID": 175,
+            "name": "Marketing",
+            "slug": "marketing",
+            "description": "",
+            "post_count": 1,
+            "parent": 9160,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:marketing",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:marketing/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Operations": {
+            "ID": 28285,
+            "name": "Operations",
+            "slug": "operations",
+            "description": "",
+            "post_count": 1,
+            "parent": 9160,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:operations",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:operations/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Profile": {
+            "ID": 3053,
+            "name": "Profile",
+            "slug": "profile",
+            "description": "",
+            "post_count": 1,
+            "parent": 0,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:profile",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:profile/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Profiles Page - Profiles": {
+            "ID": 535858920,
+            "name": "Profiles Page - Profiles",
+            "slug": "profiles-page-profiles",
+            "description": "",
+            "post_count": 1,
+            "parent": 2590484,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:profiles-page-profiles",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:profiles-page-profiles/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Strategy": {
+            "ID": 8553,
+            "name": "Strategy",
+            "slug": "strategy",
+            "description": "",
+            "post_count": 1,
+            "parent": 9160,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:strategy",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:strategy/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Technology": {
+            "ID": 6,
+            "name": "Technology",
+            "slug": "technology",
+            "description": "",
+            "post_count": 1,
+            "parent": 9160,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:technology",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:technology/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          },
+          "Track": {
+            "ID": 9160,
+            "name": "Track",
+            "slug": "track",
+            "description": "",
+            "post_count": 1,
+            "parent": 3053,
+            "meta": {
+              "links": {
+                "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:track",
+                "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:track/help",
+                "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+              }
+            }
+          }
+        },
+        "post_tag": {},
+        "post_format": {},
+        "mentions": {}
+      },
+      "tags": {},
+      "categories": {
+        "Advertising": {
+          "ID": 521,
+          "name": "Advertising",
+          "slug": "advertising",
+          "description": "",
+          "post_count": 1,
+          "parent": 3570,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:advertising",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:advertising/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Featured Profile": {
+          "ID": 2590484,
+          "name": "Featured Profile",
+          "slug": "featured-profile",
+          "description": "",
+          "post_count": 1,
+          "parent": 0,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:featured-profile",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:featured-profile/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Home Page - Profiles": {
+          "ID": 535858879,
+          "name": "Home Page - Profiles",
+          "slug": "home-page-profiles",
+          "description": "",
+          "post_count": 1,
+          "parent": 2590484,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:home-page-profiles",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:home-page-profiles/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Industry": {
+          "ID": 3570,
+          "name": "Industry",
+          "slug": "industry",
+          "description": "",
+          "post_count": 1,
+          "parent": 3053,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:industry",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:industry/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Marketing": {
+          "ID": 175,
+          "name": "Marketing",
+          "slug": "marketing",
+          "description": "",
+          "post_count": 1,
+          "parent": 9160,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:marketing",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:marketing/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Operations": {
+          "ID": 28285,
+          "name": "Operations",
+          "slug": "operations",
+          "description": "",
+          "post_count": 1,
+          "parent": 9160,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:operations",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:operations/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Profile": {
+          "ID": 3053,
+          "name": "Profile",
+          "slug": "profile",
+          "description": "",
+          "post_count": 1,
+          "parent": 0,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:profile",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:profile/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Profiles Page - Profiles": {
+          "ID": 535858920,
+          "name": "Profiles Page - Profiles",
+          "slug": "profiles-page-profiles",
+          "description": "",
+          "post_count": 1,
+          "parent": 2590484,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:profiles-page-profiles",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:profiles-page-profiles/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Strategy": {
+          "ID": 8553,
+          "name": "Strategy",
+          "slug": "strategy",
+          "description": "",
+          "post_count": 1,
+          "parent": 9160,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:strategy",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:strategy/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Technology": {
+          "ID": 6,
+          "name": "Technology",
+          "slug": "technology",
+          "description": "",
+          "post_count": 1,
+          "parent": 9160,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:technology",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:technology/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        },
+        "Track": {
+          "ID": 9160,
+          "name": "Track",
+          "slug": "track",
+          "description": "",
+          "post_count": 1,
+          "parent": 3053,
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:track",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/categories/slug:track/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176"
+            }
+          }
+        }
+      },
+      "attachments": {
+        "8164": {
+          "ID": 8164,
+          "URL": "https://rainesinternational.files.wordpress.com/2016/09/jorge.jpg",
+          "guid": "http://rainesinternational.files.wordpress.com/2016/09/jorge.jpg",
+          "date": "2016-09-04T16:17:21+00:00",
+          "post_ID": 8151,
+          "author_ID": 106218500,
+          "file": "jorge.jpg",
+          "mime_type": "image/jpeg",
+          "extension": "jpg",
+          "title": "jorge",
+          "caption": "",
+          "description": "",
+          "alt": "",
+          "thumbnails": {
+            "thumbnail": "https://rainesinternational.files.wordpress.com/2016/09/jorge.jpg?w=150",
+            "medium": "https://rainesinternational.files.wordpress.com/2016/09/jorge.jpg?w=300",
+            "large": "https://rainesinternational.files.wordpress.com/2016/09/jorge.jpg?w=377"
+          },
+          "height": 377,
+          "width": 377,
+          "exif": {
+            "aperture": "11",
+            "credit": "DAVE MEAD",
+            "camera": "NIKON D800",
+            "caption": "",
+            "created_timestamp": "1457531376",
+            "copyright": "DAVE MEAD",
+            "focal_length": "70",
+            "iso": "125",
+            "shutter_speed": "0.00625",
+            "title": "",
+            "orientation": "0",
+            "keywords": []
+          },
+          "meta": {
+            "links": {
+              "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/media/8164",
+              "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/media/8164/help",
+              "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176",
+              "parent": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8151"
+            }
+          }
+        }
+      },
+      "attachment_count": 1,
+      "metadata": [
+        {
+          "id": "4881",
+          "key": "_thumbnail_id",
+          "value": "8164"
+        },
+        {
+          "id": "4885",
+          "key": "_wpas_done_15333002",
+          "value": "1"
+        }
+      ],
+      "meta": {
+        "links": {
+          "self": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8151",
+          "help": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8151/help",
+          "site": "https://public-api.wordpress.com/rest/v1.1/sites/112512176",
+          "replies": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8151/replies/",
+          "likes": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/posts/8151/likes/"
+        }
+      },
+      "capabilities": {
+        "publish_post": false,
+        "delete_post": false,
+        "edit_post": false
+      },
+      "other_URLs": {}
+    }
+  ],
+  "meta": {
+    "links": {
+      "counts": "https://public-api.wordpress.com/rest/v1.1/sites/112512176/post-counts/post"
+    },
+    "wpcom": true
+  }
+}]
+
 export const firms = { '38': 'Fortune 500 Service Company',
   '49': 'Fortune 100 CPG Company',
   '55': 'Multibillion-dollar Telecommunications Company',
@@ -171,21 +797,33 @@ export const firms = { '38': 'Fortune 500 Service Company',
   '856': 'Hickory Farms, Inc.',
   '865': 'High-growth Consumer Goods Company' };
 
-export const industries = [ { value: '25', label: 'Manufacturing' },
-  { value: '26', label: 'Services' },
-  { value: '42', label: 'Investment Management' },
-  { value: '45', label: 'Technology' },
-  { value: '50', label: 'Private Equity' },
-  { value: '67', label: 'Nonprofit' },
-  { value: '162', label: 'Consumer Goods' },
-  { value: '170', label: 'Automotive' },
-  { value: '225', label: 'Entertainment' },
-  { value: '231', label: 'Retail' },
-  { value: '234', label: 'Financial Services' },
-  { value: '242', label: 'Healthcare' },
-  { value: '651', label: 'Real Estate' },
-  { value: '653', label: 'Startup' },
-  { value: '846', label: 'Advertising' } ];
+export const industries = [
+  'Manufacturing',
+  'Services',
+  'Investment Management',
+  'Technology',
+  'Private Equity',
+  'Nonprofit',
+  'Consumer Goods',
+  'Automotive',
+  'Entertainment',
+  'Retail',
+  'Financial Services',
+  'Healthcare',
+  'Real Estate',
+  'Startup',
+  'Advertising'
+];
+
+export const trackTypes = [
+  'General Management',
+  'Marketing',
+  'Human Resources',
+  'Strategy',
+  'Finance',
+  'Operations',
+  'Technology' 
+];
 
 export const titles = { '6': 'Associate',
   '7': 'Director',
@@ -413,13 +1051,7 @@ export const titles = { '6': 'Associate',
   '863': 'Head of Product Marketing',
   '864': 'Head of Retail Operations' };
 
-export const trackTypes = [ { value: '21', label: 'General Management' },
-  { value: '237', label: 'Marketing' },
-  { value: '293', label: 'Human Resources' },
-  { value: '760', label: 'Strategy' },
-  { value: '761', label: 'Finance' },
-  { value: '762', label: 'Operations' },
-  { value: '764', label: 'Technology' } ];
+
 
 
 // http://www.consultanttrack.com/wp-json/wp/v2/track-types/?per_page=100
