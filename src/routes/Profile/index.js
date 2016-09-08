@@ -18,31 +18,22 @@ class Profile extends React.Component {
     const profileId = this.props.location.pathname.slice(9).split('-')[0];
     this.setState({ location: this.props.location.pathname });
 
-    const currentProfile = this.props.wordpress.currentProfile;
-    const cachedProfile = currentProfile && currentProfile.id == profileId;
-    if (this.props.wordpress && !this.props.wordpress.profiles.length) {
-      this.props.actions.fetchProfile(profileId)
-    } else if (this.props.wordpress && this.props.wordpress.profiles.length && !currentProfile) {
-      this.setState({
-        currentProfile: this.props.wordpress.profiles.filter((profile) => profile.id == profileId)[0]
-      })
-    } else if (!cachedProfile) {
-      this.setState({
-        currentProfile: this.props.wordpress.profiles.filter((profile) => profile.id == profileId)[0]
-      })
+    if (!this.props.wordpress.profiles.length) {
+      this.props.actions.fetchProfiles()
+        .then(() => {
+          let currentProfile = this.props.wordpress.profiles.filter(profile => profile.ID == profileId)[0];
+          this.setState({ currentProfile })
+        })
+
+    } else {
+      let currentProfile = this.props.wordpress.profiles.filter(profile => profile.ID == profileId)[0];
+      this.setState({ currentProfile })
     }
   }
 
   render() {
-    const profile = this.state.currentProfile || this.props.wordpress.currentProfile;
-    let contentStr;
-    let imgSrc;
-    let questions;
-    let answers;
-    if (profile && profile.id) {
-      questions = profile[""].question;
-      answers   = profile[""].answer;
-    }
+    const profile = this.state.currentProfile;
+
 
     return (
       <div className={classes.profile}>
@@ -53,7 +44,7 @@ class Profile extends React.Component {
             <div className={`${classes.image} col-lg-5 col-md-5 col-sm-12 col-xs-12`}>
               {
                 profile ?
-                <img src={profile.imageURL}/> : ""
+                <img src={profile.post_thumbnail.URL}/> : ""
               }
             </div>
             <div className={`${classes.info} col-lg-7 col-md-7 col-sm-12 col-xs-12`}>
@@ -61,31 +52,25 @@ class Profile extends React.Component {
                 profile ?
                 <div>
                   <div className={classes.name}>
-                    <h1>{profile.title.rendered}</h1>
+                    <h1>{profile.title}</h1>
                   </div>
                   <div className={classes.position}>
-                    <h5>{utils.decodeEntities(data.titles[profile.titles[0]])}</h5>
+                    <h5>{profile.position}</h5>
                   </div>
                   <div className={classes.company}>
-                    <h5>{utils.decodeEntities(data.firms[profile.firms[0]])}</h5>
+                    <h5>{profile.current_firm}</h5>
                   </div>
                   <div className={classes.excerpt}>
-                    <h5>{utils.decodeEntities(profile.excerpt.rendered)}</h5>
+                    <h5>{utils.decodeEntities(profile.excerpt)}</h5>
                   </div>
                 </div> : ""
               }
             </div>
             <div className={`${classes.interview} col-lg-12  col-md-6 col-sm-12 col-xs-12`}>
               {
-                questions ?
-                questions.map((question, i) => {
-                  return (
-                    <div className={classes.qa} key={i}>
-                      <p className={classes.question}>{questions[i]}</p>
-                      <p className={classes.answer}>{answers[i]}</p>
-                    </div>
-                  )
-                }) : ""
+                profile ? <div className={classes.qa}>
+                  <div dangerouslySetInnerHTML={{__html: profile.content}}></div>
+                </div> : ""
               }
             </div>
           </div>

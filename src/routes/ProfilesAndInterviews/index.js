@@ -67,10 +67,6 @@ class ProfilesAndInterviews extends React.Component {
     console.log('the displayed profiles', displayedProfiles)
     console.log(this.state.selectedIndustry, this.state.selectedTrack)
 
-    // TODO: Make sure to get the correct Technology category names in data.js
-    // Better TODO: Instead of hard-coding Industry List and Track List in data.js, fetch these arrays dynamically from WP by querying /categories and sorting by Parent ID for industry, track
-    // TODO: change "Title: " in WP to "Position: ". also edit reducer that currently parses "Title: "
-
     function filterByIndustryAndType(profile) {
       let industry = this.state.selectedIndustry && this.state.selectedIndustry.value;
       let track    = this.state.selectedTrack && this.state.selectedTrack.value;
