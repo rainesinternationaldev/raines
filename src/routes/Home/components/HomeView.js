@@ -15,60 +15,65 @@ import * as data from './data';
 class HomeView extends React.Component {
   constructor(props) {
 		super(props);
-
-    this.state = {
-      categories: {
-        306:  'All Posts',
-        307:  'Career Transition',
-        44:   'CEO',
-        825:  'Consulting',
-        862:  'Diversity',
-        27:   'Interview Tips',
-        446:  'Offers',
-        264:  'Startups',
-        1:    'Uncategorized'
-      }
-    }
 	}
 
   componentWillMount() {
     if (!this.props.wordpress.posts.length) {
       this.props.actions.fetchPosts(4, 0, 1);
+      this.props.actions.fetchFeaturedOnHomepage('Home Page - Insight');
+      this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
     }
 
     if (!this.props.wordpress.profiles.length) {
-      this.props.actions.fetchProfiles()
-        // .then(() => { console.log('fetched profiles') });
+      this.props.actions.fetchProfiles();
+    }
+  }
+
+  componentWillReceiveProps() {
+    if (!this.props.wordpress.posts.length) {
+      this.props.actions.fetchPosts(4, 0, 1);
+      this.props.actions.fetchFeaturedOnHomepage('Home Page - Insight');
+      this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
+    }
+
+    if (!this.props.wordpress.profiles.length) {
+      this.props.actions.fetchProfiles();
     }
   }
 
   render() {
     const posts = this.props.wordpress.posts;
-    let featuredPost;
-    let imgSrc;
     let mostRecentPosts;
     if (posts.length) {
-      const mainPost = posts[0];
-      const contentStr = mainPost.content.rendered;
-      const el = $('<div></div>');
-      el.html(contentStr);
-      const featuredImg = $('img', el)[0];
-      imgSrc = featuredImg
-        ? $('img', el)[0].src
-        : "https://images.unsplash.com/photo-1430609098125-581618d0482f?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1274&amp;h=849&amp;q=80";
-
-      featuredPost = posts[0]; // this may change
       mostRecentPosts = posts.slice(0, 3);
+      mostRecentPosts.forEach(p => {
+        for (let c in p.categories) {
+          let theseDontCount = ['Article', 'Home Page - Insight', 'Home Page - Perspective', 'Featured Article'];
+          if ( theseDontCount.indexOf(c) === -1 ) {
+            p.mainCategory = c;
+          }
+        }
+      })
     }
 
+    const featuredArticleOnHomepage = this.props.wordpress.featuredArticleOnHomepage;
+    let featuredMainArticle;
+    if (featuredArticleOnHomepage.length) {
+      featuredMainArticle = featuredArticleOnHomepage[0];
+    }
 
-    let profiles = this.props.wordpress.profiles;
-    let firstThree = profiles && profiles.slice(0, 3);
-    let firstFour = profiles && profiles.slice(0, 4);
+    const featuredPerspectiveOnHomepage = this.props.wordpress.featuredPerspectiveOnHomepage;
+    let featuredPerspectives;
+    if (featuredPerspectiveOnHomepage.length) {
+      featuredPerspectives = featuredPerspectiveOnHomepage.slice(0, 3);
+    }
+
+    const featuredProfiles = this.props.wordpress.featuredProfilesOnHomepage;
 
 
     return (
       <div className={classes.home}>
+        {
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <hr className={classes.hr}/>
@@ -90,19 +95,19 @@ class HomeView extends React.Component {
               <h4 className={classes.subtitle}>Featured Insights</h4>
               <hr />
               {
-                posts.length ?
+                featuredMainArticle ?
                 <div>
                   <div className={`${classes.imageContainer} col-lg-8 col-md-8 col-sm-8 col-xs-12`}>
-                    <Link to={`/article/${featuredPost.id}-${utils.formatTitle(featuredPost.title.rendered)}`}>
-                      <img className={classes.featuredImage} src={imgSrc}/>
+                    <Link to={`/article/${featuredMainArticle.ID}`}>
+                      <img className={classes.featuredImage} src={featuredMainArticle.post_thumbnail.URL}/>
                     </Link>
                   </div>
                   <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <Link to={`/article/${featuredPost.id}-${utils.formatTitle(featuredPost.title.rendered)}`}>
-                      <h4 className={classes.articleTitle}>{utils.decodeEntities(featuredPost.title.rendered)}</h4>
+                    <Link to={`/article/${featuredMainArticle.ID}`}>
+                      <h4 className={classes.articleTitle}>{utils.decodeEntities(featuredMainArticle.title)}</h4>
                     </Link>
-                    <p className={classes.date}>{moment(featuredPost.date).format('MMMM YYYY')}</p>
-                    <p className={classes.excerpt}>{utils.decodeEntities(featuredPost.excerpt.rendered)}</p>
+                    <p className={classes.date}>{moment(featuredMainArticle.date).format('MMMM YYYY')}</p>
+                    <p className={classes.excerpt}>{utils.decodeEntities(featuredMainArticle.excerpt)}</p>
                   </div>
                 </div>
                 : ""
@@ -112,25 +117,19 @@ class HomeView extends React.Component {
               <h4 className={classes.subtitle}>Most Recent</h4>
               <hr/>
               {
-                posts.length ?
+                mostRecentPosts ?
                 mostRecentPosts.map((post, i) => {
-                  // console.log(post)
                   return (
                     <div className={classes.article} key={i}>
-                      <p className={classes.topicPreview}>{this.state.categories[post.categories[0]]}</p>
-                      <Link to={`/article/${post.id}-${utils.formatTitle(post.title.rendered)}`}>
-                        <h4 className={classes.articleTitle}>{utils.decodeEntities(post.title.rendered)}</h4>
+                      <p className={classes.topicPreview}>{post.mainCategory}</p>
+                      <Link to={`/article/${post.ID}`}>
+                        <h4 className={classes.articleTitle}>{utils.decodeEntities(post.title)}</h4>
                       </Link>
                     </div>
                   )
                 }) : ""
               }
             </div>
-            {
-              // <div className={`${classes.end} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-              //   <hr/>
-              // </div>
-            }
           </div>
           <div className={`${classes.featuredProfiles} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -138,18 +137,18 @@ class HomeView extends React.Component {
               <hr />
             </div>
             {
-              firstFour.length ?
-              firstFour.map((profile, i) => {
+              featuredProfiles.length ?
+              featuredProfiles.map((profile, i) => {
                 return (
                   <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
-                    <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title.rendered)}`}>
-                      <img src={profile.imageURL}/>
+                    <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title)}`}>
+                      <img src={profile.post_thumbnail.URL}/>
                     </Link>
-                    <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title.rendered)}`}>
-                      <h5 className={classes.name}>{profile.title.rendered}</h5>
+                    <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title)}`}>
+                      <h5 className={classes.name}>{profile.title}</h5>
                     </Link>
-                    <h5 className={classes.position}>{data.titles[profile.titles[0]]}</h5>
-                    <h5 className={classes.company}>{data.firms[profile.firms[0]]}</h5>
+                    <h5 className={classes.position}>{profile.position}</h5>
+                    <h5 className={classes.company}>{profile.current_firm}</h5>
                   </div>
                 )
               }) : ""
@@ -160,20 +159,22 @@ class HomeView extends React.Component {
               <h4 className={classes.subtitle}>New Perspectives</h4>
               <hr/>
             </div>
-            <div className={`${classes.article} col-lg-4 col-md-4 col-sm-4 col-xs-12`}>
-              <img className={classes.perspectiveImage} src="https://images.unsplash.com/photo-1430609098125-581618d0482f?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1274&amp;h=849&amp;q=80"/>
-              <h6>Responding to the global refuge crisis</h6>
-            </div>
-            <div className={`${classes.article} col-lg-4 col-md-4 col-sm-4 col-xs-12`}>
-              <img className={classes.perspectiveImage} src="https://images.unsplash.com/photo-1430609098125-581618d0482f?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1274&amp;h=849&amp;q=80"/>
-              <h6>Responding to the global refuge crisis</h6>
-            </div>
-            <div className={`${classes.article} col-lg-4 col-md-4 col-sm-4 col-xs-12`}>
-              <img className={classes.perspectiveImage} src="https://images.unsplash.com/photo-1430609098125-581618d0482f?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1274&amp;h=849&amp;q=80"/>
-              <h6>Responding to the global refuge crisis</h6>
-            </div>
+            {
+              featuredPerspectives ?
+              featuredPerspectives.map((article, i) => {
+                return (
+                  <div className={`${classes.article} col-lg-4 col-md-4 col-sm-4 col-xs-12`} key={i}>
+                    <Link to={`/article/${article.ID}`}>
+                      <img className={classes.perspectiveImage} src={article.post_thumbnail.URL}/>
+                      <h6>{utils.decodeEntities(article.title)}</h6>
+                    </Link>
+                  </div>
+                )
+              }) : ""
+            }
           </div>
         </div>
+        }
       </div>
     );
   }

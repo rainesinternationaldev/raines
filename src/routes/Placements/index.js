@@ -46,18 +46,7 @@ class Placements extends React.Component {
               $(`.description-${i}`).slideToggle('fast');
             })
           })
-        })
-        .then(() => {
-          return this.props.actions.fetchPlacements(100, 10);
-        })
-        .then(() => {
-          this.props.placements.forEach((placement, i) => {
-            $(`.placement-${i+10}`).click(() => {
-              $(`.description-${i+10}`).slideToggle('fast');
-            })
-          })
-        })
-        ;
+        });
     } else {
       this.props.placements.forEach((placement, i) => {
         $(`.placement-${i}`).click(() => {
@@ -70,9 +59,9 @@ class Placements extends React.Component {
     const placements = this.props.placements;
     if (placements.length) {
       placements.forEach((placement, i) => {
-        let split = placement.title.rendered.split(',');
-        placement.title.head = utils.decodeEntities(split.slice(0, split.length - 1).join(','));
-        placement.title.tail = utils.decodeEntities(split[split.length - 1]);
+        let split = placement.title.split(',');
+        placement.head = utils.decodeEntities(split.slice(0, split.length - 1).join(','));
+        placement.tail = utils.decodeEntities(split[split.length - 1]);
       })
     }
     let displayedPlacements = placements.slice(0, this.state.numDisplayed);
@@ -86,10 +75,9 @@ class Placements extends React.Component {
             displayedPlacements.map((placement, i) => {
               return (
                 <div className={`${classes.placement} col-lg-12 col-md-12 col-sm-12 col-xs-12 placement-${i}`} key={i}>
-                  <p className={`${classes.date} date-${i}`}>{moment(placement.date).format('MMMM YYYY')}</p>
-                  <h1>{placement.title.head}</h1><h4>{placement.title.tail}</h4>
+                  <h1>{placement.head}</h1><h4>{placement.tail}</h4>
                   <div className={`${classes.description} description-${i} col-lg-8 col-lg-offset-2`}>
-                    <div dangerouslySetInnerHTML={{__html: placement.content.rendered}}></div>
+                    <div dangerouslySetInnerHTML={{__html: placement.content}}></div>
                   </div>
                   {
                     i === displayedPlacements.length - 1 ?

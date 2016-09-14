@@ -18,20 +18,6 @@ export class Article extends React.Component {
     super(props);
 
     this.displayPrintPreview = window.print;
-
-    this.state = {
-      categories: {
-        306:  'All Posts',
-        307:  'Career Transition',
-        44:   'CEO',
-        825:  'Consulting',
-        862:  'Diversity',
-        27:   'Interview Tips',
-        446:  'Offers',
-        264:  'Startups'
-      },
-      location: null
-    }
   }
 
   componentWillMount() {
@@ -73,38 +59,6 @@ export class Article extends React.Component {
     const LinkedinIcon = generateShareIcon('linkedin');
 
     const post = this.props.wordpress.currentPost;
-    let contentStr;
-    let imgSrc;
-    let title;
-    let date;
-    let textContent;
-    let excerpt;
-    if (post && post.id) {
-      contentStr = post.content.rendered;
-      const el = $('<div></div>');
-      el.html(contentStr);
-
-      /**
-       * Detect whether the article's introductory block
-       * is an image. If so, slice it out of the content
-       * string and use it as the image source. Otherwise,
-       * use a stock photo as a feature and and generate
-       * the entire content string.
-       */
-      const firstPar = $('p', el)[0];
-      const child = $(firstPar).children();
-      if (child.is('img')) {
-        imgSrc = $('img', el)[0].src;
-        textContent = contentStr.split('</p>').slice(1).join('');
-      } else {
-        imgSrc = "https://images.unsplash.com/photo-1430609098125-581618d0482f?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1274&amp;h=849&amp;q=80";
-        textContent = contentStr;
-      }
-
-      title = utils.decodeEntities(post.title.rendered);
-      date = moment(post.date).format('MMMM YYYY');
-      excerpt = utils.decodeEntities(post.excerpt.rendered);
-    }
 
     const posts = this.props.wordpress.posts;
     let mostRecentPosts;
@@ -119,36 +73,36 @@ export class Article extends React.Component {
       <div className={classes.article}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
           {
-            post && post.id ?
+            post && post.ID ?
             <div className={`${classes.splashArticle} col-lg-9 col-md-9 col-sm-9 col-xs-12`}>
               <div className={`${classes.imageContainer} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-                <img className={classes.featuredImage} src={imgSrc}/>
+                <img className={classes.featuredImage} src={post.post_thumbnail.URL}/>
               </div>
               <div className={`${classes.socialMediaShare} socialMediaShare col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                 <div className={classes.socialMediaShareButton}>
                   <FacebookShareButton
-                    title={title}
+                    title={utils.decodeEntities(post.title)}
                     url={currentLocation}
-                    media={imgSrc}
-                    description={excerpt}>
+                    media={post.post_thumbnail.URL}
+                    description={utils.decodeEntities(post.excerpt)}>
                     <FacebookIcon size={32} round={true} />
                   </FacebookShareButton>
                 </div>
                 <div className={classes.socialMediaShareButton}>
                   <TwitterShareButton
-                    title={title}
+                    title={utils.decodeEntities(post.title)}
                     url={currentLocation}
-                    media={imgSrc}
-                    description={excerpt}>
+                    media={post.post_thumbnail.URL}
+                    description={utils.decodeEntities(post.excerpt)}>
                     <TwitterIcon size={32} round={true} />
                   </TwitterShareButton>
                 </div>
                 <div className={classes.socialMediaShareButton}>
                   <LinkedinShareButton
-                    title={title}
+                    title={utils.decodeEntities(post.title)}
                     url={currentLocation}
-                    media={imgSrc}
-                    description={excerpt}>
+                    media={post.post_thumbnail.URL}
+                    description={utils.decodeEntities(post.excerpt)}>
                     <LinkedinIcon size={32} round={true} />
                   </LinkedinShareButton>
                 </div>
@@ -160,9 +114,9 @@ export class Article extends React.Component {
                 </div>
               </div>
               <div className={`${classes.textBody} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-                <h4>{title}</h4>
-                <p className="date-preview">{date}</p>
-                <div dangerouslySetInnerHTML={{__html: textContent}}></div>
+                <h4>{utils.decodeEntities(post.title)}</h4>
+                <p className="date-preview">{moment(post.date).format('MMMM YYYY')}</p>
+                <div dangerouslySetInnerHTML={{__html: post.content}}></div>
               </div>
             </div> : ""
           }
@@ -174,9 +128,9 @@ export class Article extends React.Component {
               mostRecentPosts.map((post, i) => {
                 return (
                   <div className={classes.article} key={i}>
-                    <p className={classes.topicPreview}>{this.state.categories[post.categories[0]]}</p>
-                    <Link to={`/article/${post.id}-${utils.formatTitle(post.title.rendered)}`}>
-                      <h4>{utils.decodeEntities(post.title.rendered)}</h4>
+                    <p className={classes.topicPreview}>{post.mainCategory}</p>
+                    <Link to={`/article/${post.id}`}>
+                      <h4>{utils.decodeEntities(post.title)}</h4>
                     </Link>
                   </div>
                 )

@@ -26,8 +26,48 @@ import {
   FETCH_REMAINING_PROFILE_IMAGES_ASYNC_FAILURE
 } from '../constants';
 import { request } from './utils';
-const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
+// const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
+const baseurl = `https://public-api.wordpress.com/rest/v1.1/sites/rainesinternational.wordpress.com/posts?`;
 
+export const fetchFeaturedOnHomepageRequest = () => {
+  return {
+    type: FETCH_FEATURED_ON_HOMEPAGE_REQUEST
+  }
+};
+
+export const fetchFeaturedOnHomepageSuccess = (body) => {
+  return {
+    type: FETCH_FEATURED_ON_HOMEPAGE_SUCCESS,
+    payload: body
+  }
+}
+
+export const fetchFeaturedOnHomepageFailure = () => {
+  return {
+    type: FETCH_FEATURED_ON_HOMEPAGE_FAILURE
+  }
+};
+
+export const fetchFeaturedOnHomepage = (categoryId) => {
+  const url = `${baseurl}category=${categoryId}`
+	
+	return (dispatch) => {
+		dispatch(fetchFeaturedOnHomepageRequest());
+		return request
+			.get(url)
+			.end()
+			.then((response) => {
+        console.log('here is the response', response.body)
+				return dispatch(fetchFeaturedOnHomepageSuccess({
+          posts: response.body.posts,
+          category: categoryId
+        }));
+			})
+			.catch((error) => {
+				dispatch(fetchFeaturedOnHomepageFailure());
+			});
+	};
+}
 
 export const fetchPostsRequest = () => {
   return {
@@ -39,7 +79,7 @@ export const fetchPostsSuccess = (posts) => {
   return {
     type: FETCH_POSTS_SUCCESS,
     payload: {
-      posts
+      posts: posts.posts
     }
   }
 }
@@ -51,17 +91,25 @@ export const fetchPostsFailure = () => {
 };
 
 export const fetchPosts = (numPosts, offset, pageNum, categoryId) => {
-  let params = [];
-  let appendage;
-  if (numPosts) params.push(`per_page=${numPosts}`);
-  if (offset)   params.push(`offset=${offset}`);
-  if (pageNum)  params.push(`page=${pageNum}`);
-  if (categoryId) params.push(`categories=${categoryId}`);
-  if (params.length) appendage = '?' + params.join('&');
+  // let params = [];
+  // let appendage;
+  // if (numPosts) params.push(`per_page=${numPosts}`);
+  // if (offset)   params.push(`offset=${offset}`);
+  // if (pageNum)  params.push(`page=${pageNum}`);
+  // if (categoryId) params.push(`categories=${categoryId}`);
+  // if (params.length) appendage = '?' + params.join('&');
 
-  const query = appendage ? appendage : ``;
+  // const query = appendage ? appendage : ``;
 
-  const url = `${baseurl}/posts/${query}`;
+  let query = ``;
+  let category = `article`;
+  if (numPosts) query += `&number=${numPosts}`;
+  if (offset) query += `&offset=${offset}`;
+  if (pageNum) query += `&page=${pageNum}`;
+  if (categoryId) category = categoryId;
+
+  const url = `${baseurl}category=${category}${query}`
+  console.log('the url', url)
 	
 	return (dispatch) => {
 		dispatch(fetchPostsRequest());
@@ -69,6 +117,7 @@ export const fetchPosts = (numPosts, offset, pageNum, categoryId) => {
 			.get(url)
 			.end()
 			.then((response) => {
+        console.log('here is the response', response.body)
 				return dispatch(fetchPostsSuccess(response.body));
 			})
 			.catch((error) => {
@@ -84,6 +133,7 @@ export const fetchPostRequest = () => {
 };
 
 export const fetchPostSuccess = (post) => {
+  console.log('fetched post', post)
   return {
     type: FETCH_POST_SUCCESS,
     payload: {
@@ -99,8 +149,8 @@ export const fetchPostFailure = () => {
 };
 
 export const fetchPost = (id) => {
-  if (!id) id = "";
-  const url = `${baseurl}/posts/${id}`;
+  const url = `https://public-api.wordpress.com/rest/v1.1/sites/rainesinternational.wordpress.com/posts/${id}`;
+  console.log(url)
 	
 	return (dispatch) => {
 		dispatch(fetchPostRequest());
@@ -108,6 +158,7 @@ export const fetchPost = (id) => {
 			.get(url)
 			.end()
 			.then((response) => {
+        console.log('the response', response.body)
 				return dispatch(fetchPostSuccess(response.body));
 			})
 			.catch((error) => {
@@ -162,35 +213,22 @@ export const fetchProfilesFailure = () => {
 };
 
 export const fetchProfiles = () => {
-  const url = `${baseurl}/profiles/?per_page=100&orderby=menu_order&order=asc`;
-	
+  const url = `${baseurl}category=profile&number=100`;
+
 	return (dispatch) => {
 		dispatch(fetchProfilesRequest());
 		return request
 			.get(url)
 			.end()
 			.then((response) => {
-        let profiles = [];
-        let firstEight = response.body.slice(0, 8);
-        firstEight.forEach((profile) => {
-          let newProfile = fetchProfileImage(profile.featured_media)
-            .then((imageURL) => {
-              profile.imageURL = imageURL;
-              return profile;
-            })
-          profiles.push(newProfile);
-        });
-
-        return Promise.all(profiles).then((result) => {
-          const total = result.concat(response.body.slice(8));
-          return dispatch(fetchProfilesSuccess(total))
-        })
+        return dispatch(fetchProfilesSuccess(response.body.posts));
 			})
 			.catch((error) => {
 				dispatch(fetchProfilesFailure());
 			});
 	};
 }
+
 
 export const fetchProfileRequest = () => {
   return {

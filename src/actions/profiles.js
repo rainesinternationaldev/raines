@@ -38,7 +38,7 @@ export const fetchProfilesFailure = () => {
 };
 
 export const fetchProfiles = () => {
-  const url = `${baseurl}category=profile`;
+  const url = `${baseurl}category=profile&number=100`;
 	
 	return (dispatch) => {
 		dispatch(fetchProfilesRequest());
@@ -76,7 +76,7 @@ export const fetchProfileFailure = () => {
 };
 
 export const fetchProfile = (id) => {
-  const url = `${baseurl}/profiles/${id}`;
+  const url = `${baseurl}category=profile`;
 	
 	return (dispatch) => {
 		dispatch(fetchProfileRequest());
@@ -119,7 +119,7 @@ export const fetchFeaturedProfilesFailure = () => {
 };
 
 export const fetchFeaturedProfiles = (id) => {
-  const url = `${baseurl}/profiles/${id}`;
+  const url = `${baseurl}category=home-page-profiles`;
 	
 	return (dispatch) => {
 		dispatch(fetchFeaturedProfilesRequest());

@@ -4,7 +4,7 @@ import {
   FETCH_PLACEMENTS_FAILURE
 } from '../constants';
 import { request } from './utils';
-const baseurl = 'http://www.consultanttrack.com/wp-json/wp/v2';
+const baseurl = `https://public-api.wordpress.com/rest/v1.1/sites/rainesinternational.wordpress.com/posts?`;
 
 export const fetchPlacementsRequest = () => {
   return {
@@ -36,7 +36,7 @@ export const fetchPlacements = (numPlacements, offset, pageNum) => {
   if (params.length) appendage = '?' + params.join('&');
 
   const query = appendage ? appendage : ``;
-  const url = `${baseurl}/placements/${query}`;
+  const url = `${baseurl}category=placement&number=100`;
 
   return (dispatch) => {
     dispatch(fetchPlacementsRequest());

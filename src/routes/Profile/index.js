@@ -24,7 +24,6 @@ class Profile extends React.Component {
           let currentProfile = this.props.wordpress.profiles.filter(profile => profile.ID == profileId)[0];
           this.setState({ currentProfile })
         })
-
     } else {
       let currentProfile = this.props.wordpress.profiles.filter(profile => profile.ID == profileId)[0];
       this.setState({ currentProfile })
