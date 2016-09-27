@@ -69,7 +69,6 @@ class Placements extends React.Component {
     return (
       <div className={classes.placements}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
-          <hr className={classes.mainDivider}/>
           {
             displayedPlacements.length ?
             displayedPlacements.map((placement, i) => {

@@ -42,7 +42,8 @@ class Topic extends React.Component {
 
   componentDidMount() {
     const url = this.props.location.pathname.slice(20);
-    const topic = this.state.topics[url];
+    let topic = this.state.topics[url];
+    if (topic === 'Private Equity') topic = 'Private Equity Article';
     if (!this.props.wordpress.posts.length) {
       // fetch four latest articles in current category
       this.props.actions.fetchPosts(4, 0, 1, topic)
@@ -60,11 +61,15 @@ class Topic extends React.Component {
   }
 
   render() {
+    const { mediaType } = this.props;
     const url = this.props.location.pathname.slice(20);
     const topic = this.state.topics[url];
     let relevantArticles = this.props.wordpress.posts.filter((post) => post.categories[topic]);
 
     let nextArticles = relevantArticles.slice(4);
+
+    let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
+    console.log('mobile', mobile)
 
     return (
       <div className={`${classes.ideasAndInsights} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
@@ -75,12 +80,12 @@ class Topic extends React.Component {
             {
               relevantArticles.length ?
               <div>
-                <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+                <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-12 col-xs-12 ${mobile}`}>
                   <Link to={`/article/${relevantArticles[0].ID}`}>
                     <img src={relevantArticles[0].post_thumbnail.URL}/>
                   </Link>
                 </div>
-                <div className={`${classes.desc} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+                <div className={`${classes.desc} col-lg-6 col-md-6 col-sm-12 col-xs-12 ${mobile}`}>
                   <Link to={`/article/${relevantArticles[0].ID}`}>
                     <h3 className={classes.articleTitle}>{utils.decodeEntities(relevantArticles[0].title)}</h3>
                   </Link>
@@ -97,7 +102,7 @@ class Topic extends React.Component {
               <hr/>
             </div>
             {
-              relevantArticles.length ?
+              relevantArticles.length > 4 ?
               <div>
                 <div className={`${classes.latestArticle} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
                   <Link to={`/article/${relevantArticles[1].ID}`}>
@@ -111,7 +116,7 @@ class Topic extends React.Component {
                 <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
                   <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                     <Link to={`/article/${relevantArticles[2].ID}`}>
-                      <img src={relevantArticles[2].post_thumbnail.URL}/>
+                      <img className={mobile} src={relevantArticles[2].post_thumbnail.URL}/>
                     </Link>
                     <Link to={`/article/${relevantArticles[2].ID}`}>
                       <h5 className={classes.articleTitle}>{utils.decodeEntities(relevantArticles[2].title)}</h5>
@@ -120,7 +125,7 @@ class Topic extends React.Component {
                   </div>
                   <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                     <Link to={`/article/${relevantArticles[3].ID}`}>
-                      <img src={relevantArticles[3].post_thumbnail.URL}/>
+                      <img className={mobile} src={relevantArticles[3].post_thumbnail.URL}/>
                     </Link>
                     <Link to={`/article/${relevantArticles[3].ID}`}>
                       <h5 className={classes.articleTitle}>{utils.decodeEntities(relevantArticles[3].title)}</h5>
@@ -138,7 +143,7 @@ class Topic extends React.Component {
                   return (
                     <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
                       <Link to={`/article/${nextArticles[i].ID}`}>
-                        <img src={nextArticles[i].post_thumbnail.URL}/>
+                        <img className={mobile} src={nextArticles[i].post_thumbnail.URL}/>
                       </Link>
                       <Link to={`/article/${nextArticles[i].ID}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(nextArticles[i].title)}</h5>
@@ -156,7 +161,8 @@ class Topic extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  wordpress: state.wordpress
+  wordpress: state.wordpress,
+  mediaType: state.browser.mediaType
 });
 
 const mapDispatchToProps = (dispatch) => ({

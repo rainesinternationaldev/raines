@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { routerReducer as router } from 'react-router-redux'
 import wordpress from './wordpress';
 import signup from './signup';
+import {responsiveStateReducer} from 'redux-responsive'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
@@ -9,7 +10,8 @@ export const makeRootReducer = (asyncReducers) => {
     router,
     wordpress,
     signup,
-    ...asyncReducers
+    ...asyncReducers,
+    browser: responsiveStateReducer
   })
 }
 

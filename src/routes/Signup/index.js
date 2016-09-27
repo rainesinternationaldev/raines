@@ -104,6 +104,23 @@ class Signup extends React.Component {
     }
   }
 
+  componentDidMount() {
+    $(".subscribeToAll").change(function() {
+      if(this.checked) {
+        $('.rainesClassics').prop('checked', true);
+        $('.rainesMonthlyHighlights').prop('checked', true);
+        $('.rainesTopTen').prop('checked', true);
+        $('.latestHeadlines').prop('checked', true);
+      }
+      if (!this.checked) {
+        $('.rainesClassics').prop('checked', false);
+        $('.rainesMonthlyHighlights').prop('checked', false);
+        $('.rainesTopTen').prop('checked', false);
+        $('.latestHeadlines').prop('checked', false);
+      }
+    });
+  }
+
   render() {
     const data = this.props.signup.data;
 
@@ -112,36 +129,36 @@ class Signup extends React.Component {
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
           <div className={`${classes.intro} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <h2>Welcome.</h2>
-            <h4>We believe that candidates are clients too, and we treat you as such. By registering with Raines Perspectives, you can shorten the time it takes to get your qualifications in front of our network for experienced recruiters.</h4>
+            <h4>The best opportunities aren’t always in front of you. We want to know more about you and include you in our network of executives. Raines International will carefully review your resume and background to consider you for any future recruiting opportunities.</h4>
             <h5>Please Note: We carefully review every resume submitted and add your data to our candidate database. A search consultant will contact you directly if your profile matches the requirements of a specific role or should suitable opportunities arise.</h5>
           </div>
           <form >
             <div className={`${classes.accountInfo} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-              <h3>Step 1: Create your account information</h3>
+              <h3>Step 1: Create your account</h3>
               <hr/>
-              <p className={classes.description}>Get full access to articles and reports, and receive email newsletters and alerts that keep you in touch with our latest thinking.</p>
+              <p className={classes.description}>* required field</p>
               <div className={`${classes.inputs} col-lg-5 col-md-6 col-sm-12 col-xs-12`}>
-                <p className={classes.subtitle}>First Name</p>
+                <p className={classes.subtitle}>First Name*</p>
                 <input className="firstName" defaultValue={data.firstName}/>
                 {
                   this.state.fields.firstName.error ? <p className={classes.error}>Required</p> : ""
                 }
-                <p className={classes.subtitle}>Last Name</p>
+                <p className={classes.subtitle}>Last Name*</p>
                 <input className="lastName" defaultValue={data.lastName}/>
                 {
                   this.state.fields.lastName.error ? <p className={classes.error}>Required</p> : ""
                 }
-                <p className={classes.subtitle}>Email</p>
+                <p className={classes.subtitle}>Email*</p>
                 <input className="email" defaultValue={data.email}/>
                 {
                   this.state.fields.email.error ? <p className={classes.error}>Required</p> : ""
                 }
-                <p className={classes.subtitle}>Current Company</p>
+                <p className={classes.subtitle}>Current Company*</p>
                 <input className="company"/>
                 {
                   this.state.fields.company.error ? <p className={classes.error}>Required</p> : ""
                 }
-                <p className={classes.subtitle}>Current Title</p>
+                <p className={classes.subtitle}>Current Title*</p>
                 <input className="title"/>
                 {
                   this.state.fields.title.error ? <p className={classes.error}>Required</p> : ""
@@ -160,8 +177,8 @@ class Signup extends React.Component {
                 <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                   <input
                     type="checkbox"
-                    className={`${classes.checkbox} rainesMonthlyHighlights`}/><span className={classes.title}>Monthly Highlights</span>
-                  <p className={classes.desc}>Our monthly selection of the newest and most distinctive articles, reports, multimedia and special features</p>
+                    className={`${classes.checkbox} rainesMonthlyHighlights`}/><span className={classes.title}>Monthly Spotlight</span>
+                  <p className={classes.desc}>Sign up to read Raines International’s monthly newsletter featuring new content, insights and analysis each month. </p>
                 </div>
                 <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                   <input
@@ -174,6 +191,17 @@ class Signup extends React.Component {
                     type="checkbox"
                     className={`${classes.checkbox} rainesClassics`}/><span className={classes.title}>Raines Classics</span>
                   <p className={classes.desc}>Every two months, we spotlight an archival article whose insights are as relevant today as ever</p>
+                </div>
+                <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+                  <input
+                    type="checkbox"
+                    className={`${classes.checkbox} latestHeadlines`}/><span className={classes.title}>Latest Headlines</span>
+                  <p className={classes.desc}>Sign up to receive e-mail updates of the newest Raines Perspectives content just after publication.</p>
+                </div>
+                <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+                  <input
+                    type="checkbox"
+                    className={`${classes.checkbox} subscribeToAll`}/><span className={classes.title}>Subscribe to all</span>
                 </div>
               </div>
               <h3>Step 3: Upload Resume / CV <span className={classes.optional}>(optional)</span></h3>

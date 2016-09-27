@@ -39,10 +39,13 @@ class IdeasAndInsights extends React.Component {
   }
 
   render() {
+    const { mediaType } = this.props;
     const baseurl = '/ideas-and-insights';
     const posts = this.props.wordpress.posts;
 
     let nextArticles = posts.slice(4);
+
+    let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
 
     return (
       <div className={`${classes.ideasAndInsights} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
@@ -53,12 +56,12 @@ class IdeasAndInsights extends React.Component {
             {
               posts.length ?
               <div>
-                <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+                <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-12 col-xs-12 ${mobile}`}>
                   <Link to={`/article/${posts[0].ID}`}>
                     <img src={posts[0].post_thumbnail.URL}/>
                   </Link>
                 </div>
-                <div className={`${classes.desc} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+                <div className={`${classes.desc} col-lg-6 col-md-6 col-sm-12 col-xs-12 ${mobile}`}>
                   <Link to={`/article/${posts[0].ID}`}>
                     <h3 className={classes.articleTitle}>{utils.decodeEntities(posts[0].title)}</h3>
                   </Link>
@@ -137,7 +140,7 @@ class IdeasAndInsights extends React.Component {
                   <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
                     <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                       <Link to={`/article/${posts[2].ID}`}>
-                        <img src={posts[2].post_thumbnail.URL}/>
+                        <img className={mobile} src={posts[2].post_thumbnail.URL}/>
                       </Link>
                       <Link to={`/article/${posts[2].ID}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(posts[2].title)}</h5>
@@ -146,7 +149,7 @@ class IdeasAndInsights extends React.Component {
                     </div>
                     <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                       <Link to={`/article/${posts[3].ID}`}>
-                        <img src={posts[3].post_thumbnail.URL}/>
+                        <img className={mobile} src={posts[3].post_thumbnail.URL}/>
                       </Link>
                       <Link to={`/article/${posts[3].ID}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(posts[3].title)}</h5>
@@ -164,7 +167,7 @@ class IdeasAndInsights extends React.Component {
                   return (
                     <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
                       <Link to={`/article/${nextArticles[i].ID}`}>
-                        <img src={nextArticles[i].post_thumbnail.URL}/>
+                        <img className={mobile} src={nextArticles[i].post_thumbnail.URL}/>
                       </Link>
                       <Link to={`/article/${nextArticles[i].ID}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(nextArticles[i].title)}</h5>
@@ -182,7 +185,8 @@ class IdeasAndInsights extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  wordpress: state.wordpress
+  wordpress: state.wordpress,
+  mediaType: state.browser.mediaType
 });
 
 const mapDispatchToProps = (dispatch) => ({

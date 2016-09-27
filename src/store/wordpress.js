@@ -86,22 +86,47 @@ export default createReducer(initialState, {
 
 function extractProfileMetadata(profile) {
 	let content = profile.content;
-	let rex = /<p>(.*?)<\/p>\n/g;
-	let matches = content.match(rex);
+	let positionrx = /Position: ([^\<]+)/ig;
+	let firmrx = /Current Firm: ([^\<]+)/ig;
+	// let positionrx = /(\<[^\>]+\>Position: ([^\<]+)\<\/[^\>]+\>)/ig;
+	// let firmrx = /(\<[^\>]+\>Current Firm: ([^\<]+)\<\/[^\>]+\>)/ig;
 	let meta = {};
-	for (let i = 0; i < 2; i++) {
-		let matched = matches[i].replace(rex, '$1').split(': ')[1];
-		switch(i) {
-			case 0:
-				meta.position = matched;
-				break;
-			case 1:
-				meta.current_firm = matched;
-				break;
-		}
-		// Remove metadata from content
-		content = content.replace(matches[i], "");
-		meta.content = content;
+	let position = positionrx.exec(content);
+	let current_firm = firmrx.exec(content);
+
+	if (position) {
+		meta.position = position[1];
+		content = content.replace(position[0], "");
 	}
+	if (current_firm) {
+		meta.current_firm = current_firm[1];
+		content = content.replace(current_firm[0], "");
+	}
+	
+	meta.content = content;
+
+	// let rex = /<p>(.*?)<\/p>\n/g;
+	// let matches = content.match(rex);
+	// let meta = {};
+
+	// if (matches) {
+	// 	for (let i = 0; i < 2; i++) {
+	// 		let matched = matches[i].replace(rex, '$1').split(': ')[1];
+	// 		switch(i) {
+	// 			case 0:
+	// 				meta.position = matched;
+	// 				break;
+	// 			case 1:
+	// 				meta.current_firm = matched;
+	// 				break;
+	// 		}
+	// 		// Remove metadata from content
+	// 		content = content.replace(matches[i], "");
+	// 		meta.content = content;
+	// 	}
+	// } else {
+	// 	console.log(profile)
+	// }
+
 	return Object.assign(profile, meta);
 }

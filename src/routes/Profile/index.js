@@ -32,7 +32,15 @@ class Profile extends React.Component {
 
   render() {
     const profile = this.state.currentProfile;
-
+    if (profile) {
+      setTimeout(() => {
+        console.log('found profile')
+        console.log($('em').parent())
+        $('em').parent().slice(1).css({ 
+          'margin-top': '30px'
+        });
+      }, 100)
+    }
 
     return (
       <div className={classes.profile}>
@@ -51,10 +59,7 @@ class Profile extends React.Component {
                 profile ?
                 <div>
                   <div className={classes.name}>
-                    <h1>{profile.title}</h1>
-                  </div>
-                  <div className={classes.position}>
-                    <h5>{profile.position}</h5>
+                    <h1>{profile.title}. <span className={classes.position}>{profile.position}</span></h1>
                   </div>
                   <div className={classes.company}>
                     <h5>{profile.current_firm}</h5>
@@ -66,6 +71,7 @@ class Profile extends React.Component {
               }
             </div>
             <div className={`${classes.interview} col-lg-12  col-md-6 col-sm-12 col-xs-12`}>
+              <hr/>
               {
                 profile ? <div className={classes.qa}>
                   <div dangerouslySetInnerHTML={{__html: profile.content}}></div>

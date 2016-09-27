@@ -54,7 +54,7 @@
 .viewMore {
   margin-bottom: 20px;
   .border {
-    width: calc((100% - 82px)/2);
+    width: calc((100% - 100px)/2);
     height: 5px;
     display: inline-block;
     margin: 0px;
@@ -63,8 +63,12 @@
   }
   .buttonDiv {
     display: inline-block;
-    width: 82px;
+    width: 100px;
     .viewMoreButton {
+      font-family: 'Open Sans';
+      font-weight: 100;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       width: 100%;
       background-color: $blue;
       color: white;

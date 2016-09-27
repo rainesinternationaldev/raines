@@ -5,6 +5,9 @@ import classes from './Footer.scss';
 export default class Footer extends React.Component {
   render() {
     let isHomepage = window.location.pathname === '/';
+    let isSignup = window.location.pathname === '/signup';
+    let hideSignup = isHomepage || isSignup;
+
     return (
       <div className={`${classes.globalFooter} globalFooter col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
         <div>
@@ -14,7 +17,7 @@ export default class Footer extends React.Component {
             <hr/>
           </div>
           {
-            isHomepage ? "" : <SignupBar/>
+            hideSignup ? "" : <SignupBar/>
           }
           <div className={`${classes.footerFooter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <i className="fa fa-twitter" aria-hidden="true"></i>

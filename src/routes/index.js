@@ -3,7 +3,7 @@ import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import Home from './Home';
 import Signup from './Signup';
 import {ThankYou} from './Signup/ThankYou';
-import {WhoWeAre} from './WhoWeAre';
+import WhoWeAre from './WhoWeAre';
 import IdeasAndInsights from './IdeasAndInsights';
 import Topic  from './IdeasAndInsights/Topic';
 import Article from './Article';

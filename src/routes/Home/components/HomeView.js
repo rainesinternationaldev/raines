@@ -9,12 +9,20 @@ import * as actionCreators  	from '../../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../../utils';
 import * as data from './data';
+import cat1 from '../assets/cat1.jpg';
+import cat2 from '../assets/cat2.jpg';
+import cat3 from '../assets/cat3.jpg';
+import Slider from 'react-slick';
 
 
 
 class HomeView extends React.Component {
   constructor(props) {
 		super(props);
+
+    this.state = {
+      fetchedProfiles: false
+    }
 	}
 
   componentWillMount() {
@@ -24,7 +32,8 @@ class HomeView extends React.Component {
       this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
     }
 
-    if (!this.props.wordpress.profiles.length) {
+    if (!this.props.wordpress.profiles.length && !this.state.fetchedProfiles) {
+      this.setState({ fetchedProfiles: true });
       this.props.actions.fetchProfiles();
     }
   }
@@ -36,12 +45,39 @@ class HomeView extends React.Component {
       this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
     }
 
-    if (!this.props.wordpress.profiles.length) {
+    if (!this.props.wordpress.profiles.length && !this.state.fetchedProfiles) {
+      this.setState({ fetchedProfiles: true });
       this.props.actions.fetchProfiles();
     }
   }
 
+  componentDidMount() {
+    $('.slick-slider').css({
+      padding: '0px 15px'
+    })
+
+    setTimeout(() => {
+      $('.slick-dots').css({
+        position: 'absolute',
+        top: '460px'
+      })
+
+      $('.slick-dots li button').css({
+        width: '12px',
+        height: '12px',
+        'border-width': '0px',
+        'border-color': 'transparent',
+        'background-color': '#FFFFFF',
+        'border-radius': '10px'
+      })
+    }, 500)
+  }
+
   render() {
+    const {
+      mediaType
+    } = this.props
+
     const posts = this.props.wordpress.posts;
     let mostRecentPosts;
     if (posts.length) {
@@ -70,22 +106,33 @@ class HomeView extends React.Component {
 
     const featuredProfiles = this.props.wordpress.featuredProfilesOnHomepage;
 
+    var settings = {
+      dots: true,
+      infinite: true,
+      fade: true,
+      speed: 1000,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      arrows: false,
+      // dotsClass: 'dot'
+    };
+
+    let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
 
     return (
       <div className={classes.home}>
         {
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <hr className={classes.hr}/>
-            <img
-              className={classes.splashImage}
-              src={splashImage}/>
-          </div>
-          <div className={`${classes.banner} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <hr/>
-            <div className={classes.center}>
-              <h3>Well-Established. Well-Connected. Well-Informed.</h3>
-            </div>
+
+            <Slider {...settings}>
+              <div><img className={classes.carouselImg} src={cat1}/></div>
+              <div><img className={classes.carouselImg} src={cat2}/></div>
+              <div><img className={classes.carouselImg} src={cat3}/></div>
+            </Slider>
+
           </div>
           <div className={`${classes.signupDiv} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <SignupBar/>
@@ -102,7 +149,7 @@ class HomeView extends React.Component {
                       <img className={classes.featuredImage} src={featuredMainArticle.post_thumbnail.URL}/>
                     </Link>
                   </div>
-                  <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <div className={`col-lg-4 col-md-4 col-sm-4 col-xs-12 ${mobile}`}>
                     <Link to={`/article/${featuredMainArticle.ID}`}>
                       <h4 className={classes.articleTitle}>{utils.decodeEntities(featuredMainArticle.title)}</h4>
                     </Link>
@@ -166,7 +213,7 @@ class HomeView extends React.Component {
                   <div className={`${classes.article} col-lg-4 col-md-4 col-sm-4 col-xs-12`} key={i}>
                     <Link to={`/article/${article.ID}`}>
                       <img className={classes.perspectiveImage} src={article.post_thumbnail.URL}/>
-                      <h6>{utils.decodeEntities(article.title)}</h6>
+                      <h5>{utils.decodeEntities(article.title)}</h5>
                     </Link>
                   </div>
                 )
@@ -181,7 +228,8 @@ class HomeView extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  wordpress: state.wordpress
+  wordpress: state.wordpress,
+  mediaType: state.browser.mediaType
 });
 
 const mapDispatchToProps = (dispatch) => ({

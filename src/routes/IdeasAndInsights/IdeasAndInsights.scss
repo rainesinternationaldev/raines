@@ -22,13 +22,15 @@
     font-style: italic;
   }
   .latestResearch {
-    // padding: 0px;
-    margin-bottom: 40px;
+    .mobile {
+      padding: 0px;
+    }
     .imageDiv {
       padding-left: 0px;
       img {
         width: 100%;
       }
+      margin-bottom: 20px;
     }
     .articleTitle {
       margin-top: 0px;
@@ -39,6 +41,7 @@
     // padding: 0px;
     .topicList {
       overflow: hidden;
+      margin-bottom: 40px;
       .topic {
         padding: 0px;
         a {
@@ -61,8 +64,17 @@
   .primaryArticles, .nextArticles {
     padding: 0px;
     .latestArticle, .nextArticle {
+      margin-bottom: 20px;
       img {
         width: 100%;
+      }
+    }
+    .nextArticle {
+      img {
+        height: 113px;
+      }
+      .mobile {
+        height: 230px;
       }
     }
   }
@@ -74,7 +86,10 @@
       img {
         width: 100%;
         height: 113px;
-      } 
+      }
+      .mobile {
+        height: 230px;
+      }
     }
   }
 }

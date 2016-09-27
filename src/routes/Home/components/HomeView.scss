@@ -29,7 +29,12 @@
 			color: $blue;
 		}
 	}
+	.carouselImg {
+		max-height: 500px;
+		width: 100%;
+	}
 	.signupDiv {
+		margin-top: 20px;
 		background: $light-gray;
 	}
 	.featured {
@@ -62,6 +67,9 @@
 		}
 	}
 	.featuredArticles {
+		.mobile {
+			padding: 0;
+		}
 		margin-top: 20px;
 		hr {
 			margin-top: 0px;
@@ -105,7 +113,8 @@
 			margin-top: 0px;
 		}
 		h5 {
-			text-transform: uppercase;
+			text-transform: inherit;
+			font-size: 13px;
 		}
 		.article {
 		}
@@ -114,6 +123,7 @@
 		// when screen is LARGE
 		max-height: 250px;
 		width: 100%;
+		padding-bottom: 20px;
 	}
 	.perspectiveImage {
 		width: 100%;
