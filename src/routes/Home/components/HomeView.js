@@ -1,6 +1,5 @@
 import React from 'react'
 import SignupBar from '../../../components/SignupBar';
-import splashImage from '../assets/city.png'
 import classes from './HomeView.scss';
 import moment from 'moment';
 import {Link} from 'react-router';
@@ -9,9 +8,9 @@ import * as actionCreators  	from '../../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../../utils';
 import * as data from './data';
-import cat1 from '../assets/cat1.jpg';
-import cat2 from '../assets/cat2.jpg';
-import cat3 from '../assets/cat3.jpg';
+import main1 from '../assets/main1.jpg';
+import main2 from '../assets/main2.jpg';
+import main3 from '../assets/main3.jpg';
 import Slider from 'react-slick';
 
 
@@ -59,7 +58,13 @@ class HomeView extends React.Component {
     setTimeout(() => {
       $('.slick-dots').css({
         position: 'absolute',
-        top: '460px'
+        top: '420px',
+        'padding-right': '30px'
+      })
+
+      $('.slick-dots li').css({
+        width: 'initial',
+        'margin': '0px 10px'
       })
 
       $('.slick-dots li button').css({
@@ -128,9 +133,9 @@ class HomeView extends React.Component {
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
             <Slider {...settings}>
-              <div><img className={classes.carouselImg} src={cat1}/></div>
-              <div><img className={classes.carouselImg} src={cat2}/></div>
-              <div><img className={classes.carouselImg} src={cat3}/></div>
+              <div><img className={classes.carouselImg} src={main1}/></div>
+              <div><img className={classes.carouselImg} src={main2}/></div>
+              <div><img className={classes.carouselImg} src={main3}/></div>
             </Slider>
 
           </div>

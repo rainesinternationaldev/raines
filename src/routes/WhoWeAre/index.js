@@ -1,5 +1,5 @@
 import React from 'react';
-import introImg from './assets/intro.png';
+import introImg from './assets/intro.jpg';
 import thoughtLeadershipImg from './assets/thoughtleadership.jpg';
 import accessToTalentImg from './assets/accesstotalent.jpg';
 import careerInsightsImg from './assets/careerinsights.jpg';
