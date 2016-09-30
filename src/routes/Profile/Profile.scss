@@ -4,6 +4,9 @@
   .inner {
     background: white;
     padding: 0;
+    .hrDiv {
+      padding: 0px 30px;
+    }
   }
   .header {
     text-align: center;
@@ -21,7 +24,11 @@
       }
     }
     .position {
-      font-size: 17px;
+      h1 {
+        font-size: 17px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
     }
     .company {
       text-transform: uppercase;
@@ -33,9 +40,12 @@
     .excerpt {
       margin-top: 20px;
       font-style: italic;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 100;
-      line-height: 1.2;
+      line-height: 1.5;
+      h5 {
+        line-height: 1.5;
+      }
     }
   }
   .interview {
@@ -44,6 +54,7 @@
     p {
       font-family: 'Open Sans';
       font-weight: 100;
+      font-size: 15px;
     }
     em {
       font-weight: 600;

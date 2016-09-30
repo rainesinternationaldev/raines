@@ -11,6 +11,7 @@ import * as data from './data';
 import main1 from '../assets/main1.jpg';
 import main2 from '../assets/main2.jpg';
 import main3 from '../assets/main3.jpg';
+import main4 from '../assets/main4.jpg';
 import Slider from 'react-slick';
 
 
@@ -136,6 +137,7 @@ class HomeView extends React.Component {
               <div><img className={classes.carouselImg} src={main1}/></div>
               <div><img className={classes.carouselImg} src={main2}/></div>
               <div><img className={classes.carouselImg} src={main3}/></div>
+              <div><img className={classes.carouselImg} src={main4}/></div>
             </Slider>
 
           </div>

@@ -45,7 +45,9 @@ class Profile extends React.Component {
     return (
       <div className={classes.profile}>
         <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
-          <hr/>
+          <div className={`${classes.hrDiv} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+            <hr/>
+          </div>
           
           <div className={`${classes.content} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <div className={`${classes.image} col-lg-5 col-md-5 col-sm-12 col-xs-12`}>
@@ -59,13 +61,16 @@ class Profile extends React.Component {
                 profile ?
                 <div>
                   <div className={classes.name}>
-                    <h1>{profile.title}. <span className={classes.position}>{profile.position}</span></h1>
+                    <h1>{profile.title}</h1>
+                  </div>
+                  <div className={classes.position}>
+                    <h1>{profile.position}</h1>
                   </div>
                   <div className={classes.company}>
                     <h5>{profile.current_firm}</h5>
                   </div>
                   <div className={classes.excerpt}>
-                    <h5>{utils.decodeEntities(profile.excerpt)}</h5>
+                    <div dangerouslySetInnerHTML={{__html: profile.excerpt}}></div>
                   </div>
                 </div> : ""
               }

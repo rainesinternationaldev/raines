@@ -9,11 +9,8 @@ const mcLists = {
   rainesMonthlyHighlightsForConsultants: {
     id: '9badf36bb4'
   },
-  rainesClassics: {
-    id: '32f27373da'
-  },
-  rainesTopTen: {
-    id: '18e2831ae2'
+  latestHeadlines: {
+    id: '76c9d90321'
   }
 }
 

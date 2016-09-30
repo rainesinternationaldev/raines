@@ -46,6 +46,14 @@ export class Article extends React.Component {
     }
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      $(".social-icon, .printer-icon").hover(function(e) { 
+        $(this).css("opacity",e.type === "mouseenter"?"0.7":"1") 
+      })
+    }, 1000);
+  }
+
   render() {
     
     const {
@@ -108,15 +116,50 @@ export class Article extends React.Component {
                 </div>
                 <div className={classes.socialMediaShareButton}>
                   <img
-                    className={classes.printerIcon}
+                    className={`${classes.printerIcon} printer-icon`}
                     src={printerIcon}
                     onClick={this.displayPrintPreview}/>
                 </div>
               </div>
               <div className={`${classes.textBody} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                 <h4>{utils.decodeEntities(post.title)}</h4>
-                <p className="date-preview">{moment(post.date).format('MMMM YYYY')}</p>
+                <p className={classes.datePreview}>{moment(post.date).format('MMMM YYYY')}</p>
                 <div dangerouslySetInnerHTML={{__html: post.content}}></div>
+              </div>
+              <div className={`${classes.socialMediaShare} socialMediaShare col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+                <div className={classes.socialMediaShareButton}>
+                  <FacebookShareButton
+                    title={utils.decodeEntities(post.title)}
+                    url={currentLocation}
+                    media={post.post_thumbnail.URL}
+                    description={utils.decodeEntities(post.excerpt)}>
+                    <FacebookIcon size={32} round={true} />
+                  </FacebookShareButton>
+                </div>
+                <div className={classes.socialMediaShareButton}>
+                  <TwitterShareButton
+                    title={utils.decodeEntities(post.title)}
+                    url={currentLocation}
+                    media={post.post_thumbnail.URL}
+                    description={utils.decodeEntities(post.excerpt)}>
+                    <TwitterIcon size={32} round={true} />
+                  </TwitterShareButton>
+                </div>
+                <div className={classes.socialMediaShareButton}>
+                  <LinkedinShareButton
+                    title={utils.decodeEntities(post.title)}
+                    url={currentLocation}
+                    media={post.post_thumbnail.URL}
+                    description={utils.decodeEntities(post.excerpt)}>
+                    <LinkedinIcon size={32} round={true} />
+                  </LinkedinShareButton>
+                </div>
+                <div className={classes.socialMediaShareButton}>
+                  <img
+                    className={`${classes.printerIcon} printer-icon`}
+                    src={printerIcon}
+                    onClick={this.displayPrintPreview}/>
+                </div>
               </div>
             </div> : ""
           }

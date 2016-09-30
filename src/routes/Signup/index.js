@@ -41,8 +41,7 @@ class Signup extends React.Component {
         let newsletters = {
           rainesMonthlyHighlights: true,
           rainesMonthlyHighlightsForConsultants: false,
-          rainesClassics: $('.rainesClassics')[0].checked,
-          rainesTopTen: $('.rainesTopTen')[0].checked
+          latestHeadlines: $('.latestHeadlines')[0].checked
         }
         if ($('.rainesMonthlyHighlightsForConsultants')[0].checked) {
           newsletters.rainesMonthlyHighlights = false;
@@ -107,15 +106,11 @@ class Signup extends React.Component {
   componentDidMount() {
     $(".subscribeToAll").change(function() {
       if(this.checked) {
-        $('.rainesClassics').prop('checked', true);
         $('.rainesMonthlyHighlights').prop('checked', true);
-        $('.rainesTopTen').prop('checked', true);
         $('.latestHeadlines').prop('checked', true);
       }
       if (!this.checked) {
-        $('.rainesClassics').prop('checked', false);
         $('.rainesMonthlyHighlights').prop('checked', false);
-        $('.rainesTopTen').prop('checked', false);
         $('.latestHeadlines').prop('checked', false);
       }
     });
@@ -179,18 +174,6 @@ class Signup extends React.Component {
                     type="checkbox"
                     className={`${classes.checkbox} rainesMonthlyHighlights`}/><span className={classes.title}>Monthly Spotlight</span>
                   <p className={classes.desc}>Sign up to read Raines International’s monthly newsletter featuring new content, insights and analysis each month. </p>
-                </div>
-                <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-                  <input
-                    type="checkbox"
-                    className={`${classes.checkbox} rainesTopTen`}/><span className={classes.title}>Top Ten Most Popular</span>
-                  <p className={classes.desc}>A roundup of our most popular content each quarter</p>
-                </div>
-                <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-                  <input
-                    type="checkbox"
-                    className={`${classes.checkbox} rainesClassics`}/><span className={classes.title}>Raines Classics</span>
-                  <p className={classes.desc}>Every two months, we spotlight an archival article whose insights are as relevant today as ever</p>
                 </div>
                 <div className={`${classes.newsletter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                   <input

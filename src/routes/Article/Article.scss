@@ -17,6 +17,14 @@
 	}
 	.splashArticle {
 		padding: 0px;
+		.textBody {
+			.datePreview {
+				font-style: italic;
+			}
+			h4 {
+				font-size: 20px;
+			}
+		}
 	}
 	.socialMediaShareButton {
 		display: inline-block;
@@ -44,6 +52,7 @@
 			}
 			h4 {
 				margin-top: 5px;
+				font-size: 16px;
 			}
 		}
 	}

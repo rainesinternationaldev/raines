@@ -34,12 +34,41 @@
           a {
             color: $blue !important;
           }
+          .icon {
+            transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+            font-size: 12px;
+          }
+          &:hover {
+            .icon {
+              padding-left: 5px;
+            }
+          }
         }
       }
       .textColumn {
         padding: 0px 25px;
         p {
           font-size: 15px;
+        }
+      }
+      .left {
+        height: 264px;
+        .link1 {
+          bottom: 20px;
+          position: absolute;
+        }
+        .link2 {
+          bottom: 0;
+          position: absolute;
+        }
+      }
+      .right {
+        position: absolute;
+        left: 50%;
+        height: 264px;
+        .link {
+          bottom: 0;
+          position: absolute;
         }
       }
     }
