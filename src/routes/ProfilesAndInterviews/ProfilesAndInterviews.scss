@@ -62,6 +62,9 @@
     }
     .profiles {
       padding-top: 20px;
+      .profilemassive {
+        min-height: 350px !important;
+      }
       .profile {
         text-align: center;
         margin-top: 10px;
@@ -69,6 +72,9 @@
         img {
           width: 100%;
           border: 1px solid $gray;
+        }
+        .footer {
+          min-height: 90px;
         }
         .name {
           color: $blue;

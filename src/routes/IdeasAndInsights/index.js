@@ -51,7 +51,7 @@ class IdeasAndInsights extends React.Component {
       <div className={`${classes.ideasAndInsights} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
         <div className={`${classes.inner} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
           <div className={`${classes.latestResearch} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <h4 className={classes.subtitle}>LATEST RESEARCH</h4>
+            <h4 className={classes.subtitle}>LATEST PERSPECTIVE</h4>
             <hr/>
             {
               posts.length ?

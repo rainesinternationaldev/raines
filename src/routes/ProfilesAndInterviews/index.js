@@ -52,6 +52,9 @@ class ProfilesAndInterviews extends React.Component {
   }
 
   render() {
+    const {
+      mediaType
+    } = this.props;
     let profiles = this.props.wordpress.profiles;
 
     let featuredProfile;
@@ -81,7 +84,10 @@ class ProfilesAndInterviews extends React.Component {
       } else {
         return true;
       }
-    }
+    }    
+
+    let profileResponsive = `profile${mediaType}`;
+
 
     return (
       <div className={classes.profilesAndInterviews}>
@@ -129,15 +135,17 @@ class ProfilesAndInterviews extends React.Component {
               displayedProfiles ?
               displayedProfiles.map((profile, i) => {
                 return (
-                    <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
+                    <div className={`${classes.profile} ${classes[profileResponsive]} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
                       <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
                         <img src={profile.post_thumbnail.URL}/>
                       </Link>
-                      <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
-                        <h5 className={classes.name}>{profile.title}</h5>
-                      </Link>
-                      <h5 className={classes.position}>{profile.position}</h5>
-                      <h5 className={classes.company}>{profile.current_firm}</h5>
+                      <div className={classes.footer}>
+                        <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
+                          <h5 className={classes.name}>{profile.title}</h5>
+                        </Link>
+                        <h5 className={classes.position}>{profile.position}</h5>
+                        <h5 className={classes.company}>{profile.current_firm}</h5>
+                      </div>
                     </div>
                 )
               }) : ""
@@ -151,7 +159,8 @@ class ProfilesAndInterviews extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  wordpress: state.wordpress
+  wordpress: state.wordpress,
+  mediaType: state.browser.mediaType
 });
 
 const mapDispatchToProps = (dispatch) => ({

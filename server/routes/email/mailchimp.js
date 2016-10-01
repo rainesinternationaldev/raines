@@ -46,6 +46,7 @@ export const subscribeUserToMailchimp = (lists, data) => {
     
   })).then((results) => {
     console.log('yay result', results)
+    return results
   })
 
 }

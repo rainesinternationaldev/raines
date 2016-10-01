@@ -22,15 +22,17 @@ router.post('/resume', (ctx) => {
       subscribeUserToMailchimp(lists, personal);
 
       // Send resume attachment to internal email
-      sendMail(fields.candidateName[0], files.attachment)
-        .then((completed) => {
-          ctx.body = completed;
-          resolve();
-        })
-        .catch((err) => {
-          ctx.body = 'ERROR: ' + err;
-          reject();
-        })
+      if (files.attachment) {
+        sendMail(fields.candidateName[0], files.attachment)
+          .then((completed) => {
+            ctx.body = completed;
+            resolve();
+          })
+          .catch((err) => {
+            ctx.body = 'ERROR: ' + err;
+            reject();
+          })
+      }
     });
   });
 })

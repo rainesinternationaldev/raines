@@ -63,7 +63,7 @@ class Signup extends React.Component {
           attachment: this.state.resume
         }
         this.props.actions.signupUser(formData);
-        // this.context.router.push('/thank-you');
+        this.context.router.push('/thank-you');
       }
     }
 

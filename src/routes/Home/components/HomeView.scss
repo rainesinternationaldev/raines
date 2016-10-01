@@ -30,7 +30,8 @@
 		}
 	}
 	.carouselImg {
-		max-height: 462px;
+		// normal desktop width
+		min-height: 462px;
 		width: 100%;
 	}
 	.signupDiv {
