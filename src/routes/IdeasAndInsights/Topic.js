@@ -24,6 +24,12 @@ class Topic extends React.Component {
       }
     }
 
+    this.updateHeight = () => {
+      var img = $('.smallRect');
+      var width = img.width();
+      img.css('height', width * 11 / 16);
+    }
+
     this.state = {
       numShown: 4,
       topics: {
@@ -31,6 +37,7 @@ class Topic extends React.Component {
         'consulting': 'Consulting',
         'current-events': 'Current Events',
         'diversity-and-inclusion': 'Diversity & Inclusion',
+        'interview-tips': 'Interview Tips',
         'leadership-and-governance': 'Leadership & Governance',
         'making-moves': 'Making Moves',
         'opportunities': 'Opportunities',
@@ -41,9 +48,13 @@ class Topic extends React.Component {
   }
 
   componentDidMount() {
+    $(window).resize(this.updateHeight);
+
     const url = this.props.location.pathname.slice(20);
     let topic = this.state.topics[url];
     if (topic === 'Private Equity') topic = 'Private Equity Article';
+    if (topic === 'Diversity & Inclusion') topic = 'diversity-inclusion';
+    if (topic === 'Leadership & Governance') topic = 'leadership-governance';
     if (!this.props.wordpress.posts.length) {
       // fetch four latest articles in current category
       this.props.actions.fetchPosts(4, 0, 1, topic)
@@ -60,16 +71,37 @@ class Topic extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.wordpress.posts.length) {
+      const url = this.props.location.pathname.slice(20);
+      let topic = this.state.topics[url];
+      if (topic === 'Private Equity') topic = 'Private Equity Article';
+      if (topic === 'Diversity & Inclusion') topic = 'diversity-inclusion';
+      if (topic === 'Leadership & Governance') topic = 'leadership-governance';
+      nextProps.actions.fetchPosts(4, 0, 1, topic)
+        .then(this.updateHeight);
+    } else {
+      this.updateHeight()
+    }
+  }
+
   render() {
     const { mediaType } = this.props;
     const url = this.props.location.pathname.slice(20);
-    const topic = this.state.topics[url];
-    let relevantArticles = this.props.wordpress.posts.filter((post) => post.categories[topic]);
+    let topic = this.state.topics[url];
+    // if (topic === 'Private Equity') topic = 'Private Equity Article';
+    // if (topic === 'Diversity & Inclusion') topic = 'diversity-inclusion';
+    let relevantArticles = this.props.wordpress.posts.filter(post => {
+      let translatedTopic = topic;
+      if (topic === 'Private Equity') translatedTopic = 'Private Equity';
+      if (topic === 'Diversity & Inclusion') translatedTopic = 'Diversity &amp; Inclusion';
+      if (topic === 'Leadership & Governance') translatedTopic = 'Leadership &amp; Governance';
+      return post.categories[translatedTopic];
+    });
 
     let nextArticles = relevantArticles.slice(4);
 
     let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
-    console.log('mobile', mobile)
 
     return (
       <div className={`${classes.ideasAndInsights} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
@@ -102,8 +134,7 @@ class Topic extends React.Component {
               <hr/>
             </div>
             {
-              relevantArticles.length > 4 ?
-              <div>
+              relevantArticles[1] ?
                 <div className={`${classes.latestArticle} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
                   <Link to={`/article/${relevantArticles[1].ID}`}>
                     <img src={relevantArticles[1].post_thumbnail.URL}/>
@@ -112,26 +143,33 @@ class Topic extends React.Component {
                     <h5 className={classes.articleTitle}>{utils.decodeEntities(relevantArticles[1].title)}</h5>
                   </Link>
                   <p className={classes.articleSummary}><span className={classes.date}>{moment(relevantArticles[0].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(relevantArticles[1].excerpt)}</p>
-                </div>
+                </div> : ""
+            }
+            {
+              relevantArticles[2] ?
+              <div>
                 <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
                   <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                     <Link to={`/article/${relevantArticles[2].ID}`}>
-                      <img className={mobile} src={relevantArticles[2].post_thumbnail.URL}/>
+                      <img className={`${mobile} smallRect`} src={relevantArticles[2].post_thumbnail.URL}/>
                     </Link>
                     <Link to={`/article/${relevantArticles[2].ID}`}>
                       <h5 className={classes.articleTitle}>{utils.decodeEntities(relevantArticles[2].title)}</h5>
                     </Link>
                     <p className={classes.articleSummary}><span className={classes.date}>{moment(relevantArticles[0].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(relevantArticles[2].excerpt)}</p>
                   </div>
-                  <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
-                    <Link to={`/article/${relevantArticles[3].ID}`}>
-                      <img className={mobile} src={relevantArticles[3].post_thumbnail.URL}/>
-                    </Link>
-                    <Link to={`/article/${relevantArticles[3].ID}`}>
-                      <h5 className={classes.articleTitle}>{utils.decodeEntities(relevantArticles[3].title)}</h5>
-                    </Link>
-                    <p className={classes.articleSummary}><span className={classes.date}>{moment(relevantArticles[0].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(relevantArticles[3].excerpt)}</p>
-                  </div>
+                  {
+                    relevantArticles[3] ?
+                      <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
+                        <Link to={`/article/${relevantArticles[3].ID}`}>
+                          <img className={`${mobile} smallRect`} src={relevantArticles[3].post_thumbnail.URL}/>
+                        </Link>
+                        <Link to={`/article/${relevantArticles[3].ID}`}>
+                          <h5 className={classes.articleTitle}>{utils.decodeEntities(relevantArticles[3].title)}</h5>
+                        </Link>
+                        <p className={classes.articleSummary}><span className={classes.date}>{moment(relevantArticles[0].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(relevantArticles[3].excerpt)}</p>
+                      </div> : ""
+                  }
                 </div>
               </div> : ""
             }
@@ -143,7 +181,7 @@ class Topic extends React.Component {
                   return (
                     <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
                       <Link to={`/article/${nextArticles[i].ID}`}>
-                        <img className={mobile} src={nextArticles[i].post_thumbnail.URL}/>
+                        <img className={`${mobile} smallRect`} src={nextArticles[i].post_thumbnail.URL}/>
                       </Link>
                       <Link to={`/article/${nextArticles[i].ID}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(nextArticles[i].title)}</h5>

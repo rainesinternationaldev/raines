@@ -171,8 +171,8 @@ export class Article extends React.Component {
               mostRecentPosts.map((post, i) => {
                 return (
                   <div className={classes.article} key={i}>
-                    <p className={classes.topicPreview}>{post.mainCategory}</p>
-                    <Link to={`/article/${post.id}`}>
+                    <p className={classes.topicPreview}>{utils.decodeEntities(post.mainCategory)}</p>
+                    <Link to={`/article/${post.ID}`}>
                       <h4>{utils.decodeEntities(post.title)}</h4>
                     </Link>
                   </div>

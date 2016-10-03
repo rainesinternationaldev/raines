@@ -124,7 +124,7 @@ class ProfilesAndInterviews extends React.Component {
                 options={this.state.tracks}
                 onChange={this.selectTrack}
                 value={this.state.selectedTrack}
-                placeholder="Track" />
+                placeholder="Function" />
             </span>
             <span
               className={classes.reset}

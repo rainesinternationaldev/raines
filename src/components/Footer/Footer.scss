@@ -23,10 +23,27 @@
     i {
       padding: 5px 10px;
     }
-    span {
+    p {
       font-family: 'Open Sans';
       font-size: 12px;
+    }
+    span {
+      font-size: 12px;
       margin-left: 25px;
+    }
+  }
+  .lowerHr {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .mobileFooter {
+    text-align: center;
+    hr {
+      border-color: #d8d8d8;
+      margin-bottom: 20px;
+    }
+    .lowerHr {
+      margin-top: 10px;
     }
   }
 }

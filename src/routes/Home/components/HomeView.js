@@ -7,7 +7,6 @@ import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../../utils';
-import * as data from './data';
 import main1 from '../assets/main1.jpg';
 import main2 from '../assets/main2.jpg';
 import main3 from '../assets/main3.jpg';
@@ -21,7 +20,9 @@ class HomeView extends React.Component {
 		super(props);
 
     this.state = {
-      fetchedProfiles: false
+      fetchedProfiles: false,
+      currentSize: null,
+      fetchedPosts: false
     }
 	}
 
@@ -38,16 +39,40 @@ class HomeView extends React.Component {
     }
   }
 
-  componentWillReceiveProps() {
-    if (!this.props.wordpress.posts.length) {
+  componentWillReceiveProps(nextProps) {
+    console.log('cwrp')
+    if (!this.state.fetchedPosts) {
+      this.setState({ fetchedPosts: true });
       this.props.actions.fetchPosts(4, 0, 1);
       this.props.actions.fetchFeaturedOnHomepage('Home Page - Insight');
       this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
     }
+    // if (!this.props.wordpress.posts.length) {
+    //   this.props.actions.fetchPosts(4, 0, 1);
+    //   this.props.actions.fetchFeaturedOnHomepage('Home Page - Insight');
+    //   this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
+    // }
 
     if (!this.props.wordpress.profiles.length && !this.state.fetchedProfiles) {
       this.setState({ fetchedProfiles: true });
       this.props.actions.fetchProfiles();
+    }
+
+    if (nextProps.mediaType !== this.state.currentSize) {
+      this.setState({ currentSize: nextProps.mediaType });
+      switch (nextProps.mediaType) {
+        case 'extraSmall':
+          $('.slick-dots').css({
+            top: '80%',
+          })
+          break;
+        case 'extraLarge':
+        default:
+          $('.slick-dots').css({
+            top: '90%',
+          })
+          break;
+      }
     }
   }
 
@@ -56,12 +81,27 @@ class HomeView extends React.Component {
       padding: '0px 15px'
     })
 
+    let mediaType = this.props.mediaType;
+
     setTimeout(() => {
       $('.slick-dots').css({
         position: 'absolute',
-        top: '90%',
         'padding-right': '30px'
       })
+
+      switch (mediaType) {
+        case 'extraSmall':
+          $('.slick-dots').css({
+            top: '80%',
+          })
+          break;
+        case 'extraLarge':
+        default:
+          $('.slick-dots').css({
+            top: '90%',
+          })
+          break;
+      }
 
       $('.slick-dots li').css({
         width: 'initial',
@@ -88,14 +128,6 @@ class HomeView extends React.Component {
     let mostRecentPosts;
     if (posts.length) {
       mostRecentPosts = posts.slice(0, 3);
-      mostRecentPosts.forEach(p => {
-        for (let c in p.categories) {
-          let theseDontCount = ['Article', 'Home Page - Insight', 'Home Page - Perspective', 'Featured Article'];
-          if ( theseDontCount.indexOf(c) === -1 ) {
-            p.mainCategory = c;
-          }
-        }
-      })
     }
 
     const featuredArticleOnHomepage = this.props.wordpress.featuredArticleOnHomepage;
@@ -126,6 +158,7 @@ class HomeView extends React.Component {
     };
 
     let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
+    let carouselImgResponsive = `carouselImg${mediaType}`;
 
     return (
       <div className={classes.home}>
@@ -134,10 +167,10 @@ class HomeView extends React.Component {
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
             <Slider {...settings}>
-              <div><img className={classes.carouselImg} src={main1}/></div>
-              <div><img className={classes.carouselImg} src={main2}/></div>
-              <div><img className={classes.carouselImg} src={main3}/></div>
-              <div><img className={classes.carouselImg} src={main4}/></div>
+              <div><img className={`${classes[carouselImgResponsive]} ${classes.carouselImg}`} src={main1}/></div>
+              <div><img className={`${classes[carouselImgResponsive]} ${classes.carouselImg}`} src={main2}/></div>
+              <div><img className={`${classes[carouselImgResponsive]} ${classes.carouselImg}`} src={main3}/></div>
+              <div><img className={`${classes[carouselImgResponsive]} ${classes.carouselImg}`} src={main4}/></div>
             </Slider>
 
           </div>
@@ -195,10 +228,10 @@ class HomeView extends React.Component {
               featuredProfiles.map((profile, i) => {
                 return (
                   <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
-                    <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title)}`}>
+                    <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
                       <img src={profile.post_thumbnail.URL}/>
                     </Link>
-                    <Link to={`/profile/${profile.id}-${utils.formatTitle(profile.title)}`}>
+                    <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
                       <h5 className={classes.name}>{profile.title}</h5>
                     </Link>
                     <h5 className={classes.position}>{profile.position}</h5>

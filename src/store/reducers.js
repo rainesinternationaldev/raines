@@ -17,7 +17,7 @@ export const makeRootReducer = (asyncReducers) => {
       small: 768,
       medium: 992,
       large: 1200,
-      extraLarge: 1400,
+      extraLarge: 1440,
       massive: 2000
     })
   })

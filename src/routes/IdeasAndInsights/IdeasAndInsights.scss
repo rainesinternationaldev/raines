@@ -12,7 +12,7 @@
     margin-bottom: 5px;
     // text-transform: uppercase;
     // font-weight: 600;
-    font-size: 44px;
+    font-size: 42px;
     font-family: Georgia;
   }
   hr {
@@ -35,6 +35,9 @@
     .articleTitle {
       margin-top: 0px;
     }
+    .articleSummary {
+      font-size: 15px !important;
+    }
     
   }
   .insights {
@@ -42,10 +45,13 @@
     .topicList {
       overflow: hidden;
       margin-bottom: 40px;
+      text-align: center;
       .topic {
+        font-size: 15px;
         padding: 0px;
+        max-height: 20px;
         a {
-          color: $blue;
+          color: darken($blue, 5%);
           font-family: 'Open Sans';
           font-weight: 100;
           &:hover {
@@ -53,7 +59,17 @@
           }
         }
         i {
-          margin-right: 3px;
+          transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+          margin-left: 5px;
+          position: absolute;
+          line-height: 20px;
+        }
+        &:hover {
+          i {
+            margin-left: 10px;
+            position: absolute;
+            line-height: 20px;
+          }
         }
       }
     }
@@ -102,7 +118,6 @@
     display: inline-block;
     margin: 0px;
     border-top: 1px solid black;
-
     border-color:  #D8D8D8;
   }
   .buttonDiv {

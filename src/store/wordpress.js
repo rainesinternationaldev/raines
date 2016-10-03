@@ -22,10 +22,21 @@ const initialState = {
 export default createReducer(initialState, {
 	[FETCH_POSTS_SUCCESS]: (state, payload) => {
 		let posts = state.posts.slice();
+		payload.posts.forEach(p => {
+			for (let c in p.categories) {
+				let theseDontCount = ['Article', 'Home Page - Insight', 'Home Page - Perspective', 'Featured Article'];
+				if ( theseDontCount.indexOf(c) === -1 ) {
+					p.mainCategory = c;
+				}
+			}
+		})
 		if (state.posts.length) {
 			console.log('comparing state posts', state.posts)
 			console.log('comparing payload posts', payload.posts)
+			
 			payload.posts.forEach((fetchedPost) => {
+
+
 				let newPost = true;
 				state.posts.forEach((post) => {
 					if (fetchedPost.ID == post.ID) {
