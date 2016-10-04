@@ -4,10 +4,16 @@ import classes from './Footer.scss';
 import {connect} from 'react-redux';
 
 class Footer extends React.Component {
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+  }
+
   render() {
     const {mediaType} = this.props;
-    let isHomepage = window.location.pathname === '/';
-    let isSignup = window.location.pathname === '/signup';
+    console.log('THE FOOTER PROPS', this.props)
+    let isHomepage = this.props.location === '/';
+    let isSignup = this.props.location === '/signup';
     let hideSignup = isHomepage || isSignup;
 
     return (
@@ -70,11 +76,13 @@ class Footer extends React.Component {
 }
 
 Footer.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: React.PropTypes.object.isRequired,
+
 }
 
 const mapStateToProps = (state) => ({
-  mediaType: state.browser.mediaType
+  mediaType: state.browser.mediaType,
+  location: state.router.locationBeforeTransitions.pathname
 });
 
 export default connect(mapStateToProps)(Footer);

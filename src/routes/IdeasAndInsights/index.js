@@ -28,19 +28,22 @@ class IdeasAndInsights extends React.Component {
     }
 
     this.state = {
-      numShown: 4
+      numShown: 4,
+      fetchedPosts: false
     }
   }
 
   componentWillMount() {
-    if (!this.props.wordpress.posts.length) {
+    if (!this.state.fetchedPosts) {
+      this.setState({ fetchedPosts: true });
       this.props.actions.fetchPosts(4, 0, 1);
     }
     $(window).resize(this.updateHeight);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.wordpress.posts.length) {
+    if (!this.state.fetchedPosts) {
+      this.setState({ fetchedPosts: true });
       nextProps.actions.fetchPosts(4, 0, 1)
         .then(this.updateHeight);
     } else {

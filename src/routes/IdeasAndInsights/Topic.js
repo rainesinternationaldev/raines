@@ -16,7 +16,10 @@ class Topic extends React.Component {
       this.setState({ numShown: this.state.numShown += 8 });
       
       const url = this.props.location.pathname.slice(20);
-      const topic = this.state.topics[url];
+      let topic = this.state.topics[url];
+      if (topic === 'Private Equity') topic = 'Private Equity Article';
+      if (topic === 'Diversity & Inclusion') topic = 'diversity-inclusion';
+      if (topic === 'Leadership & Governance') topic = 'leadership-governance';
       let numPostsInCategory = this.props.wordpress.posts.filter((post) => post.categories.topic).length;
 
       if (this.state.numShown > numPostsInCategory) {
@@ -43,7 +46,8 @@ class Topic extends React.Component {
         'opportunities': 'Opportunities',
         'private-equity': 'Private Equity',
         'reading': 'What We\'re Reading'
-      }
+      },
+      fetchedPosts: false
     }
   }
 
@@ -55,7 +59,8 @@ class Topic extends React.Component {
     if (topic === 'Private Equity') topic = 'Private Equity Article';
     if (topic === 'Diversity & Inclusion') topic = 'diversity-inclusion';
     if (topic === 'Leadership & Governance') topic = 'leadership-governance';
-    if (!this.props.wordpress.posts.length) {
+    if (!this.state.fetchedPosts) {
+      this.setState({ fetchedPosts: true });
       // fetch four latest articles in current category
       this.props.actions.fetchPosts(4, 0, 1, topic)
     } else {
@@ -72,7 +77,8 @@ class Topic extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.wordpress.posts.length) {
+    if (!this.state.fetchedPosts) {
+      this.setState({ fetchedPosts: true });
       const url = this.props.location.pathname.slice(20);
       let topic = this.state.topics[url];
       if (topic === 'Private Equity') topic = 'Private Equity Article';
