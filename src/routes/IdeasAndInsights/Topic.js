@@ -71,7 +71,7 @@ class Topic extends React.Component {
           name: 'Making Moves'
         },
         'private-equity': {
-          category: 'Private Equity Article',
+          category: 'Private Equity', // ??????
           slug: 'private-equity-article',
           name: 'Private Equity'
         },

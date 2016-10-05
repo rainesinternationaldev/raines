@@ -7,10 +7,10 @@ import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../../utils';
-import main1 from '../assets/main1.jpg';
-import main2 from '../assets/main2.jpg';
-import main3 from '../assets/main3.jpg';
-import main4 from '../assets/main4.jpg';
+import main1 from '../assets/main1.png';
+import main2 from '../assets/main2.png';
+import main3 from '../assets/main3.png';
+import main4 from '../assets/main4.png';
 import Slider from 'react-slick';
 
 
