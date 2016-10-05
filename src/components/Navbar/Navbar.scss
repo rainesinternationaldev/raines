@@ -11,15 +11,93 @@
 		float: left;
 	}
 
+	.burgerDiv {
+		text-align: right;
+    margin: 20px 10px;
+		i {
+			font-size: 40px;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+
+	.closeOverlay {
+		margin: 20px;
+    font-size: 10px;
+    background: darken(#CDCDCD, 5%);
+    color: white;
+    width: 40px;
+    height: 40px;
+		border: 0px;
+	}
+
+	.menuOverlay {
+		position: absolute;
+    z-index: 1;
+		margin: auto;
+    left: 0;
+    right: 0;
+		top: 0;
+		background: transparentize(white, $amount: 0.1);
+		height: 5000vh;
+		ul {
+	    text-align: center;
+			padding: 0px;
+			margin-top: 110px;
+			li {
+				list-style: none;
+				font-size: 20px;
+   			padding: 5px 0px;
+				 a {
+						color: darken(gray, 10%);
+				 }
+			}
+		}
+	}
+
 	.navListContainer {		
 		.navList {
 			display: flex;
 			align-items: flex-end;
 			height: 68px;
+			margin-top: 13px;
+			margin-bottom: 0px;
 			.navLink {
 				display: inline;
 				list-style-type: none;
-				padding-right: 20px;
+				padding-right: 25px;
+				padding-bottom: 13px;
+				.advantageDropdown {
+					left: 210px;
+				}
+				.expertiseDropdown {
+					left: 310px;
+				}
+				.aboutUsDropdown {
+					left: 640px;
+				}
+				.contactDropdown {
+					left: 733px;
+				}
+				.dropdownList {
+					display: none;
+					position: absolute;
+					z-index: 1;
+					padding: 0;
+					list-style: none;
+					margin-top: 13px;	
+					background: transparentize(#CDCDCD, $amount: 0.1);
+					li {
+						padding: 5px 14px;
+						border-bottom: 1px solid white;
+					}
+				}
+				&:hover {
+					.dropdownList {
+						display: block;
+					}
+				}
 			}
 		}
 	}

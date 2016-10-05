@@ -35,8 +35,6 @@ export default createReducer(initialState, {
 			console.log('comparing payload posts', payload.posts)
 			
 			payload.posts.forEach((fetchedPost) => {
-
-
 				let newPost = true;
 				state.posts.forEach((post) => {
 					if (fetchedPost.ID == post.ID) {
@@ -45,11 +43,14 @@ export default createReducer(initialState, {
 				});
 				if (newPost) {
 					posts.push(fetchedPost);
+					console.log('the posts length', posts.length)
 				}
 			})
 		} else {
 			posts = payload.posts;
 		}
+
+		posts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 		return Object.assign({}, state, {
 			posts: posts,

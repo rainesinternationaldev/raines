@@ -55,7 +55,7 @@ class IdeasAndInsights extends React.Component {
     const { mediaType } = this.props;
     const baseurl = '/ideas-and-insights';
     const posts = this.props.wordpress.posts;
-    let nextArticles = posts.slice(4);
+    let nextArticles = posts.slice(4, this.state.numShown);
     let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
 
     return (

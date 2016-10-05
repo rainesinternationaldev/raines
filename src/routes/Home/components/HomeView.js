@@ -40,18 +40,12 @@ class HomeView extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('cwrp')
     if (!this.state.fetchedPosts) {
       this.setState({ fetchedPosts: true });
       this.props.actions.fetchPosts(4, 0, 1);
       this.props.actions.fetchFeaturedOnHomepage('Home Page - Insight');
       this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
     }
-    // if (!this.props.wordpress.posts.length) {
-    //   this.props.actions.fetchPosts(4, 0, 1);
-    //   this.props.actions.fetchFeaturedOnHomepage('Home Page - Insight');
-    //   this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
-    // }
 
     if (!this.props.wordpress.profiles.length && !this.state.fetchedProfiles) {
       this.setState({ fetchedProfiles: true });
