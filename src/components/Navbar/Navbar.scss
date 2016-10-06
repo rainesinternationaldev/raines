@@ -7,6 +7,15 @@
 	height: 92px;
 	border-bottom: 11px solid #343434;
 
+	.inner {
+		/* match raines */
+		float: none;
+    margin: 0 auto;
+    max-width: 960px;
+    // overflow: hidden;
+		/* end match raines */
+	}
+
 	.companyLogo {
 		height: 55px;
 		margin-top: 13px;
@@ -63,24 +72,28 @@
 			display: flex;
 			align-items: flex-end;
 			height: 68px;
-			margin-top: 13px;
+			padding-top: 81px;
 			margin-bottom: 0px;
+			padding-left: 26px;
 			.navLink {
 				display: inline;
 				list-style-type: none;
-				padding-right: 25px;
+				padding-right: 40px;
 				padding-bottom: 13px;
 				.advantageDropdown {
-					left: 210px;
+					left: 205px;
 				}
 				.expertiseDropdown {
-					left: 310px;
+					left: 315px;
 				}
 				.aboutUsDropdown {
-					left: 640px;
+					left: 706px;
 				}
 				.contactDropdown {
-					left: 733px;
+					left: 807px;
+				}
+				a {
+					font-family: 'Open Sans';
 				}
 				.dropdownList {
 					display: none;

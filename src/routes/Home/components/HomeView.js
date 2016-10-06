@@ -158,7 +158,7 @@ class HomeView extends React.Component {
     return (
       <div className={classes.home}>
         {
-        <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+        <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
             <Slider {...settings}>

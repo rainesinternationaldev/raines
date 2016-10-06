@@ -3,6 +3,12 @@
 .thankYou {
   min-height: calc(100vh - 402px);
   background: white;
+  /* match raines */
+		float: none;
+    margin: 0 auto;
+    max-width: 960px;
+    overflow: hidden;
+		/* end match raines */
   .inner {
     background: #f8f8f8;
     padding: 20px;

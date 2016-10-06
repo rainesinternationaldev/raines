@@ -1,6 +1,7 @@
 $blue: #7396B4;
 
 .subNavbar {
+
   text-align: center;
   h1 {
     margin-bottom: 10px;
@@ -15,6 +16,13 @@ $blue: #7396B4;
   .inner {
     background: white;
     padding-bottom: 30px;
+
+    /* match raines */
+		float: none;
+    margin: 0 auto;
+    max-width: 960px;
+    overflow: hidden;
+		/* end match raines */
   }
   .middleHr {
     border-color: #333333;

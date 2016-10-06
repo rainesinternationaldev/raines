@@ -14,7 +14,7 @@ class SubNavbar extends React.Component {
     // let liResponsive = `navLink-${mediaType}`;
     return (
       <div className={`${classes.subNavbar} subNavbar`}>
-        <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+        <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           <div className="center col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h1><Link to="/">raines perspectives</Link></h1>
             <hr className={classes.middleHr}/>

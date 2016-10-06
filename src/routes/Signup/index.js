@@ -121,7 +121,7 @@ class Signup extends React.Component {
 
     return (
       <div className={classes.signup}>
-        <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+        <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           <div className={`${classes.intro} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <h2>Welcome.</h2>
             <h4>The best opportunities aren’t always in front of you. We want to know more about you and include you in our network of executives. Raines International will carefully review your resume and background to consider you for any future recruiting opportunities.</h4>

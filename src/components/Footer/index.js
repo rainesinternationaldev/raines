@@ -17,7 +17,7 @@ class Footer extends React.Component {
     let hideSignup = isHomepage || isSignup;
 
     return (
-      <div className={`${classes.globalFooter} globalFooter col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+      <div className={`${classes.globalFooter} globalFooter col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
         {(() => {
           switch (mediaType) {
             case "extraSmall":

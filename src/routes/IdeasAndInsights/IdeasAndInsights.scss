@@ -1,6 +1,13 @@
 @import '../../styles/base';
 .ideasAndInsights {
   background: white;
+
+  /* match raines */
+		float: none;
+    margin: 0 auto;
+    max-width: 960px;
+    overflow: hidden;
+		/* end match raines */
   .inner{
     background: white;
     padding: 0px;

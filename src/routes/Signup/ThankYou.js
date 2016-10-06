@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './ThankYou.scss';
 
 export const ThankYou = () => (
-  <div className={`${classes.thankYou} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+  <div className={`${classes.thankYou} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
     <div className={`${classes.inner} col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12`}>
       <h1>Thank You.</h1>
       <p>Thank you for introducing yourself to us via Raines International Perspectives’ Registration website. </p>

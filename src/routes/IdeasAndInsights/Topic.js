@@ -134,7 +134,7 @@ class Topic extends React.Component {
     let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
 
     return (
-      <div className={`${classes.ideasAndInsights} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+      <div className={`${classes.ideasAndInsights} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
         <div className={`${classes.inner} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
           <div className={`${classes.latestResearch} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <h4 className={classes.topicTitle}>{topicObj.name}</h4>

@@ -79,7 +79,7 @@ export class Article extends React.Component {
 
     return (
       <div className={classes.article}>
-        <div className={`${classes.inner} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+        <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           {
             post && post.ID ?
             <div className={`${classes.splashArticle} col-lg-9 col-md-9 col-sm-9 col-xs-12`}>

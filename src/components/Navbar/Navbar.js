@@ -25,7 +25,7 @@ class Navbar extends React.Component {
     console.log('the mediatype', mediaType)
     return (
       <div className={`${classes.globalNavbar} globalNavbar`}>
-        <div className="col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12">
+        <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           <a href="http://rainesinternational.com/">
             <img src={CompanyLogo} className={classes.companyLogo}/>
           </a>

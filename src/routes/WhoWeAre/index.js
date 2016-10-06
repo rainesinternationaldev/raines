@@ -29,7 +29,7 @@ class WhoWeAre extends React.Component{
   render() {
     const { mediaType } = this.props;
     return (
-      <div className={`${classes.whoWeAre} col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12`}>
+      <div className={`${classes.whoWeAre} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
         {(() => {
           switch(mediaType) {
             case "extraSmall":
