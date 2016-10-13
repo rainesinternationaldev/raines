@@ -1,3 +1,35 @@
+DEPLOYING TO HEROKU:
+- Make sure to be on branch `raines`
+$ git push heroku raines:master
+
+heroku, gmail, github, amazon login
+rainesinternationaldev@gmail.com
+IdeasAndInsights2016
+
+WordPress
+acct: Rainesinternational
+pw:  rainesworld325
+
+Mailchimp
+Username: jdeoliveira@rainesinternational.com
+Password: Jessica899!
+
+API Security Credentials
+User: rainesinternational
+Access Key ID: AKIAJH4X2XUWG2AUJK2A
+Secret Access Key: 		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
+
+EMAIL CONIGURATION
+https://github.com/nodemailer/nodemailer
+1. “Allow Less Secure Apps” on gmail account
+
+
+
+
+
+
+
+
 # React Redux Starter Kit
 
 [![Join the chat at https://gitter.im/davezuko/react-redux-starter-kit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/davezuko/react-redux-starter-kit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
