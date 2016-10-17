@@ -56,7 +56,6 @@ class IdeasAndInsights extends React.Component {
     const baseurl = '/ideas-and-insights';
     const posts = this.props.wordpress.posts;
     let nextArticles = posts.slice(4, this.state.numShown);
-    let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
 
     return (
       <div className={`${classes.ideasAndInsights} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
@@ -67,12 +66,12 @@ class IdeasAndInsights extends React.Component {
             {
               posts.length > 0 ?
               <div>
-                <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-12 col-xs-12 ${mobile}`}>
+                <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-6 col-xs-12 ${classes[mediaType]}`}>
                   <Link to={`/article/${posts[0].ID}`}>
                     <img src={posts[0].post_thumbnail.URL}/>
                   </Link>
                 </div>
-                <div className={`${classes.desc} col-lg-6 col-md-6 col-sm-12 col-xs-12 ${mobile}`}>
+                <div className={`${classes.desc} col-lg-6 col-md-6 col-sm-6 col-xs-12 ${classes[mediaType]}`}>
                   <Link to={`/article/${posts[0].ID}`}>
                     <h3 className={classes.articleTitle}>{utils.decodeEntities(posts[0].title)}</h3>
                   </Link>
@@ -86,47 +85,47 @@ class IdeasAndInsights extends React.Component {
             <h4 className={classes.subtitle}>TOPICS</h4>
             <hr/>
             <div className={classes.topicList}>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/career-insights`}>
                   Career Insights<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/consulting`}>
                   Consulting<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/current-events`}>
                   Current Events<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/diversity-and-inclusion`}>
                   Diversity & Inclusion<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/interview-tips`}>
                   Interview Tips<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/leadership-and-governance`}>
                   Leadership & Governance<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/making-moves`}>
                   Making Moves<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/private-equity`}>
                   Private Equity<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
               </p>
-              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-12 col-xs-12`}>
+              <p className={`${classes.topic} col-lg-4 col-md-6 col-sm-6 col-xs-12`}>
                 <Link to={`${baseurl}/reading`}>
                   What We're Reading<i className="fa fa-angle-right" aria-hidden="true"></i>
                 </Link>
@@ -139,7 +138,7 @@ class IdeasAndInsights extends React.Component {
             {
               posts.length >= 4 ?
                 <div>
-                  <div className={`${classes.latestArticle} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+                  <div className={`${classes.latestArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                     <Link to={`/article/${posts[1].ID}`}>
                       <img src={posts[1].post_thumbnail.URL}/>
                     </Link>
@@ -148,10 +147,10 @@ class IdeasAndInsights extends React.Component {
                     </Link>
                     <p className={classes.articleSummary}><span className={classes.date}>{moment(posts[1].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(posts[1].excerpt)}</p>
                   </div>
-                  <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-12 col-xs-12`}>
+                  <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                     <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                       <Link to={`/article/${posts[2].ID}`}>
-                        <img className={`${mobile} smallRect`} src={posts[2].post_thumbnail.URL}/>
+                        <img className={`${classes[mediaType]} smallRect`} src={posts[2].post_thumbnail.URL}/>
                       </Link>
                       <Link to={`/article/${posts[2].ID}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(posts[2].title)}</h5>
@@ -160,7 +159,7 @@ class IdeasAndInsights extends React.Component {
                     </div>
                     <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                       <Link to={`/article/${posts[3].ID}`}>
-                        <img className={`${mobile} smallRect`} src={posts[3].post_thumbnail.URL}/>
+                        <img className={`${classes[mediaType]} smallRect`} src={posts[3].post_thumbnail.URL}/>
                       </Link>
                       <Link to={`/article/${posts[3].ID}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(posts[3].title)}</h5>
@@ -179,7 +178,7 @@ class IdeasAndInsights extends React.Component {
                   return (
                     <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
                       <Link to={`/article/${nextArticles[i].ID}`}>
-                        <img className={`${mobile} smallRect`} src={nextArticles[i].post_thumbnail.URL}/>
+                        <img className={`${classes[mediaType]} smallRect`} src={nextArticles[i].post_thumbnail.URL}/>
                       </Link>
                       <Link to={`/article/${nextArticles[i].ID}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(nextArticles[i].title)}</h5>

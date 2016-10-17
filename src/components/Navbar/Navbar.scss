@@ -7,6 +7,15 @@
 	height: 96px;
 	border-bottom: 11px solid #343434;
 
+	/* Make horizontal scrollable */
+	white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+	&.extraSmall {
+		overflow-x: inherit;
+	}
+
 	.inner {
 		/* match raines */
 		float: none;

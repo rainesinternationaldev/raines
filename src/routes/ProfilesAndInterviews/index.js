@@ -51,6 +51,19 @@ class ProfilesAndInterviews extends React.Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.mediaType === 'extraSmall' || this.props.mediaType === 'small')
+    $('.Dropdown-root').css({ padding: '10px' })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.mediaType !== this.props.mediaType) {
+      if (nextProps.mediaType === 'extraSmall' || nextProps.mediaType === 'small') {
+        $('.Dropdown-root').css({ padding: '10px' })
+      }
+    }
+  }
+
   render() {
     const {
       mediaType
@@ -97,12 +110,12 @@ class ProfilesAndInterviews extends React.Component {
             <div className={`${classes.featuredProfile} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
               <h4 className={classes.subtitle}>Featured Profile</h4>
               <hr/>
-              <div className={`${classes.featuredImageDiv} col-lg-4 col-md-4 col-sm-12 col-xs-12`}>
+              <div className={`${classes.featuredImageDiv} col-lg-4 col-md-4 col-sm-4 col-xs-12`}>
                 <Link to={`/profile/${featuredProfile.ID}-${utils.formatTitle(featuredProfile.title)}`}>
                   <img className={classes.featuredImage} src={featuredProfile.post_thumbnail.URL}/>
                 </Link>
               </div>
-              <div className={`${classes.featuredContent} col-lg-8 col-md-8 col-sm-12 col-xs-12`}>
+              <div className={`${classes.featuredContent} ${classes[mediaType]} col-lg-8 col-md-8 col-sm-8 col-xs-12`}>
                 <h4 className={classes.name}>{featuredProfile.title}</h4>
                 <h4 className={classes.company}>{featuredProfile.current_firm}</h4>
                 <h5 className={classes.position}>{featuredProfile.position}</h5>
@@ -110,7 +123,7 @@ class ProfilesAndInterviews extends React.Component {
               </div>
             </div> : ""
           }
-          <div className={`${classes.filterBar} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
+          <div className={`${classes.filterBar} ${classes[mediaType]} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <span className={classes.filter}>FILTER</span>
             <span className={classes.dropdown}>
               <Dropdown
@@ -135,7 +148,7 @@ class ProfilesAndInterviews extends React.Component {
               displayedProfiles ?
               displayedProfiles.map((profile, i) => {
                 return (
-                    <div className={`${classes.profile} ${classes[profileResponsive]} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
+                    <div className={`${classes.profile} ${classes[profileResponsive]} col-lg-3 col-md-3 col-sm-3 col-xs-12`} key={i}>
                       <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
                         <img src={profile.post_thumbnail.URL}/>
                       </Link>

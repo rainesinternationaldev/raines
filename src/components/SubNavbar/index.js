@@ -11,6 +11,7 @@ class SubNavbar extends React.Component {
   render() {
     const { mediaType } = this.props;
     let ulResponsive = `subnavList-${mediaType}`;
+    console.log(ulResponsive, classes.subNavList, classes[ulResponsive])
     // let liResponsive = `navLink-${mediaType}`;
     return (
       <div className={`${classes.subNavbar} subNavbar`}>

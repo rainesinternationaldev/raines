@@ -50,13 +50,13 @@ class Profile extends React.Component {
           </div>
           
           <div className={`${classes.content} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
-            <div className={`${classes.image} col-lg-5 col-md-5 col-sm-12 col-xs-12`}>
+            <div className={`${classes.image} col-lg-5 col-md-5 col-sm-5 col-xs-12`}>
               {
                 profile ?
                 <img src={profile.post_thumbnail.URL}/> : ""
               }
             </div>
-            <div className={`${classes.info} col-lg-7 col-md-7 col-sm-12 col-xs-12`}>
+            <div className={`${classes.info} col-lg-7 col-md-7 col-sm-7 col-xs-12`}>
               {
                 profile ?
                 <div>

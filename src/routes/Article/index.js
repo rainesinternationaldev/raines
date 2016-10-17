@@ -62,6 +62,8 @@ export class Article extends React.Component {
       TwitterShareButton
     } = ShareButtons;
 
+    const mediaType = this.props.mediaType;
+
     const FacebookIcon = generateShareIcon('facebook');
     const TwitterIcon = generateShareIcon('twitter');
     const LinkedinIcon = generateShareIcon('linkedin');
@@ -163,7 +165,7 @@ export class Article extends React.Component {
               </div>
             </div> : ""
           }
-          <div className={`${classes.mostRecent} mostRecent col-lg-3 col-md-3 col-sm-3 col-xs-12`}>
+          <div className={`${classes.mostRecent} ${classes[mediaType]} mostRecent col-lg-3 col-md-3 col-sm-3 col-xs-12`}>
             <h5>Recent Articles</h5>
             <hr/>
             {
@@ -187,7 +189,8 @@ export class Article extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  wordpress: state.wordpress
+  wordpress: state.wordpress,
+  mediaType: state.browser.mediaType
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -148,11 +148,11 @@ class HomeView extends React.Component {
       autoplay: true,
       autoplaySpeed: 5000,
       arrows: false,
-      draggable: false
+      draggable: false,
+      swipe: false,
+      swipeToSlide: false
       // dotsClass: 'dot'
     };
-
-    let mobile = mediaType === 'extraSmall' ? classes.mobile : '';
     let carouselImgResponsive = `carouselImg${mediaType}`;
 
     return (
@@ -184,7 +184,7 @@ class HomeView extends React.Component {
                       <img className={classes.featuredImage} src={featuredMainArticle.post_thumbnail.URL}/>
                     </Link>
                   </div>
-                  <div className={`col-lg-4 col-md-4 col-sm-4 col-xs-12 ${mobile}`}>
+                  <div className={`col-lg-4 col-md-4 col-sm-4 col-xs-12 ${classes[mediaType]}`}>
                     <Link to={`/article/${featuredMainArticle.ID}`}>
                       <h4 className={classes.articleTitle}>{utils.decodeEntities(featuredMainArticle.title)}</h4>
                     </Link>
@@ -222,7 +222,7 @@ class HomeView extends React.Component {
               featuredProfiles.length ?
               featuredProfiles.map((profile, i) => {
                 return (
-                  <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
+                  <div className={`${classes.profile} col-lg-3 col-md-3 col-sm-3 col-xs-12`} key={i}>
                     <Link to={`/profile/${profile.ID}-${utils.formatTitle(profile.title)}`}>
                       <img src={profile.post_thumbnail.URL}/>
                     </Link>

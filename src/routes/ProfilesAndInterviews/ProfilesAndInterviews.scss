@@ -27,6 +27,10 @@
         }
       }
       .featuredContent {
+        &.extraSmall, &.small {
+          margin-top: 20px;
+          padding: 0;
+        }
         .name {
           font-size: 30px;
           // font-family: Georgia;
@@ -57,6 +61,16 @@
       color: white;
       height: 40px;
       font-family: 'Open Sans';
+
+      &.extraSmall, &.small {
+        display: inherit;
+        text-align: center;
+        height: inherit;
+        padding: 10px;
+        .filter, .reset, .dropdown {
+          padding: 0px;
+        }
+      }
 
       .filter, .reset, .dropdown {
         padding: 15px;

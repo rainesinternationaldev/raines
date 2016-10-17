@@ -45,6 +45,9 @@
 		}
 	}
 	.mostRecent {
+		&.extraSmall, &.small {
+			margin-top: 40px;
+		}
 		hr {
 			margin-top: 0px;
 		}

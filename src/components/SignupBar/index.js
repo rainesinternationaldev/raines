@@ -57,25 +57,25 @@ class SignupBar extends React.Component {
   render() {
     return (
       <div className={`"col-lg-12 col-md-12 col-sm-12 col-xs-12" ${classes.signupbar}`}>
-        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <input className="firstName" placeholder="First Name"/>
           {
             this.state.fields.firstName.error ? <p className={classes.error}>Required</p> : ""
           }
         </div>
-        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <input className="lastName" placeholder="Last Name"/>
           {
             this.state.fields.lastName.error ? <p className={classes.error}>Required</p> : ""
           }
         </div>
-        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <input className="email" placeholder="Email Address"/>
           {
             this.state.fields.email.error ? <p className={classes.error}>Required</p> : ""
           }
         </div>
-        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <button
             onClick={this.continueToRegistration}>Register</button>
         </div>

@@ -29,7 +29,7 @@
     font-style: italic;
   }
   .latestResearch {
-    .mobile {
+    .extraSmall, .small {
       padding: 0px;
     }
     .imageDiv {
@@ -96,7 +96,7 @@
       img {
         height: 113px;
       }
-      .mobile {
+      .extraSmall, .small {
         height: 230px;
       }
     }
@@ -110,7 +110,7 @@
         width: 100%;
         height: 113px;
       }
-      .mobile {
+      .extraSmall, .small {
         height: 230px;
       }
     }

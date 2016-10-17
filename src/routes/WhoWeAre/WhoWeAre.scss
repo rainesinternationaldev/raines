@@ -56,6 +56,15 @@
         p {
           font-size: 15px;
         }
+        &.extraSmall, &.small {
+          padding: 0;
+          margin-bottom: 10px;
+          &.careerInsights {
+            .link {
+              margin-bottom: 20px;
+            }
+          }
+        }
       }
       .left {
         height: 264px;
@@ -75,6 +84,11 @@
         .link {
           bottom: 0;
           position: absolute;
+        }
+        &.medium {
+          .link {
+            bottom: 20px;
+          }
         }
       }
     }
