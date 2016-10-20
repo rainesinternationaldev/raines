@@ -19,7 +19,9 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { mediaType } = this.props;
+    const { browser } = this.props;
+    const mediaType = browser.mediaType;
+    const width = browser.width;
     let ulResponsive = `navList-${mediaType}`;
     let liResponsive = `navLink-${mediaType}`;
     console.log('the mediatype', mediaType)
@@ -30,7 +32,7 @@ class Navbar extends React.Component {
             <img src={CompanyLogo} className={classes.companyLogo}/>
           </a>
           {
-            mediaType === 'extraSmall' ? 
+            width < 900 ? 
               <div className={classes.burgerDiv}>
                 <i className="fa fa-bars" aria-hidden="true" onClick={this.showMenuOverlay}></i>
                 {
@@ -52,7 +54,7 @@ class Navbar extends React.Component {
               </div> :
               <div className={classes.navListContainer}>
                 <ul className={`${classes.navList} ${classes[ulResponsive]}`}>
-                  <li className={`${classes.navLink} ${classes[liResponsive]}`}>
+                  <li className={`${classes.navLink} ${classes[liResponsive]} navLink`}>
                     <a href="http://rainesinternational.com/advantage.html">Advantage</a>
                     <ul className={`${classes.dropdownList} ${classes.advantageDropdown}`}>
                       <li><a href="http://rainesinternational.com/relationships.html">Relationships</a></li>
@@ -98,7 +100,7 @@ class Navbar extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  mediaType: state.browser.mediaType
+  browser: state.browser
 });
 
 export default connect(mapStateToProps)(Navbar);

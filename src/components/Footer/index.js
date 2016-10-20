@@ -33,7 +33,7 @@ class Footer extends React.Component {
                   <div className={`${classes.footerFooter} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
                     <hr className={classes.lowerHr}/>
                     <div><p>2016 Raines International Inc. All Rights Reserved.</p></div>
-                    <div><p>212-997-1100 | Home | Privacy Policy | Terms of Use | Contact Us | <a href="http://rainesinternational.com/site-map.html">Site Map</a></p></div>
+                    <div><p>212-997-1100 | <a href="http://rainesinternational.com/index.html">Home</a> | <a href="http://rainesinternational.com/privacy-policy.html">Privacy Policy</a> | <a href="http://rainesinternational.com/contact.html">Contact Us</a> | <a href="http://rainesinternational.com/site-map.html">Site Map</a></p></div>
 
                     <hr/>
 
@@ -64,7 +64,7 @@ class Footer extends React.Component {
                     <a href="https://twitter.com/consultanttrack" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></a>
                     <a href="https://www.facebook.com/RainesInternational" target="_blank"><i className="fa fa-facebook-square" aria-hidden="true"></i></a>
                     <a href="https://www.linkedin.com/company/raines-international-inc" target="_blank"><i className="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                    <span>2016 Raines International Inc. | 212-997-1100 | <a href="http://rainesinternational.com/index.html">Home</a> | Privacy Policy | Terms of Use | <a href="The Privacy Policy link in the footer of the main website (rainesinternational.com) does not lead anywhere">Contact Us</a> | <a href="http://rainesinternational.com/site-map.html">Site Map</a></span>
+                    <span>2016 Raines International Inc. | 212-997-1100 | <a href="http://rainesinternational.com/index.html">Home</a> | <a href="http://rainesinternational.com/privacy-policy.html">Privacy Policy</a> | <a href="http://rainesinternational.com/contact.html">Contact Us</a> | <a href="http://rainesinternational.com/site-map.html">Site Map</a></span>
                   </div>
                 </div>
               )
