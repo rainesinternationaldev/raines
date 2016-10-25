@@ -82,11 +82,16 @@ export class Article extends React.Component {
 
     return (
       <div className={classes.article}>
-        <Helmet
-          meta={[
-            {"property": "og:type", "content":"article"},
-            {"property": "og:image", "content":"https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"}
-          ]}/>
+        {
+          post && post.ID ?
+            <Helmet
+              meta={[
+                {"property": "og:type", "content":"article"},
+                {"property": "og:title", "content":`${post.title}`},
+                {"property": "og:description", "content":`${post.excerpt}`},
+                {"property": "og:image", "content":"https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"}
+              ]}/> : ""
+        }
         <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           {
             post && post.ID ?
