@@ -6,6 +6,7 @@ import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../utils';
+import Helmet from 'react-helmet';
 import {
   ShareButtons,
   ShareCounts,
@@ -77,10 +78,14 @@ export class Article extends React.Component {
     }
 
     let currentLocation = window.location.href;
-    currentLocation = 'https://mysterious-brook-13530.herokuapp.com/'
+    // currentLocation = 'https://mysterious-brook-13530.herokuapp.com/'
 
     return (
       <div className={classes.article}>
+        <Helmet
+          meta={[
+            {"property": "og:image", "content":"http://www.menucool.com/slider/jsImgSlider/images/image-slider-2.jpg"}
+          ]}/>
         <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           {
             post && post.ID ?
