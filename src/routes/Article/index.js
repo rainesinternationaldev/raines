@@ -78,23 +78,23 @@ export class Article extends React.Component {
     }
 
     let currentLocation = window.location.href;
-    // currentLocation = 'https://mysterious-brook-13530.herokuapp.com/'
+    currentLocation = 'https://perspectives.rainesinternational.com'
 
-    var tags = [
-      {name: "description", content: "some description"},
-      {itemProp: "name", content: "The Name or Title Here"},
-      {itemProp: "description", content: "This is the page description"},
-      {itemProp: "image", content: "https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"},
-      {property: "og:title", content: "Title Here"},
-      {property: "og:type", content: "article"},
-      {property: "og:url", content: `${currentLocation}`},
-      {property: "og:image", content: "https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"}
-    ]
+    // var tags = [
+    //   {name: "description", content: "some description"},
+    //   {itemProp: "name", content: "The Name or Title Here"},
+    //   {itemProp: "description", content: "This is the page description"},
+    //   {itemProp: "image", content: "https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"},
+    //   {property: "og:title", content: "Title Here"},
+    //   {property: "og:type", content: "article"},
+    //   {property: "og:url", content: `${currentLocation}`},
+    //   {property: "og:image", content: "https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"}
+    // ]
 
     return (
       <div className={classes.article}>
-        <DocMeta tags={tags}/>
         {
+        // <DocMeta tags={tags}/>
           // post && post.ID ?
           //   <Helmet
           //     meta={[
