@@ -78,7 +78,7 @@ export class Article extends React.Component {
     }
 
     let currentLocation = window.location.href;
-    currentLocation = 'https://perspectives.rainesinternational.com'
+    currentLocation = `https://perspectives.rainesinternational.com${this.props.location.pathname}`
 
     // var tags = [
     //   {name: "description", content: "some description"},
