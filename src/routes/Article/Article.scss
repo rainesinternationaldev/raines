@@ -31,6 +31,12 @@
 			h4 {
 				font-size: 20px;
 			}
+      a {
+        color: $blue;
+        &:hover {
+          color: $dark-blue;
+        }
+      }
 		}
 	}
 	.socialMediaShareButton {
