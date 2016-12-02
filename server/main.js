@@ -12,6 +12,9 @@ import webpackHMRMiddleware from './middleware/webpack-hmr'
 
 import api from './api';
 
+import prerender from 'koa-prerender';
+
+
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
@@ -61,5 +64,12 @@ if (config.env === 'development') {
   // server in production.
   app.use(convert(serve(paths.dist())))
 }
+
+app.use(prerender({
+  prerender: 'http://service.prerender.io/',
+  protocol: 'https',
+  host: 'https://perspectives.rainesinternational.com/',
+  prerenderToken: 'OLYfOc15n0xKtWAsZptf'
+}));
 
 export default app
