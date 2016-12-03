@@ -19,14 +19,14 @@ const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
 
-// app.use(prerender({
-//   prerender: 'http://service.prerender.io/',
-//   // prerender: 'http://localhost:4000/',
-//   protocol: 'http',
-//   host: 'perspectives.rainesinternational.com',
-//   // host: 'http://localhost:3000/',
-//   prerenderToken: process.env.PRERENDER_TOKEN
-// }));
+app.use(prerender({
+  prerender: 'http://service.prerender.io/',
+  // prerender: 'http://localhost:4000/',
+  protocol: 'http',
+  host: 'perspectives.rainesinternational.com',
+  // host: 'http://localhost:3000',
+  prerenderToken: process.env.PRERENDER_TOKEN
+}));
 
 app.use(api.routes());
 

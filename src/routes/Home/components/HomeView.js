@@ -30,12 +30,16 @@ class HomeView extends React.Component {
     if (!this.props.wordpress.posts.length) {
       this.props.actions.fetchPosts(4, 0, 1);
       this.props.actions.fetchFeaturedOnHomepage('Home Page - Insight');
-      this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
+      this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective').then(() => {
+        window.prerenderReady = true;
+      });
     }
 
     if (!this.props.wordpress.profiles.length && !this.state.fetchedProfiles) {
       this.setState({ fetchedProfiles: true });
-      this.props.actions.fetchProfiles();
+      this.props.actions.fetchProfiles().then(() => {
+        window.prerenderReady = true;
+      });
     }
   }
 
@@ -44,12 +48,16 @@ class HomeView extends React.Component {
       this.setState({ fetchedPosts: true });
       this.props.actions.fetchPosts(4, 0, 1);
       this.props.actions.fetchFeaturedOnHomepage('Home Page - Insight');
-      this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective');
+      this.props.actions.fetchFeaturedOnHomepage('Home Page - Perspective').then(() => {
+        window.prerenderReady = true;
+      });
     }
 
     if (!this.props.wordpress.profiles.length && !this.state.fetchedProfiles) {
       this.setState({ fetchedProfiles: true });
-      this.props.actions.fetchProfiles();
+      this.props.actions.fetchProfiles().then(() => {
+        window.prerenderReady = true;
+      });
     }
 
     if (nextProps.mediaType !== this.state.currentSize) {
