@@ -19,6 +19,15 @@ const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
 
+app.use(prerender({
+  prerender: 'http://service.prerender.io/',
+  // prerender: 'http://localhost:4000/',
+  protocol: 'http',
+  host: 'perspectives.rainesinternational.com',
+  // host: 'http://localhost:3000/',
+  prerenderToken: process.env.PRERENDER_TOKEN
+}));
+
 app.use(api.routes());
 
 // Enable koa-proxy if it has been enabled in the config.
@@ -64,14 +73,5 @@ if (config.env === 'development') {
   // server in production.
   app.use(convert(serve(paths.dist())))
 }
-
-console.log('TOKEN', process.env.PRERENDER_TOKEN)
-
-// app.use(prerender({
-//   prerender: 'http://service.prerender.io/',
-//   protocol: 'http',
-//   host: 'perspectives.rainesinternational.com',
-//   prerenderToken: process.env.PRERENDER_TOKEN
-// }));
 
 export default app
