@@ -65,11 +65,13 @@ if (config.env === 'development') {
   app.use(convert(serve(paths.dist())))
 }
 
-app.use(prerender({
-  prerender: 'http://service.prerender.io/',
-  protocol: 'https',
-  host: 'https://perspectives.rainesinternational.com/',
-  prerenderToken: 'OLYfOc15n0xKtWAsZptf'
-}));
+console.log('TOKEN', process.env.PRERENDER_TOKEN)
+
+// app.use(prerender({
+//   prerender: 'http://service.prerender.io/',
+//   protocol: 'http',
+//   host: 'perspectives.rainesinternational.com',
+//   prerenderToken: process.env.PRERENDER_TOKEN
+// }));
 
 export default app
