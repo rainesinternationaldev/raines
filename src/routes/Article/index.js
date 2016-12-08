@@ -28,9 +28,11 @@ export class Article extends React.Component {
     this.setState({ location: this.props.location.pathname });
 
     // Prevent re-fetching already fetched articles
-    if (!cachedArticle) this.props.actions.fetchPost(articleId);
+    if (!cachedArticle) this.props.actions.fetchPost(articleId).then(() => {
+      window.prerenderReady = true;
+    });
     if (this.props.wordpress && !this.props.wordpress.posts.length) {
-      this.props.actions.fetchPosts();
+      this.props.actions.fetchPosts()
     }
   }
 
@@ -41,7 +43,9 @@ export class Article extends React.Component {
       const articleId     = this.props.location.pathname.slice(9).split('-')[0];
       const currentPost   = this.props.wordpress.currentPost;
       const cachedArticle = currentPost && currentPost.id == articleId;
-      if (!cachedArticle) this.props.actions.fetchPost(articleId);
+      if (!cachedArticle) this.props.actions.fetchPost(articleId).then(() => {
+        window.prerenderReady = true;
+      });
 
       this.forceUpdate();
     }
