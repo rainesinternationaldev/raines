@@ -22,7 +22,7 @@ const app = new Koa()
 app.use(prerender({
   prerender: 'http://service.prerender.io/',
   // prerender: 'http://localhost:4000/',
-  protocol: 'http',
+  protocol: 'https',
   host: 'perspectives.rainesinternational.com',
   // host: 'localhost:3000',
   prerenderToken: 'OLYfOc15n0xKtWAsZptf'
