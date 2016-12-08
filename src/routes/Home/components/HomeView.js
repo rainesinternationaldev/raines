@@ -13,8 +13,6 @@ import main3 from '../assets/main3.png';
 import main4 from '../assets/main4.png';
 import Slider from 'react-slick';
 
-
-
 class HomeView extends React.Component {
   constructor(props) {
 		super(props);
@@ -188,12 +186,12 @@ class HomeView extends React.Component {
                 featuredMainArticle ?
                 <div>
                   <div className={`${classes.imageContainer} col-lg-8 col-md-8 col-sm-8 col-xs-12`}>
-                    <Link to={`/article/${featuredMainArticle.ID}`}>
+                    <Link to={`/article/${featuredMainArticle.ID}-${featuredMainArticle.slug}`}>
                       <img className={classes.featuredImage} src={featuredMainArticle.post_thumbnail.URL}/>
                     </Link>
                   </div>
                   <div className={`col-lg-4 col-md-4 col-sm-4 col-xs-12 ${classes[mediaType]}`}>
-                    <Link to={`/article/${featuredMainArticle.ID}`}>
+                    <Link to={`/article/${featuredMainArticle.ID}-${featuredMainArticle.slug}`}>
                       <h4 className={classes.articleTitle}>{utils.decodeEntities(featuredMainArticle.title)}</h4>
                     </Link>
                     <p className={classes.date}>{moment(featuredMainArticle.date).format('MMMM YYYY')}</p>
@@ -212,7 +210,7 @@ class HomeView extends React.Component {
                   return (
                     <div className={classes.article} key={i}>
                       <p className={classes.topicPreview}>{utils.decodeEntities(post.mainCategory)}</p>
-                      <Link to={`/article/${post.ID}`}>
+                      <Link to={`/article/${post.ID}-${post.slug}`}>
                         <h4 className={classes.articleTitle}>{utils.decodeEntities(post.title)}</h4>
                       </Link>
                     </div>
@@ -254,7 +252,7 @@ class HomeView extends React.Component {
               featuredPerspectives.map((article, i) => {
                 return (
                   <div className={`${classes.article} col-lg-4 col-md-4 col-sm-4 col-xs-12`} key={i}>
-                    <Link to={`/article/${article.ID}`}>
+                    <Link to={`/article/${article.ID}-${article.slug}`}>
                       <img className={classes.perspectiveImage} src={article.post_thumbnail.URL}/>
                       <h5>{utils.decodeEntities(article.title)}</h5>
                     </Link>

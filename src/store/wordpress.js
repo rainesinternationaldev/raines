@@ -7,6 +7,7 @@ import {
 	FETCH_PLACEMENTS_SUCCESS
 } from '../constants';
 import {createReducer} from './util';
+import slug from 'slug';
 
 const initialState = {
 	posts: [],
@@ -29,10 +30,12 @@ export default createReducer(initialState, {
 					p.mainCategory = c;
 				}
 			}
+      const slugTitle = slug(p.title).slice(0, 40).replace('and8217', '');
+      p.slug = slugTitle;
 		})
 		if (state.posts.length) {
-			console.log('comparing state posts', state.posts)
-			console.log('comparing payload posts', payload.posts)
+			// console.log('comparing state posts', state.posts)
+			// console.log('comparing payload posts', payload.posts)
 			
 			payload.posts.forEach((fetchedPost) => {
 				let newPost = true;
@@ -43,7 +46,6 @@ export default createReducer(initialState, {
 				});
 				if (newPost) {
 					posts.push(fetchedPost);
-					console.log('the posts length', posts.length)
 				}
 			})
 		} else {
@@ -58,6 +60,10 @@ export default createReducer(initialState, {
 		});
 	},
 	[FETCH_FEATURED_ON_HOMEPAGE_SUCCESS]: (state, payload) => {
+    payload.posts.forEach(p => {
+      const slugTitle = slug(p.title).slice(0, 40).replace('and8217', '');
+      p.slug = slugTitle;
+    })
 		if (payload.category === 'Home Page - Insight') {
 			return Object.assign({}, state, {
 				featuredArticleOnHomepage: payload.posts
@@ -77,6 +83,10 @@ export default createReducer(initialState, {
 	[FETCH_PROFILES_SUCCESS]: (state, payload) => {
 		let profiles = payload.profiles.map(extractProfileMetadata);
 		let featuredProfilesOnHomepage = profiles.filter(profile => profile.categories["Home Page - Profiles"]).slice(0, 4);
+    payload.profiles.forEach(p => {
+      const slugTitle = slug(p.title).slice(0, 40).replace('and8217', '');
+      p.slug = slugTitle;
+    })
 
 		return Object.assign({}, state, {
 			profiles,

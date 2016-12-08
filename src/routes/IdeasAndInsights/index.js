@@ -67,12 +67,12 @@ class IdeasAndInsights extends React.Component {
               posts.length > 0 ?
               <div>
                 <div className={`${classes.imageDiv} col-lg-6 col-md-6 col-sm-6 col-xs-12 ${classes[mediaType]}`}>
-                  <Link to={`/article/${posts[0].ID}`}>
+                  <Link to={`/article/${posts[0].ID}-${posts[0].slug}`}>
                     <img src={posts[0].post_thumbnail.URL}/>
                   </Link>
                 </div>
                 <div className={`${classes.desc} col-lg-6 col-md-6 col-sm-6 col-xs-12 ${classes[mediaType]}`}>
-                  <Link to={`/article/${posts[0].ID}`}>
+                  <Link to={`/article/${posts[0].ID}-${posts[0].slug}`}>
                     <h3 className={classes.articleTitle}>{utils.decodeEntities(posts[0].title)}</h3>
                   </Link>
                   <p className={classes.articleSummary}><span className={classes.date}>{moment(posts[0].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(posts[0].excerpt)}</p>
@@ -139,29 +139,29 @@ class IdeasAndInsights extends React.Component {
               posts.length >= 4 ?
                 <div>
                   <div className={`${classes.latestArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
-                    <Link to={`/article/${posts[1].ID}`}>
+                    <Link to={`/article/${posts[1].ID}-${posts[1].slug}`}>
                       <img src={posts[1].post_thumbnail.URL}/>
                     </Link>
-                    <Link to={`/article/${posts[1].ID}`}>
+                    <Link to={`/article/${posts[1].ID}-${posts[1].slug}`}>
                       <h5 className={classes.articleTitle}>{utils.decodeEntities(posts[1].title)}</h5>
                     </Link>
                     <p className={classes.articleSummary}><span className={classes.date}>{moment(posts[1].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(posts[1].excerpt)}</p>
                   </div>
                   <div className={`${classes.nextArticles} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
                     <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
-                      <Link to={`/article/${posts[2].ID}`}>
+                      <Link to={`/article/${posts[2].ID}-${posts[2].slug}`}>
                         <img className={`${classes[mediaType]} smallRect`} src={posts[2].post_thumbnail.URL}/>
                       </Link>
-                      <Link to={`/article/${posts[2].ID}`}>
+                      <Link to={`/article/${posts[2].ID}-${posts[2].slug}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(posts[2].title)}</h5>
                       </Link>
                       <p className={classes.articleSummary}><span className={classes.date}>{moment(posts[2].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(posts[2].excerpt)}</p>
                     </div>
                     <div className={`${classes.nextArticle} col-lg-6 col-md-6 col-sm-6 col-xs-12`}>
-                      <Link to={`/article/${posts[3].ID}`}>
+                      <Link to={`/article/${posts[3].ID}-${posts[3].slug}`}>
                         <img className={`${classes[mediaType]} smallRect`} src={posts[3].post_thumbnail.URL}/>
                       </Link>
-                      <Link to={`/article/${posts[3].ID}`}>
+                      <Link to={`/article/${posts[3].ID}-${posts[3].slug}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(posts[3].title)}</h5>
                       </Link>
                       <p className={classes.articleSummary}><span className={classes.date}>{moment(posts[3].date).format('MMMM YYYY')}</span> - {utils.decodeEntities(posts[3].excerpt)}</p>
@@ -177,10 +177,10 @@ class IdeasAndInsights extends React.Component {
                   console.log('the next articles', article)
                   return (
                     <div className={`${classes.nextArticle} col-lg-3 col-md-3 col-sm-6 col-xs-12`} key={i}>
-                      <Link to={`/article/${nextArticles[i].ID}`}>
+                      <Link to={`/article/${nextArticles[i].ID}-${nextArticles[i].slug}`}>
                         <img className={`${classes[mediaType]} smallRect`} src={nextArticles[i].post_thumbnail.URL}/>
                       </Link>
-                      <Link to={`/article/${nextArticles[i].ID}`}>
+                      <Link to={`/article/${nextArticles[i].ID}-${nextArticles[i].slug}`}>
                         <h5 className={classes.articleTitle}>{utils.decodeEntities(nextArticles[i].title)}</h5>
                       </Link>
                     </div>
