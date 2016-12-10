@@ -12,7 +12,7 @@ import webpackHMRMiddleware from './middleware/webpack-hmr'
 
 import api from './api';
 
-// import prerender from 'koa-prerender';
+import prerender from 'koa-prerender';
 
 
 const debug = _debug('app:server')
@@ -31,7 +31,7 @@ const prerenderSettings = {
 // console.log('prerenderSettings', prerenderSettings)
 // app.use(prerender(prerenderSettings));
 
-// app.use(prerender());
+app.use(prerender());
 
 app.use(api.routes());
 
