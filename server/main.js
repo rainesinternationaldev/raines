@@ -30,6 +30,8 @@ const prerenderSettings = {
 
 // console.log('prerenderSettings', prerenderSettings)
 
+// app.use(prerender(prerenderSettings));
+
 app.use(prerender());
 
 app.use(api.routes());
