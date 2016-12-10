@@ -25,7 +25,7 @@ app.use(prerender({
   protocol: 'https',
   host: 'perspectives.rainesinternational.com',
   // host: 'localhost:3000',
-  prerenderToken: 'OLYfOc15n0xKtWAsZptf'
+  prerenderToken: 'NsbhPNZyS7zy4yMNO8gU'
 }));
 
 app.use(api.routes());

@@ -130,9 +130,10 @@ webpackConfig.module.loaders = [{
     plugins: ['transform-runtime'],
     presets: ['es2015', 'react', 'stage-0'],
     env: {
-      production: {
-        presets: ['react-optimize']
-      }
+      // Disable this since it makes it incompatible with prerender
+      // production: {
+      //   presets: ['react-optimize']
+      // }
     }
   }
 },
