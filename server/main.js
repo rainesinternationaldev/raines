@@ -23,14 +23,14 @@ const prerenderSettings = {
   // prerender: 'http://service.prerender.io/',
   // prerender: 'http://localhost:4000/',
   // protocol: 'http',
-  host: 'perspectives.rainesinternational.com',
+  // host: 'perspectives.rainesinternational.com',
   // host: 'localhost:3000',
-  prerenderToken: 'NsbhPNZyS7zy4yMNO8gU'
+  // prerenderToken: 'NsbhPNZyS7zy4yMNO8gU'
 };
 
-console.log('prerenderSettings', prerenderSettings)
+// console.log('prerenderSettings', prerenderSettings)
 
-app.use(prerender(prerenderSettings));
+app.use(prerender());
 
 app.use(api.routes());
 
