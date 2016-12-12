@@ -27,15 +27,6 @@ const history = syncHistoryWithStore(browserHistory, store, {
 })
 
 // ========================================================
-// Developer Tools Setup
-// ========================================================
-if (__DEBUG__) {
-  if (window.devToolsExtension) {
-    window.devToolsExtension.open()
-  }
-}
-
-// ========================================================
 // Render Setup
 // ========================================================
 const MOUNT_NODE = document.getElementById('root')
@@ -52,6 +43,15 @@ let render = (routerKey = null) => {
     />,
     MOUNT_NODE
   )
+}
+
+// ========================================================
+// Developer Tools Setup
+// ========================================================
+if (__DEV__) {
+  if (window.devToolsExtension) {
+    window.devToolsExtension.open()
+  }
 }
 
 // Enable HMR and catch runtime errors in RedBox
