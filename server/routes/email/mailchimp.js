@@ -1,4 +1,5 @@
-import mailchimp from 'mailchimp-v3';
+// import mailchimp from 'mailchimp-v3';
+const mailchimp = require('mailchimp-v3');
 
 mailchimp.setApiKey('8d2106efc02c51a18e15e17f49a65dc7-us13');
 
@@ -14,10 +15,10 @@ const mcLists = {
   }
 }
 
-export const subscribeUserToMailchimp = (lists, data) => {
+exports.subscribeUserToMailchimp = (lists, data) => {
 
-  console.log('parsed n', lists)
-  console.log('parsed d', data)
+  // console.log('parsed n', lists)
+  // console.log('parsed d', data)
 
   return Promise.all(lists.map((listName) => {
     const listId = mcLists[listName].id;
@@ -32,20 +33,20 @@ export const subscribeUserToMailchimp = (lists, data) => {
       }
     };
 
-    console.log('data!!!', mcData);
+    // console.log('data!!!', mcData);
 
     return mailchimp.post(`/lists/${listId}/members`, mcData)
     .then(function(result){
-      console.log(`....${result}`);
+      // console.log(`....${result}`);
       return result;
     })
     .catch(function(error){
-      console.log(error);
+      // console.log(error);
       return error;
     });
     
   })).then((results) => {
-    console.log('yay result', results)
+    // console.log('yay result', results)
     return results
   })
 

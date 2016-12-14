@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const debug = require('debug')('app:server')
 const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
@@ -6,14 +7,15 @@ const config = require('../config')
 
 // import api from './api';
 const app = express()
-console.log('using prerender node')
 app.use(require('prerender-node')
   // .set('prerenderServiceUrl', 'http://localhost:4000/')
   .set('prerenderToken', 'NsbhPNZyS7zy4yMNO8gU'))
 
-const paths = config.utils_paths
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use('/api', require('./api'))
 
-console.log('RUNNING ON EXPRESS!!!')
+const paths = config.utils_paths
 
 // app.use(api.routes());
 
