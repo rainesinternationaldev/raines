@@ -30,7 +30,7 @@ export default createReducer(initialState, {
 					p.mainCategory = c;
 				}
 			}
-      const slugTitle = slug(p.title).slice(0, 40).replace('and8217', '');
+      const slugTitle = slug(p.title).slice(0, 40).replace(/and8217|and8220/g, '');
       p.slug = slugTitle;
 		})
 		if (state.posts.length) {
@@ -61,7 +61,7 @@ export default createReducer(initialState, {
 	},
 	[FETCH_FEATURED_ON_HOMEPAGE_SUCCESS]: (state, payload) => {
     payload.posts.forEach(p => {
-      const slugTitle = slug(p.title).slice(0, 40).replace('and8217', '');
+      const slugTitle = slug(p.title).slice(0, 40).replace(/and8217|and8220/g, '');
       p.slug = slugTitle;
     })
 		if (payload.category === 'Home Page - Insight') {
@@ -84,7 +84,7 @@ export default createReducer(initialState, {
 		let profiles = payload.profiles.map(extractProfileMetadata);
 		let featuredProfilesOnHomepage = profiles.filter(profile => profile.categories["Home Page - Profiles"]).slice(0, 4);
     payload.profiles.forEach(p => {
-      const slugTitle = slug(p.title).slice(0, 40).replace('and8217', '');
+      const slugTitle = slug(p.title).slice(0, 40).replace(/and8217|and8220/g, '');
       p.slug = slugTitle;
     })
 
