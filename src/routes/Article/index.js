@@ -6,12 +6,12 @@ import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../utils';
-import DocMeta from 'react-doc-meta';
 import {
   ShareButtons,
   ShareCounts,
   generateShareIcon
 } from 'react-share';
+import Helmet from 'react-helmet';
 import printerIcon from './assets/printer-icon.png';
 
 export class Article extends React.Component {
@@ -84,29 +84,36 @@ export class Article extends React.Component {
     let currentLocation = window.location.href;
     currentLocation = `https://perspectives.rainesinternational.com${this.props.location.pathname}`
 
-    // var tags = [
-    //   {name: "description", content: "some description"},
-    //   {itemProp: "name", content: "The Name or Title Here"},
-    //   {itemProp: "description", content: "This is the page description"},
-    //   {itemProp: "image", content: "https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"},
-    //   {property: "og:title", content: "Title Here"},
-    //   {property: "og:type", content: "article"},
-    //   {property: "og:url", content: `${currentLocation}`},
-    //   {property: "og:image", content: "https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"}
-    // ]
+    let header
+    if (post) {
+      const desc = $(post.excerpt).text()
+      header = {
+        title: post.title,
+        meta: [{
+          name: 'description',
+          content: desc
+        }, {
+          property: 'og:title',
+          content: post.title
+        }, {
+          property: 'og:description',
+          content: desc
+        }, {
+          property: 'og:image',
+          content: post.post_thumbnail.URL
+        }, {
+          property: 'og:url',
+          content: currentLocation
+        }]
+      }
+    }
+    
+    console.log('HEADER', header);
 
     return (
       <div className={classes.article}>
         {
-        // <DocMeta tags={tags}/>
-          // post && post.ID ?
-          //   <Helmet
-          //     meta={[
-          //       {"property": "og:type", "content":"article"},
-          //       {"property": "og:title", "content":`${post.title}`},
-          //       {"property": "og:description", "content":`${post.excerpt}`},
-          //       {"property": "og:image", "content":"https://www.wired.com/wp-content/uploads/2015/07/GettyImages-474843544-1200x630.jpg"}
-          //     ]}/> : ""
+          post && post.ID ? <Helmet {...header} /> : ''
         }
         <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           {
