@@ -87,17 +87,18 @@ export class Article extends React.Component {
     let header
     if (post) {
       const desc = $(post.excerpt).text()
+      const decodedDesc = utils.decodeEntities(desc)
       header = {
-        title: post.title,
+        title: utils.decodeEntities(post.title),
         meta: [{
           name: 'description',
-          content: desc
+          content: decodedDesc
         }, {
           property: 'og:title',
-          content: post.title
+          content: utils.decodeEntities(post.title)
         }, {
           property: 'og:description',
-          content: desc
+          content: decodedDesc
         }, {
           property: 'og:image',
           content: post.post_thumbnail.URL
