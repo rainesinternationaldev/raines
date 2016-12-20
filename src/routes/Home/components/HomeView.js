@@ -11,6 +11,7 @@ import main1 from '../assets/main1.png';
 import main2 from '../assets/main2.png';
 import main3 from '../assets/main3.png';
 import main4 from '../assets/main4.png';
+import homeImage from '../assets/home.jpg';
 import Slider from 'react-slick';
 import Helmet from 'react-helmet';
 
@@ -170,8 +171,7 @@ class HomeView extends React.Component {
         content: 'Raines Perspectives is the thought leadership platform of premier executive search firm Raines International, featuring interviews, analysis and job placements.'
       }, {
         property: 'og:image',
-        // content: 'https://images.unsplash.com/photo-1464600923926-4ff72f9505f3?dpr=2&auto=format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop='
-        content: '../assets/home.jpeg'
+        content: homeImage
       }, {
         property: 'og:url',
         content: 'https://perspectives.rainesinternational.com/'

@@ -6,6 +6,8 @@ import careerInsightsImg from './assets/careerinsights.png';
 import classes from './WhoWeAre.scss';
 import {Link} from 'react-router';
 import {connect} 							from 'react-redux';
+import Helmet from 'react-helmet';
+import whoWeAreImage from '../assets/whoWeAreImage.jpg';
 
 class WhoWeAre extends React.Component{
   constructor(props) {
@@ -28,8 +30,28 @@ class WhoWeAre extends React.Component{
 
   render() {
     const { mediaType } = this.props;
+    const header = {
+      title: 'About Raines Perspectives',
+      meta: [{
+        name: 'description',
+        content: 'Learn more about Raines Perspectives and the Raines International team.'
+      }, {
+        property: 'og:title',
+        content: 'About Raines Perspectives'
+      }, {
+        property: 'og:description',
+        content: 'Learn more about Raines Perspectives and the Raines International team.'
+      }, {
+        property: 'og:image',
+        content: whoWeAreImage
+      }, {
+        property: 'og:url',
+        content: 'https://perspectives.rainesinternational.com/who-we-are'
+      }]
+    }
     return (
       <div className={`${classes.whoWeAre} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
+        <Helmet {...header} />
         {(() => {
           switch(mediaType) {
             case "extraSmall":
