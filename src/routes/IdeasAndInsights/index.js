@@ -8,6 +8,7 @@ import * as actionCreators  	from '../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../utils';
 import insightsImage from './assets/insightsImage.jpg';
+import Helmet from 'react-helmet';
 
 class IdeasAndInsights extends React.Component {
   constructor(props) {

@@ -10,6 +10,7 @@ import utils from '../utils';
 import moment from 'moment';
 import {Link} from 'react-router';
 import profilesImage from './assets/profilesImage.jpg'
+import Helmet from 'react-helmet';
 
 class ProfilesAndInterviews extends React.Component {
   constructor(props) {

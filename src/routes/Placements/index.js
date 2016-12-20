@@ -8,6 +8,7 @@ import moment from 'moment';
 import utils from '../utils';
 import { ViewMore } from './ViewMore';
 import placementsImg from './assets/placements.jpg'
+import Helmet from 'react-helmet';
 
 class Placements extends React.Component {
   constructor(props) {

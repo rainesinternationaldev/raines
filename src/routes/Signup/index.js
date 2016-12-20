@@ -5,6 +5,7 @@ import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/signup';
 import {connect} 							from 'react-redux';
 import signupImg from './assets/signup.jpg';
+import Helmet from 'react-helmet';
 
 class Signup extends React.Component {
   constructor(props) {
