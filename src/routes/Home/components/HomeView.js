@@ -171,7 +171,7 @@ class HomeView extends React.Component {
         content: 'Raines Perspectives is the thought leadership platform of premier executive search firm Raines International, featuring interviews, analysis and job placements.'
       }, {
         property: 'og:image',
-        content: homeImage
+        content: `https://perspectives.rainesinternational.com${homeImage}`
       }, {
         property: 'og:url',
         content: 'https://perspectives.rainesinternational.com/'
