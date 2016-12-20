@@ -9,6 +9,7 @@ import * as data from './data';
 import utils from '../utils';
 import moment from 'moment';
 import {Link} from 'react-router';
+import profilesImage from './assets/profilesImage.jpg'
 
 class ProfilesAndInterviews extends React.Component {
   constructor(props) {
@@ -101,9 +102,29 @@ class ProfilesAndInterviews extends React.Component {
 
     let profileResponsive = `profile${mediaType}`;
 
+    const header = {
+      title: 'Raines Perspective Interviews',
+      meta: [{
+        name: 'description',
+        content: 'Read Raines Perspectives interviews with executives and business leaders from top companies around the world.'
+      }, {
+        property: 'og:title',
+        content: 'Raines Perspective Interviews'
+      }, {
+        property: 'og:description',
+        content: 'Read Raines Perspectives interviews with executives and business leaders from top companies around the world.'
+      }, {
+        property: 'og:image',
+        content: profilesImage
+      }, {
+        property: 'og:url',
+        content: 'https://perspectives.rainesinternational.com/profiles-and-interviews'
+      }]
+    }
 
     return (
       <div className={classes.profilesAndInterviews}>
+        <Helmet {...header} />
         <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           {
             featuredProfile ?

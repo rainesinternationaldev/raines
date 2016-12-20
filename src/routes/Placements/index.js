@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import utils from '../utils';
 import { ViewMore } from './ViewMore';
+import placementsImg from './assets/placements.jpg'
 
 class Placements extends React.Component {
   constructor(props) {
@@ -65,9 +66,29 @@ class Placements extends React.Component {
       })
     }
     let displayedPlacements = placements.slice(0, this.state.numDisplayed);
+    const header = {
+      title: 'Raines International Placements',
+      meta: [{
+        name: 'description',
+        content: 'Read about Raines International’s latest placements, across industries, across functions.'
+      }, {
+        property: 'og:title',
+        content: 'Raines International Placements'
+      }, {
+        property: 'og:description',
+        content: 'Read about Raines International’s latest placements, across industries, across functions.'
+      }, {
+        property: 'og:image',
+        content: placementsImg
+      }, {
+        property: 'og:url',
+        content: 'https://perspectives.rainesinternational.com/profiles-and-interviews'
+      }]
+    }
 
     return (
       <div className={classes.placements}>
+        <Helmet {...header} />
         <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           {
             displayedPlacements.length ?

@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone';
 import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/signup';
 import {connect} 							from 'react-redux';
+import signupImg from './assets/signup.jpg';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -118,9 +119,29 @@ class Signup extends React.Component {
 
   render() {
     const data = this.props.signup.data;
+    const header = {
+      title: 'Sign up for Raines Perspectives',
+      meta: [{
+        name: 'description',
+        content: 'Sign up for Raines Perspectives and receive updates about job opportunities, placements and expert advice from our executive consultants on all things business.'
+      }, {
+        property: 'og:title',
+        content: 'Sign up for Raines Perspectives'
+      }, {
+        property: 'og:description',
+        content: 'Sign up for Raines Perspectives and receive updates about job opportunities, placements and expert advice from our executive consultants on all things business.'
+      }, {
+        property: 'og:image',
+        content: signupImg
+      }, {
+        property: 'og:url',
+        content: 'https://perspectives.rainesinternational.com/profiles-and-interviews'
+      }]
+    }
 
     return (
       <div className={classes.signup}>
+        <Helmet {...header} />
         <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           <div className={`${classes.intro} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <h2>Welcome.</h2>

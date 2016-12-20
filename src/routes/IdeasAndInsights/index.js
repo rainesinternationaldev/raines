@@ -7,6 +7,7 @@ import {bindActionCreators} 	from 'redux';
 import * as actionCreators  	from '../../actions/posts';
 import {connect} 							from 'react-redux';
 import utils from '../utils';
+import insightsImage from './assets/insightsImage.jpg';
 
 class IdeasAndInsights extends React.Component {
   constructor(props) {
@@ -56,9 +57,29 @@ class IdeasAndInsights extends React.Component {
     const baseurl = '/ideas-and-insights';
     const posts = this.props.wordpress.posts;
     let nextArticles = posts.slice(4, this.state.numShown);
+    const header = {
+      title: 'Raines Perspectives Insights',
+      meta: [{
+        name: 'description',
+        content: 'Read ideas and insights from Raines International’s team of executive consultants.'
+      }, {
+        property: 'og:title',
+        content: 'Raines Perspectives Insights'
+      }, {
+        property: 'og:description',
+        content: 'Read ideas and insights from Raines International’s team of executive consultants.'
+      }, {
+        property: 'og:image',
+        content: insightsImage
+      }, {
+        property: 'og:url',
+        content: 'https://perspectives.rainesinternational.com/ideas-and-insights'
+      }]
+    }
 
     return (
       <div className={`${classes.ideasAndInsights} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
+        <Helmet {...header} />
         <div className={`${classes.inner} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
           <div className={`${classes.latestResearch} col-lg-12 col-md-12 col-sm-12 col-xs-12`}>
             <h4 className={classes.subtitle}>LATEST PERSPECTIVE</h4>

@@ -7,7 +7,7 @@ import classes from './WhoWeAre.scss';
 import {Link} from 'react-router';
 import {connect} 							from 'react-redux';
 import Helmet from 'react-helmet';
-import whoWeAreImage from '../assets/whoWeAreImage.jpg';
+import whoWeAreImage from './assets/whoWeAreImage.jpg';
 
 class WhoWeAre extends React.Component{
   constructor(props) {
