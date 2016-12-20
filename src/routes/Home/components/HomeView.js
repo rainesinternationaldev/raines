@@ -12,6 +12,7 @@ import main2 from '../assets/main2.png';
 import main3 from '../assets/main3.png';
 import main4 from '../assets/main4.png';
 import Slider from 'react-slick';
+import Helmet from 'react-helmet';
 
 class HomeView extends React.Component {
   constructor(props) {
@@ -156,9 +157,29 @@ class HomeView extends React.Component {
       // dotsClass: 'dot'
     };
     let carouselImgResponsive = `carouselImg${mediaType}`;
+    const header = {
+      title: 'Raines Perspectives',
+      meta: [{
+        name: 'description',
+        content: 'Raines Perspectives is the thought leadership platform of premier executive search firm Raines International, featuring interviews, analysis and job placements.'
+      }, {
+        property: 'og:title',
+        content: 'Raines Perspectives'
+      }, {
+        property: 'og:description',
+        content: 'Raines Perspectives is the thought leadership platform of premier executive search firm Raines International, featuring interviews, analysis and job placements.'
+      }, {
+        property: 'og:image',
+        content: 'https://images.unsplash.com/photo-1464600923926-4ff72f9505f3'
+      }, {
+        property: 'og:url',
+        content: 'https://perspectives.rainesinternational.com/'
+      }]
+    }
 
     return (
       <div className={classes.home}>
+        <Helmet {...header} />
         {
         <div className={`${classes.inner} col-lg-10 col-md-12 col-sm-12 col-xs-12`}>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
