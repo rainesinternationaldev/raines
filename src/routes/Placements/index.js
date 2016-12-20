@@ -83,7 +83,7 @@ class Placements extends React.Component {
         content: `https://perspectives.rainesinternational.com${placementsImg}`
       }, {
         property: 'og:url',
-        content: 'https://perspectives.rainesinternational.com/profiles-and-interviews'
+        content: 'https://perspectives.rainesinternational.com/placements'
       }]
     }
 

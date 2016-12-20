@@ -136,7 +136,7 @@ class Signup extends React.Component {
         content: `https://perspectives.rainesinternational.com${signupImg}`
       }, {
         property: 'og:url',
-        content: 'https://perspectives.rainesinternational.com/profiles-and-interviews'
+        content: 'https://perspectives.rainesinternational.com/signup'
       }]
     }
 
