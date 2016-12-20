@@ -115,7 +115,7 @@ class ProfilesAndInterviews extends React.Component {
         content: 'Read Raines Perspectives interviews with executives and business leaders from top companies around the world.'
       }, {
         property: 'og:image',
-        content: profilesImage
+        content: `https://perspectives.rainesinternational.com${profilesImage}`
       }, {
         property: 'og:url',
         content: 'https://perspectives.rainesinternational.com/profiles-and-interviews'

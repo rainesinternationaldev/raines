@@ -43,7 +43,7 @@ class WhoWeAre extends React.Component{
         content: 'Learn more about Raines Perspectives and the Raines International team.'
       }, {
         property: 'og:image',
-        content: whoWeAreImage
+        content: `https://perspectives.rainesinternational.com${whoWeAreImage}`
       }, {
         property: 'og:url',
         content: 'https://perspectives.rainesinternational.com/who-we-are'

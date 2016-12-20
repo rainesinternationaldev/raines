@@ -79,7 +79,7 @@ class Placements extends React.Component {
         content: 'Read about Raines International’s latest placements, across industries, across functions.'
       }, {
         property: 'og:image',
-        content: placementsImg
+        content: `https://perspectives.rainesinternational.com${placementsImg}`
       }, {
         property: 'og:url',
         content: 'https://perspectives.rainesinternational.com/profiles-and-interviews'

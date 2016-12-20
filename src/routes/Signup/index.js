@@ -132,7 +132,7 @@ class Signup extends React.Component {
         content: 'Sign up for Raines Perspectives and receive updates about job opportunities, placements and expert advice from our executive consultants on all things business.'
       }, {
         property: 'og:image',
-        content: signupImg
+        content: `https://perspectives.rainesinternational.com${signupImg}`
       }, {
         property: 'og:url',
         content: 'https://perspectives.rainesinternational.com/profiles-and-interviews'

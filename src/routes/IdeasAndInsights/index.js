@@ -70,7 +70,7 @@ class IdeasAndInsights extends React.Component {
         content: 'Read ideas and insights from Raines International’s team of executive consultants.'
       }, {
         property: 'og:image',
-        content: insightsImage
+        content: `https://perspectives.rainesinternational.com${insightsImage}`
       }, {
         property: 'og:url',
         content: 'https://perspectives.rainesinternational.com/ideas-and-insights'
