@@ -153,7 +153,7 @@ class HomeView extends React.Component {
       autoplaySpeed: 5000,
       arrows: false,
       draggable: false,
-      swipe: false,
+      swipe: true,
       swipeToSlide: false
       // dotsClass: 'dot'
     };

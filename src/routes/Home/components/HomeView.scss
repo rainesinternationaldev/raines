@@ -102,6 +102,9 @@
 		.articleTitle {
 			margin-top: 0px;
 		}
+    img {
+      border: 1px solid $gray;
+    }
 	}
 	.mostRecent {
 		margin-top: 20px;
@@ -141,7 +144,7 @@
 		// when screen is LARGE
 		// max-height: 250px;
 		width: 100%;
-		padding-bottom: 20px;
+		// padding-bottom: 20px;
 	}
 	.perspectiveImage {
 		width: 100%;

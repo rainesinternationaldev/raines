@@ -18,43 +18,37 @@ class Placements extends React.Component {
       console.log('displaying more placements')
 
       let currentlyDisplayed = this.state.numDisplayed;
-      let newlyDisplayed = currentlyDisplayed + 10;
+      let newlyDisplayed = currentlyDisplayed + 6;
 
       this.setState({
         numDisplayed: newlyDisplayed
       });
       
       setTimeout(() => {
-        this.props.placements.slice(currentlyDisplayed, newlyDisplayed).forEach((placement, i) => {
-          $(`.placement-${i+currentlyDisplayed}`).click(() => {
-            $(`.description-${i+currentlyDisplayed}`).slideToggle('fast');
-          })
+        this.props.placements.forEach((placement, i) => {
+          if (i >= currentlyDisplayed) this.assignAnimation(placement, i);
         })
-
       }, 100);
     }
 
     this.state = {
-      numDisplayed: 10
+      numDisplayed: 6
     }
   }
 
+  assignAnimation = (placement, i) => {
+    $(`.placement-${i}`).click(() => {
+      $(`.description-${i}`).slideToggle('fast');
+    })
+  }
+
   componentDidMount() {
-    if (!this.props.placements.length) {
-      this.props.actions.fetchPlacements()
-        .then(() => {
-          return this.props.placements.forEach((placement, i) => {
-            $(`.placement-${i}`).click(() => {
-              $(`.description-${i}`).slideToggle('fast');
-            })
-          })
-        });
+    if (this.props.placements.length < 12) {
+      this.props.actions.fetchPlacements(12)
+        .then(() => this.props.placements.forEach(this.assignAnimation))
+        .then(() => this.props.actions.fetchPlacements(100, 12));
     } else {
-      this.props.placements.forEach((placement, i) => {
-        $(`.placement-${i}`).click(() => {
-          $(`.description-${i}`).slideToggle('fast');
-        })
-      })
+      this.props.placements.forEach(this.assignAnimation)
     }
   }
   render() {

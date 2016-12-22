@@ -27,16 +27,15 @@ export const fetchPlacementsFailure = () => {
   };
 };
 
-export const fetchPlacements = (numPlacements, offset, pageNum) => {
-  let params = [];
+export const fetchPlacements = (numPlacements, offset) => {
+  let params = ['category=placement'];
   let appendage;
-  if (numPlacements) params.push(`per_page=${numPlacements}`);
+  if (numPlacements) params.push(`number=${numPlacements}`);
   if (offset)  params.push(`offset=${offset}`);
-  if (pageNum) params.push(`page=${pageNum}`);
-  if (params.length) appendage = '?' + params.join('&');
+  if (params.length) appendage = params.join('&');
 
   const query = appendage ? appendage : ``;
-  const url = `${baseurl}category=placement&number=100`;
+  const url = `${baseurl}${query}`;
 
   return (dispatch) => {
     dispatch(fetchPlacementsRequest());

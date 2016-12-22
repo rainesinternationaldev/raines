@@ -32,17 +32,24 @@
           padding: 0;
         }
         .name {
-          font-size: 30px;
-          // font-family: Georgia;
-          margin: 0;
-          // color: $blue;
-        }
-        .company {
-          color: $blue;
-          font-weight: 600;
+          h1 {
+            margin-bottom: 10px;
+          }
         }
         .position {
-          font-style: italic;
+          h1 {
+            font-size: 17px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+          }
+        }
+        .company {
+          text-transform: uppercase;
+          color: $blue;
+          h5 {
+            margin-top: 0;
+            font-weight: 700;
+          }
         }
         .date {
           font-style: italic;

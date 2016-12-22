@@ -99,9 +99,20 @@ export default createReducer(initialState, {
 		return Object.assign({}, state, { currentProfile });
 	},
 	[FETCH_PLACEMENTS_SUCCESS]: (state, payload) => {
-		let placements;
+    let placements = state.placements.slice();
+		payload.placements.posts.forEach((fetchedPlacement) => {
+      let newPlacement = true;
+      state.placements.forEach((placement) => {
+        if (fetchedPlacement.ID == placement.ID) {
+          newPlacement = false;
+        }
+      });
+      if (newPlacement) {
+        placements.push(fetchedPlacement);
+      }
+    })
 		return Object.assign({}, state, {
-			placements: payload.placements.posts
+			placements
 		})
 	}
 });
