@@ -2,7 +2,7 @@ DEPLOYING TO HEROKU:
 - Make sure to be on branch `raines`
 $ git push heroku raines:master
 
-heroku, gmail, github, amazon login
+heroku, gmail, github, amazon, mailgun login
 rainesinternationaldev@gmail.com
 IdeasAndInsights2016
 
